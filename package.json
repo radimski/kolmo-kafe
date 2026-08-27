@@ -1,26 +1,23 @@
 {
-  "name": "website-workspace",
+  "name": "websites",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/*",
+    "sites/*"
+  ],
   "scripts": {
-    "dev": "next dev --port 43123",
-    "build": "next build",
-    "start": "next start --port 43123",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.3.3",
-    "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "dev": "concurrently -n otevru,kinles,kolmo -c green,yellow,cyan \"npm:dev:otevru\" \"npm:dev:kinles\" \"npm:dev:kolmokafe\"",
+    "dev:otevru": "npm run dev --workspace @sites/otevru",
+    "dev:kinles": "npm run dev --workspace @sites/kinles",
+    "dev:kolmokafe": "npm run dev --workspace @sites/kolmokafe",
+    "build": "npm run build --workspaces --if-present",
+    "build:otevru": "npm run build --workspace @sites/otevru",
+    "build:kinles": "npm run build --workspace @sites/kinles",
+    "build:kolmokafe": "npm run build --workspace @sites/kolmokafe",
+    "lint": "npm run lint --workspaces --if-present"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "concurrently": "^9.2.1"
   }
 }

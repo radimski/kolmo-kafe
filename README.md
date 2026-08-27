@@ -1,50 +1,95 @@
-# Website Workspace
+# Websites
 
-A Next.js starter for building websites with TypeScript, Tailwind CSS, and a Czech legal compliance baseline.
+Monorepo for three client websites. Each site is a standalone Next.js app with
+its own design, dependencies, dev server, and deployment target.
 
-## Stack
+## Sites
 
-- **Next.js 16** (App Router)
-- **React 19**
-- **TypeScript**
-- **Tailwind CSS 4**
+| Site | Folder | Dev port | Client |
+| --- | --- | --- | --- |
+| [otevru.cz](./sites/otevru/) | `sites/otevru` | 43124 | Patrik Panenka — zámečnická pohotovost |
+| [kinles.cz](./sites/kinles/) | `sites/kinles` | 43125 | KINLES Ostrava s.r.o. — zámečnictví a bezpečnostní technika |
+| Kolmo kafe | `sites/kolmokafe` | 43126 | Bistro-kavárna u přehrady Olešná |
 
 ## Getting started
 
 ```bash
 npm install
+```
+
+Run everything at once:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:43123](http://localhost:43123) to preview the app.
+Or one site at a time:
 
-Before launch, update operator details in `src/config/site.ts` and review `projects/LEGAL-CZ.md`.
-
-## Project structure
-
-```
-src/
-  app/                    # Pages, layouts, and routes
-  components/             # Shared UI, cookie banner, footer
-  config/site.ts          # Provozovatel – povinné údaje
-projects/
-  LEGAL-CZ.md             # Czech legislation checklist
-public/                   # Static assets
+```bash
+npm run dev:otevru      # http://localhost:43124
+npm run dev:kinles      # http://localhost:43125
+npm run dev:kolmokafe   # http://localhost:43126
 ```
 
-## Legal pages (Czech Republic)
+Build and lint:
 
-| Route | Purpose |
-| --- | --- |
-| `/provozovatel` | Operator identification (§ 435 OZ) |
-| `/ochrana-osobnich-udaju` | GDPR privacy policy |
-| `/cookies` | Cookie policy and consent categories |
+```bash
+npm run build           # all sites
+npm run build:kinles    # one site
+npm run lint            # all sites
+```
 
-## Scripts
+## Structure
 
-| Command        | Description              |
-| -------------- | ------------------------ |
-| `npm run dev`  | Start development server |
-| `npm run build`| Production build         |
-| `npm run start`| Run production server    |
-| `npm run lint` | Run ESLint               |
+```
+packages/
+  legal-cz/             Shared Czech legal texts + cookie-consent logic
+sites/
+  otevru/               Standalone Next.js app
+  kinles/               Standalone Next.js app
+  kolmokafe/            Standalone Next.js app
+projects/               Client briefs and research notes
+```
+
+Each site follows the same internal layout:
+
+```
+sites/<name>/
+  src/app/              Routes (App Router) + site stylesheet
+  src/components/       Nav, Footer, forms, cookie banner, legal shell
+  src/config/site.ts    Content and contact details
+  src/config/operator.ts Legal operator data (§ 435 OZ)
+  public/               Logo and static assets
+```
+
+## Shared legal package
+
+`@websites/legal-cz` holds the Czech legal content and consent logic so the
+wording stays consistent across sites, while each site renders it in its own
+design:
+
+- `buildPrivacySections(operator)` — GDPR privacy policy (zákon č. 110/2019 Sb.)
+- `buildCookieSections()` — cookie policy (zákon č. 127/2005 Sb.)
+- `buildOperatorRows(operator)` — mandatory identification (§ 435 OZ)
+- cookie-consent storage, namespaced per site so consents don't collide
+
+Consumed via `transpilePackages` in each site's `next.config.ts`.
+
+## Legal pages
+
+Every site ships `/provozovatel`, `/ochrana-osobnich-udaju`, `/cookies`, and an
+opt-in cookie banner with a "Nastavení cookies" link in the footer. See
+[projects/LEGAL-CZ.md](./projects/LEGAL-CZ.md) for the compliance checklist.
+
+## Contact forms
+
+All three sites have a contact form with a required GDPR consent checkbox. Forms
+open the visitor's mail client via `mailto:` — no backend or credentials needed.
+To send server-side instead, add a Route Handler plus an SMTP or Resend key.
+
+## Before launch
+
+- Fill in real operator data in each `src/config/operator.ts`
+  (Kolmo kafe still has placeholders — IČO not yet confirmed).
+- Have the legal texts reviewed by a lawyer.
+- Point each site at its own domain.
