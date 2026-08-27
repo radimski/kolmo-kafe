@@ -1,5 +1,10 @@
 # kinles.cz
 
+> **Pozice:** „Zámečnictví a bezpečnostní technika“ — širší než pouze protipožární dveře.
+> Převzato z názvu klientovy verze (Claude artifact). Kód té verze zatím nemáme;
+> odkaz `claude.ai/code/artifact/3c81f59f-…` vyžaduje přihlášení.
+
+
 **Domain:** [www.kinles.cz](https://www.kinles.cz) — currently returns errors (500); treat as **broken / needs new site**  
 **Related site:** [www.dvereov.cz](https://www.dvereov.cz) — product site referenced in business registries  
 **Status:** Research brief — company active, web presence unclear  
