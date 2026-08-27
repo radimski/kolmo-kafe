@@ -1,35 +1,61 @@
+import Link from "next/link";
+
+const sites = [
+  {
+    href: "/otevru",
+    name: "otevru.cz",
+    description: "Zámečnická pohotovost Patrik Panenka",
+    accent: "from-amber-500/20 to-slate-900",
+    border: "hover:border-amber-400/50",
+  },
+  {
+    href: "/kinles",
+    name: "kinles.cz",
+    description: "Protipožární dveře a stěny KINLES Ostrava",
+    accent: "from-orange-600/20 to-slate-900",
+    border: "hover:border-orange-500/50",
+  },
+  {
+    href: "/kolmokafe",
+    name: "Kolmo kafe",
+    description: "Bistro-kavárna u přehrady Olešná",
+    accent: "from-zinc-400/10 to-[#1a1d21]",
+    border: "hover:border-white/30",
+  },
+] as const;
+
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 px-6 py-24 dark:bg-zinc-950">
-      <main className="w-full max-w-2xl text-center">
-        <p className="text-sm font-medium uppercase tracking-widest text-zinc-500">
-          Pracovní prostředí pro weby
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
+      <main className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-20">
+        <p className="text-sm font-medium uppercase tracking-[0.3em] text-zinc-500">
+          Website workspace
         </p>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-5xl">
-          Připraveno k tvorbě
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
+          Tři weby. Jeden workspace.
         </h1>
-        <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-          Next.js starter s TypeScriptem a Tailwind CSS. Právní šablony jsou
-          připravené pro českou legislativu — až budete sdílet svá pravidla,
-          přizpůsobíme je pro ČR.
+        <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+          Vyberte projekt a prohlédněte si náhled. Každý web má vlastní design a
+          strukturu.
         </p>
-        <div className="mt-10 grid gap-4 text-left sm:grid-cols-2">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-            <h2 className="font-medium text-zinc-900 dark:text-zinc-50">
-              src/app
-            </h2>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Stránky, layouty a routy pro vaše weby.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-            <h2 className="font-medium text-zinc-900 dark:text-zinc-50">
-              projects/
-            </h2>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Složka pro jednotlivé webové projekty a poznámky.
-            </p>
-          </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          {sites.map((site) => (
+            <Link
+              key={site.href}
+              href={site.href}
+              className={`group relative overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-br ${site.accent} p-6 transition ${site.border}`}
+            >
+              <div className="relative z-10">
+                <h2 className="text-xl font-semibold">{site.name}</h2>
+                <p className="mt-2 text-sm leading-6 text-zinc-400 group-hover:text-zinc-300">
+                  {site.description}
+                </p>
+                <span className="mt-6 inline-flex text-sm font-medium text-white">
+                  Otevřít náhled →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
     </div>
