@@ -903,6 +903,34 @@
   text-transform: uppercase;
 }
 
+.kinles-root .inquiry-form .consent {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-kinles-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1.55;
+  color: #c9c4b6;
+}
+
+.kinles-root .inquiry-form .consent input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--brass-strong);
+  flex: none;
+}
+
+.kinles-root .inquiry-form .consent a {
+  color: var(--brass-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .kinles-root .form-note {
   margin-top: -0.3rem;
   font-family: var(--font-kinles-mono);

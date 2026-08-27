@@ -136,6 +136,115 @@
     var(--kolmo-surface);
 }
 
+/* ============ FORMULÁŘ ============ */
+.kolmo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.kolmo-form-row {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .kolmo-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kolmo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form input[type="text"],
+.kolmo-form select,
+.kolmo-form textarea {
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--kolmo-cream);
+  background: rgba(242, 236, 227, 0.04);
+  border: 1px solid rgba(242, 236, 227, 0.14);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  resize: vertical;
+}
+
+.kolmo-form select option {
+  color: #131619;
+}
+
+.kolmo-form input::placeholder,
+.kolmo-form textarea::placeholder {
+  color: rgba(154, 148, 140, 0.7);
+}
+
+.kolmo-form input:focus-visible,
+.kolmo-form select:focus-visible,
+.kolmo-form textarea:focus-visible {
+  outline: 2px solid var(--kolmo-crema);
+  outline-offset: 1px;
+  border-color: var(--kolmo-crema);
+}
+
+.kolmo-consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.65rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1.6;
+}
+
+.kolmo-consent input[type="checkbox"] {
+  margin-top: 0.15rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--kolmo-crema);
+  flex: none;
+}
+
+.kolmo-consent a {
+  color: var(--kolmo-crema);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.kolmo-form-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+}
+
+.kolmo-form-status {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: var(--kolmo-crema);
+}
+
+.kolmo-form-note {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--kolmo-muted);
+}
+
 @keyframes kolmo-rise {
   from {
     opacity: 0;

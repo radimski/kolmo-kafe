@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { kinlesConfig } from "./config";
 
-export function InquiryForm() {
+export function InquiryForm({ privacyHref }: { privacyHref: string }) {
   const [status, setStatus] = useState("");
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -52,6 +52,13 @@ export function InquiryForm() {
           placeholder="Popište, co potřebujete zabezpečit nebo opravit…"
           required
         />
+      </label>
+      <label className="consent">
+        <input type="checkbox" name="consent" required />
+        <span>
+          Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky.
+          Více v <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
+        </span>
       </label>
       <button type="submit" className="btn btn-primary form-submit">
         Odeslat poptávku

@@ -199,7 +199,7 @@ export default function KinlesPage() {
 
             <div className="contact-card">
               <h3>Napište nám</h3>
-              <InquiryForm />
+              <InquiryForm privacyHref="/ochrana-osobnich-udaju" />
             </div>
           </div>
 

@@ -83,6 +83,105 @@
   box-shadow: 0 8px 24px rgba(40, 43, 52, 0.1);
 }
 
+/* ============ FORMULÁŘ ============ */
+.otevru-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.otevru-form-row {
+  display: grid;
+  gap: 1.1rem;
+}
+
+@media (min-width: 640px) {
+  .otevru-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.otevru-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--otevru-charcoal);
+}
+
+.otevru-form label span[aria-hidden] {
+  color: var(--otevru-orange);
+}
+
+.otevru-form input[type="text"],
+.otevru-form input[type="tel"],
+.otevru-form input[type="email"],
+.otevru-form textarea {
+  font: inherit;
+  font-weight: 400;
+  color: var(--otevru-charcoal);
+  background: #fff;
+  border: 1px solid rgba(72, 77, 85, 0.25);
+  border-radius: 4px;
+  padding: 0.65rem 0.75rem;
+  resize: vertical;
+}
+
+.otevru-form input:focus-visible,
+.otevru-form textarea:focus-visible {
+  outline: 2px solid var(--otevru-orange);
+  outline-offset: 1px;
+  border-color: var(--otevru-orange);
+}
+
+.otevru-consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.6rem !important;
+  font-weight: 400 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5;
+  color: var(--otevru-muted) !important;
+}
+
+.otevru-consent input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--otevru-orange);
+  flex: none;
+}
+
+.otevru-consent a {
+  color: var(--otevru-blue);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.otevru-form-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 0.8rem 1.6rem;
+}
+
+.otevru-form-status {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--otevru-blue);
+}
+
+.otevru-form-note {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--otevru-muted);
+}
+
 .otevru-keyhole-rule {
   background: linear-gradient(
     90deg,

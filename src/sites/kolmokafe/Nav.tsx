@@ -5,7 +5,7 @@ import { kolmoConfig } from "./config";
 const links = [
   { href: "/kolmokafe", label: "Domů" },
   { href: "/kolmokafe/menu", label: "Menu" },
-  { href: "/kolmokafe#kde", label: "Kde nás najdete" },
+  { href: "/kolmokafe/kontakt", label: "Kontakt" },
 ] as const;
 
 export function KolmoNav() {
