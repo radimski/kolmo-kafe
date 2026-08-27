@@ -5,8 +5,8 @@ const sites = [
     href: "/otevru",
     name: "otevru.cz",
     description: "Zámečnická pohotovost Patrik Panenka",
-    accent: "from-amber-500/20 to-slate-900",
-    border: "hover:border-amber-400/50",
+    accent: "from-lime-400/15 to-stone-100",
+    border: "hover:border-lime-400/40",
   },
   {
     href: "/kinles",
@@ -19,8 +19,8 @@ const sites = [
     href: "/kolmokafe",
     name: "Kolmo kafe",
     description: "Bistro-kavárna u přehrady Olešná",
-    accent: "from-zinc-400/10 to-[#1a1d21]",
-    border: "hover:border-white/30",
+    accent: "from-emerald-100/80 to-[#faf7f2]",
+    border: "hover:border-emerald-300/60",
   },
 ] as const;
 

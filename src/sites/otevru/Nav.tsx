@@ -9,18 +9,24 @@ const links = [
 
 export function OtevruNav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 bg-white shadow-sm">
+      <div className="otevru-lime-bar h-1.5 w-full" />
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/otevru" className="text-lg font-bold tracking-tight text-white">
-          {otevruConfig.brand}
-          <span className="font-normal text-slate-400">.cz</span>
+        <Link href="/otevru" className="flex flex-col leading-tight">
+          <span className="text-lg font-bold tracking-tight text-[#484d55]">
+            {otevruConfig.brand}
+            <span className="font-semibold text-[#919499]">.cz</span>
+          </span>
+          <span className="text-xs font-medium text-[#919499]">
+            Zámečnická pohotovost
+          </span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-slate-300 transition hover:text-amber-400"
+              className="text-sm font-medium text-[#484d55] transition hover:text-[#2f333b]"
             >
               {link.label}
             </Link>
@@ -28,7 +34,7 @@ export function OtevruNav() {
         </nav>
         <a
           href={otevruConfig.phoneHref}
-          className="rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-amber-400"
+          className="otevru-btn-primary rounded-md px-4 py-2 text-sm font-semibold"
         >
           {otevruConfig.phone}
         </a>

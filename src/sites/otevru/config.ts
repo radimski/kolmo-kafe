@@ -1,7 +1,18 @@
+export const otevruColors = {
+  lime: "#acf53d",
+  orange: "#ff8800",
+  dark: "#2f333b",
+  charcoal: "#484d55",
+  muted: "#919499",
+  light: "#f4f4f4",
+  white: "#ffffff",
+} as const;
+
 export const otevruConfig = {
   name: "Patrik Panenka",
   brand: "OTEVŘU",
   tagline: "Zámečnická pohotovost & speciální zámečnictví",
+  colors: otevruColors,
   ico: "73290939",
   dic: "CZ7401244928",
   phone: "+420 606 262 118",

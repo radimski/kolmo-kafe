@@ -1,0 +1,36 @@
+.otevru-root {
+  --otevru-lime: #acf53d;
+  --otevru-orange: #ff8800;
+  --otevru-dark: #2f333b;
+  --otevru-charcoal: #484d55;
+  --otevru-muted: #919499;
+  --otevru-light: #f4f4f4;
+}
+
+.otevru-btn-primary {
+  background-color: var(--otevru-orange);
+  color: #fff;
+  transition: filter 0.2s ease;
+}
+
+.otevru-btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.otevru-btn-secondary {
+  background-color: var(--otevru-charcoal);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.otevru-btn-secondary:hover {
+  background-color: var(--otevru-dark);
+}
+
+.otevru-lime-bar {
+  background-color: var(--otevru-lime);
+}
+
+.otevru-card:hover {
+  border-color: color-mix(in srgb, var(--otevru-lime) 50%, transparent);
+}

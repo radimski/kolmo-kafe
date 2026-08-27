@@ -2,24 +2,31 @@ import { kolmoConfig } from "@/sites/kolmokafe/config";
 
 function MenuSection({
   title,
+  description,
   items,
+  accent,
 }: {
   title: string;
+  description: string;
   items: readonly { name: string; price: string }[];
+  accent: string;
 }) {
   return (
-    <section>
-      <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-stone-500">
+    <section className="kolmo-card kolmo-arch p-8">
+      <span
+        className={`kolmo-pill inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider ${accent}`}
+      >
         {title}
-      </h2>
-      <ul className="mt-6 divide-y divide-white/5">
+      </span>
+      <p className="mt-4 text-sm text-[#6b5c52]">{description}</p>
+      <ul className="mt-6">
         {items.map((item) => (
           <li
             key={item.name}
-            className="flex items-baseline justify-between gap-4 py-4"
+            className="kolmo-menu-row flex items-baseline justify-between gap-4 py-4"
           >
-            <span className="font-medium">{item.name}</span>
-            <span className="shrink-0 text-stone-500">{item.price}</span>
+            <span className="font-medium text-[#2c2825]">{item.name}</span>
+            <span className="shrink-0 text-sm text-[#8a8178]">{item.price}</span>
           </li>
         ))}
       </ul>
@@ -29,28 +36,50 @@ function MenuSection({
 
 export default function KolmoMenuPage() {
   return (
-    <div className="kolmo-grid-bg">
-      <div className="mx-auto max-w-3xl px-6 py-20">
-        <p className="text-sm uppercase tracking-[0.4em] text-stone-500">Menu</p>
-        <h1 className="mt-4 text-4xl font-bold sm:text-5xl">
+    <div className="kolmo-soft-glow">
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#7d9b84]">
+          Menu
+        </p>
+        <h1 className="mt-4 text-4xl font-bold text-[#2c2825] sm:text-5xl">
           Jednoduché. Fresh. Kolmo.
         </h1>
-        <p className="mt-4 text-stone-400">
+        <p className="mt-4 max-w-2xl text-[#6b5c52]">
           Nabídka se mění podle sezóny. Ceny jsou orientační — aktuální výběr
           na místě nebo na Facebooku.
         </p>
 
-        <div className="mt-14 space-y-14">
-          <MenuSection title="Káva" items={kolmoConfig.menu.coffee} />
-          <MenuSection title="Sladké" items={kolmoConfig.menu.sweet} />
-          <MenuSection title="Slané" items={kolmoConfig.menu.savory} />
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <MenuSection
+            title="Káva"
+            description="Výběrová káva připravená s péčí — od espresa po filtr."
+            items={kolmoConfig.menu.coffee}
+            accent="bg-[#e8f0e6] text-[#4a5f4e]"
+          />
+          <MenuSection
+            title="Sladké"
+            description="Moučníky a sladké doplnění, které se mění podle dne."
+            items={kolmoConfig.menu.sweet}
+            accent="bg-[#f6ebe3] text-[#7a5f52]"
+          />
+          <MenuSection
+            title="Slané"
+            description="Lehké bistro pokrmy na celý den u vody."
+            items={kolmoConfig.menu.savory}
+            accent="bg-[#e5f1f5] text-[#4f6570]"
+          />
         </div>
 
-        <div className="kolmo-menu-card mt-16 rounded-2xl p-8">
-          <h2 className="text-lg font-semibold">Sezónní akce</h2>
-          <ul className="mt-4 space-y-2 text-stone-400">
+        <div className="kolmo-card kolmo-arch mt-8 p-8">
+          <h2 className="text-xl font-semibold text-[#2c2825]">Sezónní akce</h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
             {kolmoConfig.events.map((event) => (
-              <li key={event}>· {event}</li>
+              <li
+                key={event}
+                className="rounded-2xl bg-[#faf7f2] px-4 py-3 text-sm text-[#6b5c52]"
+              >
+                {event}
+              </li>
             ))}
           </ul>
         </div>
