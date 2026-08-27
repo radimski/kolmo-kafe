@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Big_Shoulders, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         <Footer />
         <CookieBanner />
+        <Script src="/form.js" strategy="afterInteractive" />
       </body>
     </html>
   );

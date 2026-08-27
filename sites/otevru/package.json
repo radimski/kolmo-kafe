@@ -4,7 +4,7 @@
   "private": true,
   "description": "otevru.cz — zámečnická pohotovost Patrik Panenka",
   "scripts": {
-    "dev": "next dev --port 43124",
+    "dev": "next dev --webpack --port 43124",
     "build": "next build",
     "start": "next start --port 43124",
     "lint": "eslint"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans } from "next/font/google";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="flex-1">{children}</div>
         <Footer />
         <CookieBanner />
+        <Script src="/form.js" strategy="afterInteractive" />
         <a
           href={otevruConfig.phoneHref}
           className="otevru-btn-orange fixed bottom-5 right-5 z-40 rounded-full px-5 py-3 text-sm font-bold shadow-lg sm:hidden"
