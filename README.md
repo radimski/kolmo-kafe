@@ -44,6 +44,7 @@ npm run lint            # all sites
 ```
 packages/
   legal-cz/             Shared Czech legal texts + cookie-consent logic
+  form-engine/          Vendored form engine + Next.js route handler
 sites/
   otevru/               Standalone Next.js app
   kinles/               Standalone Next.js app
@@ -83,9 +84,16 @@ opt-in cookie banner with a "Nastavení cookies" link in the footer. See
 
 ## Contact forms
 
-All three sites have a contact form with a required GDPR consent checkbox. Forms
-open the visitor's mail client via `mailto:` — no backend or credentials needed.
-To send server-side instead, add a Route Handler plus an SMTP or Resend key.
+All three sites use the shared `@websites/form-engine` package (vendored from
+[mar-ha-90/web_form](https://github.com/mar-ha-90/web_form)):
+
+- browser client: `public/form.js` (progressive enhancement over `[data-form]` markup)
+- server: `src/app/api/form/route.ts` (nonce tokens, validation, rate limits)
+- schema: `src/config/forms.json` (single source of truth per site)
+
+Submissions are stored locally under `sites/<name>/.form-data/<siteId>/` as
+`.jsonl` records and `.eml` outbox files. For production, wire SMTP or a
+transactional provider into the handler and set `FORM_SECRET`.
 
 ## Before launch
 
