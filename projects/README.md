@@ -1,22 +1,17 @@
 # Projects
 
-Active website projects in this workspace.
+Client briefs and research notes. The code for each site lives in
+[`sites/`](../sites/).
 
-| Project | Domain / presence | Status |
-| --- | --- | --- |
-| [otevru](./otevru/) | [otevru.cz](https://www.otevru.cz) | Live site — locksmith / security (Patrik Panenka) |
-| [kinles](./kinles/) | kinles.cz (down) · dvereov.cz | Corporate — fire doors & walls (KINLES Ostrava s.r.o.) |
-| [kolmokafe](./kolmokafe/) | Facebook only · kolmokafe.cz TBD | Greenfield — bistro café at Olešná |
+| Project | Brief | Code | Dev port |
+| --- | --- | --- | --- |
+| otevru.cz | [otevru/](./otevru/) | [`sites/otevru`](../sites/otevru/) | 43124 |
+| kinles.cz | [kinles/](./kinles/) | [`sites/kinles`](../sites/kinles/) | 43125 |
+| Kolmo kafe | [kolmokafe/](./kolmokafe/) | [`sites/kolmokafe`](../sites/kolmokafe/) | 43126 |
 
-## Layout per project
+Each brief holds contacts, positioning, page structure, assets still needed, and
+open questions for the client.
 
-```
-projects/<name>/
-  README.md      # brief, contacts, pages, open questions
-```
+## Shared
 
-Site builds live in `src/` (shared Next.js app) until we split into separate apps or deploy targets.
-
-## Shared legal baseline
-
-Czech GDPR, cookies, and operator pages: see [LEGAL-CZ.md](./LEGAL-CZ.md). Each project gets its own `site.ts` values when we build.
+- [LEGAL-CZ.md](./LEGAL-CZ.md) — Czech legislation checklist for all sites

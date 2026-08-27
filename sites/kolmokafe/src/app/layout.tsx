@@ -20,7 +20,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="cs" className={`${spaceGrotesk.variable} h-full`}>
-      <body className="kolmo-root flex min-h-full flex-col font-[family-name:var(--font-kolmo)] antialiased">
+      <body
+        data-form-endpoint="/api/form"
+        className="kolmo-root flex min-h-full flex-col font-[family-name:var(--font-kolmo)] antialiased"
+      >
         <Nav />
         <div className="flex-1">{children}</div>
         <Footer />

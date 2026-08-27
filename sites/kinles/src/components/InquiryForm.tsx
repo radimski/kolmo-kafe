@@ -1,76 +1,89 @@
-"use client";
-
-import { useState } from "react";
+import { FormEngine } from "@/components/FormEngine";
 import { kinlesConfig } from "@/config/site";
 
+/**
+ * Markup contract of the vendored form engine: `data-form` names a form id from
+ * `config/forms.json`, every message is a `data-msg-*` attribute, and the
+ * status paragraph gets `data-state="info|ok|error"`.
+ */
 export function InquiryForm({ privacyHref }: { privacyHref: string }) {
-  const [status, setStatus] = useState("");
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = new FormData(form);
-    const name = String(data.get("name") ?? "").trim();
-    const reply = String(data.get("reply") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
-
-    const subject = `Poptávka z webu — ${name || "bez jména"}`;
-    const body = `Jméno: ${name}\nKontakt: ${reply}\n\n${message}`;
-
-    setStatus("Otevíráme e-mailovou aplikaci…");
-    window.location.href = `mailto:${kinlesConfig.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-  }
-
   return (
-    <form className="inquiry-form" onSubmit={handleSubmit}>
-      <label>
-        Jméno a příjmení
-        <input
-          type="text"
-          name="name"
-          placeholder="Jan Novák"
-          autoComplete="name"
-          required
+    <>
+      <form
+        className="inquiry-form"
+        data-form="poptavka"
+        noValidate
+        data-msg-sending="Odesíláme…"
+        data-msg-success="Děkujeme, poptávku máme. Odpovíme obratem v rámci otevírací doby."
+        data-msg-error={`Formulář se nepodařilo odeslat. Zavolejte prosím na ${kinlesConfig.phone}.`}
+        data-msg-required="Zkontrolujte prosím zvýrazněná pole."
+        data-msg-email="Zadejte platnou e-mailovou adresu."
+        data-msg-min="Tato hodnota je příliš krátká."
+        data-msg-max="Tato hodnota je příliš dlouhá."
+        data-msg-rate="Poptávku jste odeslali příliš mnohokrát. Zkuste to prosím později."
+        data-msg-offline="Vypadá to, že jste offline. Zkontrolujte připojení a zkuste to znovu."
+      >
+        <label>
+          Jméno a příjmení
+          <input
+            type="text"
+            name="jmeno"
+            placeholder="Jan Novák"
+            autoComplete="name"
+            required
+            minLength={2}
+            maxLength={100}
+          />
+        </label>
+        <label>
+          E-mail nebo telefon
+          <input
+            type="text"
+            name="kontakt"
+            placeholder="jan@email.cz nebo 601 234 567"
+            autoComplete="email"
+            required
+            minLength={5}
+            maxLength={200}
+          />
+        </label>
+        <label>
+          Zpráva
+          <textarea
+            name="zprava"
+            placeholder="Popište, co potřebujete zabezpečit nebo opravit…"
+            required
+            minLength={5}
+            maxLength={4000}
+          />
+        </label>
+        <label className="consent">
+          <input type="checkbox" name="souhlas" required />
+          <span>
+            Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky.
+            Více v <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
+          </span>
+        </label>
+        <button
+          type="submit"
+          data-form-submit
+          className="btn btn-primary form-submit"
+        >
+          Odeslat poptávku
+        </button>
+        <p
+          className="form-status"
+          data-form-status
+          role="status"
+          aria-live="polite"
+          hidden
         />
-      </label>
-      <label>
-        E-mail nebo telefon
-        <input
-          type="text"
-          name="reply"
-          placeholder="jan@email.cz nebo 601 234 567"
-          autoComplete="email"
-          required
-        />
-      </label>
-      <label>
-        Zpráva
-        <textarea
-          name="message"
-          placeholder="Popište, co potřebujete zabezpečit nebo opravit…"
-          required
-        />
-      </label>
-      <label className="consent">
-        <input type="checkbox" name="consent" required />
-        <span>
-          Souhlasím se zpracováním osobních údajů za účelem vyřízení poptávky.
-          Více v <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
-        </span>
-      </label>
-      <button type="submit" className="btn btn-primary form-submit">
-        Odeslat poptávku
-      </button>
-      <p className="form-status" role="status" aria-live="polite">
-        {status}
-      </p>
-      <p className="form-note">
-        Tlačítko otevře vaši e-mailovou aplikaci s předvyplněnou zprávou
-        adresovanou na {kinlesConfig.email} — nic se neodešle bez vašeho
-        potvrzení.
-      </p>
-    </form>
+        <p className="form-note">
+          Poptávka jde přímo na {kinlesConfig.email}. Spěchá-li to, volejte{" "}
+          {kinlesConfig.phone}.
+        </p>
+      </form>
+      <FormEngine />
+    </>
   );
 }

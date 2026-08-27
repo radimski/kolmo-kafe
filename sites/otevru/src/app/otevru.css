@@ -119,13 +119,17 @@
 .otevru-form input[type="email"],
 .otevru-form textarea {
   font: inherit;
+  /* 16px minimum stops iOS Safari zooming in on focus. */
+  font-size: max(1rem, 16px);
   font-weight: 400;
   color: var(--otevru-charcoal);
   background: #fff;
   border: 1px solid rgba(72, 77, 85, 0.25);
   border-radius: 4px;
-  padding: 0.65rem 0.75rem;
+  padding: 0.7rem 0.75rem;
   resize: vertical;
+  width: 100%;
+  min-width: 0;
 }
 
 .otevru-form input:focus-visible,
@@ -133,6 +137,25 @@
   outline: 2px solid var(--otevru-orange);
   outline-offset: 1px;
   border-color: var(--otevru-orange);
+}
+
+.otevru-form [aria-invalid="true"] {
+  border-color: #b91c1c;
+  background: #fef5f5;
+}
+
+.otevru-form [data-form-error] {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #b91c1c;
+}
+
+.otevru-form[data-form-done] input,
+.otevru-form[data-form-done] textarea,
+.otevru-form[data-form-done] button {
+  opacity: 0.55;
 }
 
 .otevru-consent {
@@ -166,14 +189,51 @@
   font: inherit;
   font-weight: 700;
   border-radius: 4px;
+  /* Comfortable thumb target on phones. */
+  min-height: 48px;
   padding: 0.8rem 1.6rem;
 }
 
+.otevru-form-submit[aria-busy="true"],
+.otevru-form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .otevru-form-submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Status paragraph — the engine sets data-state="info|ok|error". */
 .otevru-form-status {
-  min-height: 1.2em;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  border-radius: 4px;
+  padding: 0.7rem 0.85rem;
+}
+
+.otevru-form-status[hidden] {
+  display: none;
+}
+
+.otevru-form-status[data-state="info"] {
+  background: #eef3f8;
   color: var(--otevru-blue);
+}
+
+.otevru-form-status[data-state="ok"] {
+  background: #f2fbe6;
+  color: #3f6212;
+  border-left: 4px solid var(--otevru-lime);
+}
+
+.otevru-form-status[data-state="error"] {
+  background: #fef5f5;
+  color: #b91c1c;
+  border-left: 4px solid #b91c1c;
 }
 
 .otevru-form-note {

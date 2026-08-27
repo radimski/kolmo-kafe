@@ -1,80 +1,108 @@
-"use client";
-
-import { useState } from "react";
+import { FormEngine } from "@/components/FormEngine";
 import { otevruConfig } from "@/config/site";
 
+/**
+ * Markup contract of the vendored form engine: `data-form` names a form id from
+ * `config/forms.json`, every message is a `data-msg-*` attribute, and the
+ * status paragraph gets `data-state="info|ok|error"`.
+ */
 export function OtevruContactForm({ privacyHref }: { privacyHref: string }) {
-  const [status, setStatus] = useState("");
-
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") ?? "").trim();
-    const phone = String(data.get("phone") ?? "").trim();
-    const email = String(data.get("email") ?? "").trim();
-    const message = String(data.get("message") ?? "").trim();
-
-    const subject = `Poptávka z webu — ${name || "bez jména"}`;
-    const body = [
-      `Jméno: ${name}`,
-      `Telefon: ${phone}`,
-      email ? `E-mail: ${email}` : null,
-      "",
-      message,
-    ]
-      .filter((line) => line !== null)
-      .join("\n");
-
-    setStatus("Otevíráme vaši e-mailovou aplikaci…");
-    window.location.href = `mailto:${otevruConfig.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-  }
-
   return (
-    <form className="otevru-form" onSubmit={handleSubmit}>
-      <div className="otevru-form-row">
+    <>
+      <form
+        className="otevru-form"
+        data-form="poptavka"
+        noValidate
+        data-msg-sending="Odesíláme…"
+        data-msg-success="Děkujeme, poptávku máme. Ozveme se vám co nejdříve."
+        data-msg-error={`Formulář se nepodařilo odeslat. Zavolejte prosím na ${otevruConfig.phone}.`}
+        data-msg-required="Zkontrolujte prosím zvýrazněná pole."
+        data-msg-email="Zadejte platnou e-mailovou adresu."
+        data-msg-tel="Zadejte platné telefonní číslo."
+        data-msg-min="Tato hodnota je příliš krátká."
+        data-msg-max="Tato hodnota je příliš dlouhá."
+        data-msg-rate="Poptávku jste odeslali příliš mnohokrát. Zkuste to prosím později."
+        data-msg-offline="Vypadá to, že jste offline. Zkontrolujte připojení a zkuste to znovu."
+      >
+        <div className="otevru-form-row">
+          <label>
+            <span>
+              Jméno a příjmení <span aria-hidden>*</span>
+            </span>
+            <input
+              type="text"
+              name="jmeno"
+              autoComplete="name"
+              required
+              minLength={2}
+              maxLength={100}
+            />
+          </label>
+          <label>
+            <span>
+              Telefon <span aria-hidden>*</span>
+            </span>
+            <input
+              type="tel"
+              name="telefon"
+              autoComplete="tel"
+              inputMode="tel"
+              required
+              maxLength={40}
+            />
+          </label>
+        </div>
         <label>
-          Jméno a příjmení <span aria-hidden>*</span>
-          <input type="text" name="name" autoComplete="name" required />
+          <span>E-mail</span>
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            inputMode="email"
+            maxLength={200}
+          />
         </label>
         <label>
-          Telefon <span aria-hidden>*</span>
-          <input type="tel" name="phone" autoComplete="tel" required />
+          <span>
+            Co potřebujete? <span aria-hidden>*</span>
+          </span>
+          <textarea
+            name="zprava"
+            rows={5}
+            required
+            minLength={5}
+            maxLength={4000}
+            placeholder="Např. zabouchnuté dveře, výměna vložky, montáž trezoru…"
+          />
         </label>
-      </div>
-      <label>
-        E-mail
-        <input type="email" name="email" autoComplete="email" />
-      </label>
-      <label>
-        Co potřebujete? <span aria-hidden>*</span>
-        <textarea
-          name="message"
-          rows={5}
-          placeholder="Např. zabouchnuté dveře, výměna vložky, montáž trezoru…"
-          required
+        <label className="otevru-consent">
+          <input type="checkbox" name="souhlas" required />
+          <span>
+            Souhlasím se zpracováním osobních údajů za účelem vyřízení mé
+            poptávky. Více v{" "}
+            <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
+          </span>
+        </label>
+        <button
+          type="submit"
+          data-form-submit
+          className="otevru-btn-orange otevru-form-submit"
+        >
+          Odeslat poptávku
+        </button>
+        <p
+          className="otevru-form-status"
+          data-form-status
+          role="status"
+          aria-live="polite"
+          hidden
         />
-      </label>
-      <label className="otevru-consent">
-        <input type="checkbox" name="consent" required />
-        <span>
-          Souhlasím se zpracováním osobních údajů za účelem vyřízení mé
-          poptávky. Více v{" "}
-          <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
-        </span>
-      </label>
-      <button type="submit" className="otevru-btn-orange otevru-form-submit">
-        Odeslat poptávku
-      </button>
-      <p className="otevru-form-status" role="status" aria-live="polite">
-        {status}
-      </p>
-      <p className="otevru-form-note">
-        Formulář otevře vaši e-mailovou aplikaci s předvyplněnou zprávou na{" "}
-        {otevruConfig.email}. Nic se neodešle bez vašeho potvrzení. Spěchá-li to,
-        volejte {otevruConfig.phone}.
-      </p>
-    </form>
+        <p className="otevru-form-note">
+          Spěchá-li to, volejte {otevruConfig.phone} — u nouzového otevírání
+          voláme zpět obratem.
+        </p>
+      </form>
+      <FormEngine />
+    </>
   );
 }

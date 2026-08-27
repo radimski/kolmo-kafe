@@ -20,7 +20,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="cs" className={`${dmSans.variable} h-full`}>
-      <body className="otevru-root flex min-h-full flex-col font-[family-name:var(--font-otevru)] antialiased">
+      <body
+        data-form-endpoint="/api/form"
+        className="otevru-root flex min-h-full flex-col font-[family-name:var(--font-otevru)] antialiased"
+      >
         <Nav />
         <div className="flex-1">{children}</div>
         <Footer />

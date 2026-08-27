@@ -865,13 +865,37 @@
 .kinles-root .inquiry-form input,
 .kinles-root .inquiry-form textarea {
   font-family: var(--font-kinles-body);
-  font-size: 0.98rem;
+  /* 16px minimum stops iOS Safari zooming in on focus. */
+  font-size: max(0.98rem, 16px);
   color: #edebe3;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 2px;
-  padding: 0.65rem 0.75rem;
+  padding: 0.7rem 0.75rem;
   resize: vertical;
+  width: 100%;
+  min-width: 0;
+}
+
+.kinles-root .inquiry-form [aria-invalid="true"] {
+  border-color: #f08a80;
+  background: rgba(240, 138, 128, 0.08);
+}
+
+.kinles-root .inquiry-form [data-form-error] {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-kinles-body);
+  font-size: 0.82rem;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #f08a80;
+}
+
+.kinles-root .inquiry-form[data-form-done] input,
+.kinles-root .inquiry-form[data-form-done] textarea,
+.kinles-root .inquiry-form[data-form-done] button {
+  opacity: 0.55;
 }
 
 .kinles-root .inquiry-form input::placeholder,
@@ -938,11 +962,46 @@
   color: #a9a292;
 }
 
+/* Status paragraph — the engine sets data-state="info|ok|error". */
 .kinles-root .form-status {
   font-family: var(--font-kinles-mono);
   font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--brass-strong);
-  min-height: 1.1em;
+  padding: 0.65rem 0.8rem;
+  border-left: 2px solid transparent;
+}
+
+.kinles-root .form-status[hidden] {
+  display: none;
+}
+
+.kinles-root .form-status[data-state="info"] {
+  background: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(255, 255, 255, 0.3);
+  color: #c9c4b6;
+}
+
+.kinles-root .form-status[data-state="ok"] {
+  background: rgba(200, 162, 122, 0.12);
+  border-left-color: var(--brass-strong);
+  color: var(--brass-strong);
+}
+
+.kinles-root .form-status[data-state="error"] {
+  background: rgba(240, 138, 128, 0.1);
+  border-left-color: #f08a80;
+  color: #f08a80;
+}
+
+.kinles-root .inquiry-form .form-submit[aria-busy="true"],
+.kinles-root .inquiry-form .form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.kinles-root .inquiry-form .form-submit {
+  min-height: 48px;
 }
 
 /* ============ FOOTER ============ */

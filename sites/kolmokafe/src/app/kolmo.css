@@ -169,7 +169,8 @@
 .kolmo-form select,
 .kolmo-form textarea {
   font-family: inherit;
-  font-size: 0.98rem;
+  /* 16px minimum stops iOS Safari zooming in on focus. */
+  font-size: max(0.98rem, 16px);
   font-weight: 400;
   letter-spacing: normal;
   text-transform: none;
@@ -177,8 +178,32 @@
   background: rgba(242, 236, 227, 0.04);
   border: 1px solid rgba(242, 236, 227, 0.14);
   border-radius: 10px;
-  padding: 0.7rem 0.85rem;
+  padding: 0.75rem 0.85rem;
   resize: vertical;
+  width: 100%;
+  min-width: 0;
+}
+
+.kolmo-form [aria-invalid="true"] {
+  border-color: #e8938a;
+  background: rgba(232, 147, 138, 0.08);
+}
+
+.kolmo-form [data-form-error] {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #e8938a;
+}
+
+.kolmo-form[data-form-done] input,
+.kolmo-form[data-form-done] select,
+.kolmo-form[data-form-done] textarea,
+.kolmo-form[data-form-done] button {
+  opacity: 0.55;
 }
 
 .kolmo-form select option {
@@ -230,13 +255,49 @@
   font: inherit;
   font-size: 0.85rem;
   font-weight: 600;
+  /* Comfortable thumb target on phones. */
+  min-height: 48px;
   padding: 0.85rem 1.75rem;
 }
 
+.kolmo-form-submit[aria-busy="true"],
+.kolmo-form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .kolmo-form-submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Status paragraph — the engine sets data-state="info|ok|error". */
 .kolmo-form-status {
-  min-height: 1.2em;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+
+.kolmo-form-status[hidden] {
+  display: none;
+}
+
+.kolmo-form-status[data-state="info"] {
+  background: rgba(242, 236, 227, 0.06);
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form-status[data-state="ok"] {
+  background: rgba(200, 162, 122, 0.14);
   color: var(--kolmo-crema);
+}
+
+.kolmo-form-status[data-state="error"] {
+  background: rgba(232, 147, 138, 0.12);
+  color: #e8938a;
 }
 
 .kolmo-form-note {

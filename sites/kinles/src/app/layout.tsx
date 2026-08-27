@@ -74,7 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="cs"
       className={`${display.variable} ${body.variable} ${mono.variable}`}
     >
-      <body className="kinles-root">
+      <body data-form-endpoint="/api/form" className="kinles-root">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

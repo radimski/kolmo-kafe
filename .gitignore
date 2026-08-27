@@ -34,3 +34,6 @@ yarn-error.log*
 
 # editor / agent scratch
 terminals/
+
+# form engine data (submissions + outbox)
+.form-data/
