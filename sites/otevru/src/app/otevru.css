@@ -117,6 +117,7 @@
 .otevru-form input[type="text"],
 .otevru-form input[type="tel"],
 .otevru-form input[type="email"],
+.otevru-form select,
 .otevru-form textarea {
   font: inherit;
   /* 16px minimum stops iOS Safari zooming in on focus. */
@@ -133,6 +134,7 @@
 }
 
 .otevru-form input:focus-visible,
+.otevru-form select:focus-visible,
 .otevru-form textarea:focus-visible {
   outline: 2px solid var(--otevru-orange);
   outline-offset: 1px;

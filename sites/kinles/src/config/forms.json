@@ -6,7 +6,7 @@
       "label": "Poptávka z webu",
       "to": ["obchod@kinles.cz"],
       "cc": [],
-      "subject": "Poptávka z webu — {jmeno}",
+      "subject": "Poptávka z webu — {typ}, {jmeno}",
       "replyTo": "kontakt",
       "minSeconds": 3,
       "maxPerHour": 5,
@@ -27,6 +27,19 @@
           "required": true,
           "min": 5,
           "max": 200
+        },
+        "typ": {
+          "type": "select",
+          "label": "Typ poptávky",
+          "required": true,
+          "options": [
+            "Klíče a zámečnictví",
+            "Bezpečnostní dveře",
+            "Protipožární dveře a stěny",
+            "Trezory",
+            "Elektronické zabezpečení",
+            "Jiné"
+          ]
         },
         "zprava": {
           "type": "textarea",

@@ -81,6 +81,15 @@ export const kinlesConfig = {
     text: "u nás také naostříme kuchyňské nože a nůžky.",
   },
 
+  inquiryTypes: [
+    "Klíče a zámečnictví",
+    "Bezpečnostní dveře",
+    "Protipožární dveře a stěny",
+    "Trezory",
+    "Elektronické zabezpečení",
+    "Jiné",
+  ] as const,
+
   process: [
     {
       num: "01",

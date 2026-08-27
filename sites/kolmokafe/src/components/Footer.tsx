@@ -18,6 +18,9 @@ export function Footer() {
           </p>
           <p className="mt-2 text-sm text-[#9a948c]">{kolmoConfig.location}</p>
           <p className="mt-1 text-sm text-[#9a948c]">{kolmoConfig.address}</p>
+          <p className="mt-2 text-sm text-[#c8a27a]/90">
+            {kolmoConfig.hoursTypical}
+          </p>
         </div>
         <div className="text-sm text-[#9a948c]">
           <a

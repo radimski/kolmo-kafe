@@ -26,6 +26,8 @@ export const otevruConfig = {
   address: "O. Kišové 88, 739 25 Sviadnov",
   hours: "Po–Ne 07:00–18:00",
   hoursNote: "Před návštěvou zavolejte — často jsme na montážích.",
+  emergencyNote:
+    "V pracovní době vyjíždíme na nouzové otevírání v MS kraji. Mimo dobu domluvíme telefonicky.",
   serviceArea:
     "Sviadnov, Frýdek-Místek, Ostrava a okolí — v nouzi dojedeme k vám.",
   trust: [
@@ -33,6 +35,29 @@ export const otevruConfig = {
     { value: "Mul-T-Lock", label: "Certifikované systémy" },
     { value: "Po–Ne", label: "07:00–18:00" },
     { value: "73290939", label: "IČO provozovatele" },
+  ] as const,
+  panicSteps: [
+    {
+      title: "Zachovejte klid",
+      text: "Nepokoušejte se násilně otevírat zámek — hrozí poškození.",
+    },
+    {
+      title: "Zavolejte nám",
+      text: "Popíšete typ dveří, zámku nebo auta a kde jste.",
+    },
+    {
+      title: "Počkejte na technika",
+      text: "Domluvíme čas příjezdu a připravíme potřebné nástroje.",
+    },
+  ] as const,
+  serviceOptions: [
+    "Nouzové otevírání",
+    "Klíčová služba",
+    "Bezpečnostní dveře",
+    "Trezory & sejfy",
+    "Opravy po vloupání",
+    "Komplexní zabezpečení",
+    "Jiné",
   ] as const,
   steps: [
     {

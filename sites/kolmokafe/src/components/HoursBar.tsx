@@ -9,6 +9,10 @@ export function HoursBar() {
             Otevírací doba
           </span>
           <span className="mx-2 hidden text-[#f2ece3]/20 sm:inline">·</span>
+          <span className="mt-1 block font-medium text-[#f2ece3]/85 sm:mt-0 sm:inline">
+            {kolmoConfig.hoursTypical}
+          </span>
+          <span className="mx-2 hidden text-[#f2ece3]/20 sm:inline">·</span>
           <span className="mt-1 block sm:mt-0 sm:inline">
             {kolmoConfig.hoursNote}
           </span>

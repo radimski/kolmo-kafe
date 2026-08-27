@@ -19,6 +19,7 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
         data-msg-email="Zadejte platnou e-mailovou adresu."
         data-msg-min="Tato hodnota je příliš krátká."
         data-msg-max="Tato hodnota je příliš dlouhá."
+        data-msg-option="Vyberte prosím jednu z možností."
         data-msg-rate="Poptávku jste odeslali příliš mnohokrát. Zkuste to prosím později."
         data-msg-offline="Vypadá to, že jste offline. Zkontrolujte připojení a zkuste to znovu."
       >
@@ -45,6 +46,16 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
             minLength={5}
             maxLength={200}
           />
+        </label>
+        <label>
+          Typ poptávky
+          <select name="typ" defaultValue="Klíče a zámečnictví" required>
+            {kinlesConfig.inquiryTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Zpráva
@@ -78,8 +89,8 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
           hidden
         />
         <p className="form-note">
-          Poptávka jde přímo na {kinlesConfig.email}. Spěchá-li to, volejte{" "}
-          {kinlesConfig.phone}.
+          Nezávazně — ozveme se v pracovní době. Poptávka jde na{" "}
+          {kinlesConfig.email}. Spěchá-li to, volejte {kinlesConfig.phone}.
         </p>
       </form>
     </>

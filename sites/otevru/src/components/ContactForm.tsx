@@ -20,6 +20,7 @@ export function OtevruContactForm({ privacyHref }: { privacyHref: string }) {
         data-msg-tel="Zadejte platné telefonní číslo."
         data-msg-min="Tato hodnota je příliš krátká."
         data-msg-max="Tato hodnota je příliš dlouhá."
+        data-msg-option="Vyberte prosím jednu z možností."
         data-msg-rate="Poptávku jste odeslali příliš mnohokrát. Zkuste to prosím později."
         data-msg-offline="Vypadá to, že jste offline. Zkontrolujte připojení a zkuste to znovu."
       >
@@ -51,6 +52,16 @@ export function OtevruContactForm({ privacyHref }: { privacyHref: string }) {
             />
           </label>
         </div>
+        <label>
+          <span>Typ poptávky</span>
+          <select name="sluzba" defaultValue="Nouzové otevírání" required>
+            {otevruConfig.serviceOptions.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </label>
         <label>
           <span>E-mail</span>
           <input

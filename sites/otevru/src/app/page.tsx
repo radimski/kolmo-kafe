@@ -22,6 +22,9 @@ export default function OtevruPage() {
             <p className="mt-4 text-sm text-white/60">
               {otevruConfig.serviceArea}
             </p>
+            <p className="mt-2 text-sm font-medium text-[#acf53d]/90">
+              {otevruConfig.emergencyNote}
+            </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href={otevruConfig.phoneHref}
@@ -53,6 +56,28 @@ export default function OtevruPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="otevru-section-light border-b border-[#484d55]/10">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+          <p className="otevru-title text-[#004c93]">Zabouchnuté dveře?</p>
+          <h2 className="mt-3 text-2xl font-bold text-[#2f333b]">
+            Co dělat hned teď
+          </h2>
+          <ol className="mt-8 grid gap-5 md:grid-cols-3">
+            {otevruConfig.panicSteps.map((step, index) => (
+              <li key={step.title} className="otevru-card rounded-lg p-5">
+                <span className="text-sm font-bold text-[#ff8800]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-3 font-bold text-[#484d55]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[#919499]">
+                  {step.text}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

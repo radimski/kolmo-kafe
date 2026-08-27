@@ -7,6 +7,7 @@ export const kolmoConfig = {
   address: "Nad Přehradou 2483, 738 01 Frýdek-Místek",
   location: "Resort Olešná · u přehrady",
   facebook: "https://www.facebook.com/kolmokafe",
+  hoursTypical: "Typicky denně 10:00–21:00 (sezónně se liší)",
   hoursNote:
     "Otevírací doba se mění podle sezóny. Aktuální časy najdete na Facebooku.",
   menu: {

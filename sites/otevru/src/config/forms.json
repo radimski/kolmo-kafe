@@ -6,7 +6,7 @@
       "label": "Poptávka z webu",
       "to": ["patrik@otevru.cz"],
       "cc": [],
-      "subject": "Poptávka z webu — {jmeno}",
+      "subject": "Poptávka z webu — {sluzba}, {jmeno}",
       "replyTo": "email",
       "minSeconds": 3,
       "maxPerHour": 5,
@@ -32,6 +32,20 @@
           "label": "E-mail",
           "required": false,
           "max": 200
+        },
+        "sluzba": {
+          "type": "select",
+          "label": "Typ poptávky",
+          "required": true,
+          "options": [
+            "Nouzové otevírání",
+            "Klíčová služba",
+            "Bezpečnostní dveře",
+            "Trezory & sejfy",
+            "Opravy po vloupání",
+            "Komplexní zabezpečení",
+            "Jiné"
+          ]
         },
         "zprava": {
           "type": "textarea",
