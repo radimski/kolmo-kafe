@@ -4,6 +4,7 @@ import { otevruConfig } from "@/config/site";
 
 const links = [
   { href: "/#sluzby", label: "Služby" },
+  { href: "/#jak", label: "Jak to funguje" },
   { href: "/#o-nas", label: "O nás" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;

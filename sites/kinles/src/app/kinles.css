@@ -229,9 +229,24 @@
   background: var(--brass-strong);
 }
 
+.kinles-root .mobile-call {
+  display: none;
+}
+
 @media (max-width: 780px) {
   .kinles-root .navlinks {
     display: none;
+  }
+
+  .kinles-root .mobile-call {
+    display: inline-flex;
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 40;
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -440,6 +455,55 @@
 @media (max-width: 700px) {
   .kinles-root .stats-row {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============ PROCESS ============ */
+.kinles-root .process-band {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.kinles-root .process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.kinles-root .process-step {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.kinles-root .process-num {
+  font-family: var(--font-kinles-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--brass);
+}
+
+.kinles-root .process-step h3 {
+  font-size: 1.15rem;
+  margin-top: 0.75rem;
+}
+
+.kinles-root .process-step p {
+  margin-top: 0.65rem;
+  font-size: 0.98rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 820px) {
+  .kinles-root .process-grid {
+    grid-template-columns: 1fr;
   }
 }
 

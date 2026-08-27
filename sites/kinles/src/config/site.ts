@@ -81,6 +81,24 @@ export const kinlesConfig = {
     text: "u nás také naostříme kuchyňské nože a nůžky.",
   },
 
+  process: [
+    {
+      num: "01",
+      title: "Konzultace",
+      text: "Zavoláte nebo napíšete — projdeme požadavky, rozměry a místo montáže.",
+    },
+    {
+      num: "02",
+      title: "Nabídka",
+      text: "Připravíme návrh řešení, výběr značek a orientační cenu bez závazku.",
+    },
+    {
+      num: "03",
+      title: "Montáž",
+      text: "Dodáme a namontujeme — dveře, trezor, alarm nebo klíčovou službu.",
+    },
+  ],
+
   brands: [
     {
       name: "SHERLOCK",
@@ -126,6 +144,7 @@ export const kinlesConfig = {
 
   nav: [
     { href: "#sluzby", label: "Služby" },
+    { href: "#postup", label: "Postup" },
     { href: "#znacky", label: "Značky" },
     { href: "#o-nas", label: "O nás" },
     { href: "#kontakt", label: "Kontakt" },

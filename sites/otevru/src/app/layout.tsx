@@ -19,6 +19,39 @@ export const metadata: Metadata = {
   description: otevruConfig.tagline,
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Locksmith",
+  name: otevruConfig.name,
+  url: "https://www.otevru.cz/",
+  telephone: "+420606262118",
+  email: otevruConfig.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "O. Kišové 88",
+    postalCode: "739 25",
+    addressLocality: "Sviadnov",
+    addressCountry: "CZ",
+  },
+  areaServed: "Frýdek-Místek, Ostrava a okolí",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "07:00",
+      closes: "18:00",
+    },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="cs" className={`${dmSans.variable} h-full`}>
@@ -26,6 +59,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         data-form-endpoint="/api/form"
         className="otevru-root flex min-h-full flex-col font-[family-name:var(--font-otevru)] antialiased"
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <Nav />
         <div className="flex-1">{children}</div>
         <Footer />

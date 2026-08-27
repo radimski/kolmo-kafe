@@ -45,6 +45,29 @@ export default function KinlesPage() {
         </div>
       </div>
 
+      {/* ============ PROCESS ============ */}
+      <section id="postup" className="process-band">
+        <div className="wrap">
+          <div className="sec-head">
+            <p className="eyebrow">Jak spolupracujeme</p>
+            <h2>Od poptávky po montáž</h2>
+            <p>
+              U jednoduchých zakázek stačí telefon — u větších projektů
+              projdeme detaily a připravíme nabídku na míru.
+            </p>
+          </div>
+          <ol className="process-grid">
+            {kinlesConfig.process.map((step) => (
+              <li className="process-step" key={step.num}>
+                <span className="process-num">{step.num}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       {/* ============ SERVICES ============ */}
       <section id="sluzby">
         <div className="wrap">

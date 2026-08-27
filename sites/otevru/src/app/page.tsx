@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { otevruConfig } from "@/config/site";
+import { serviceIcons } from "@/components/icons";
 
 export default function OtevruPage() {
   return (
@@ -17,6 +18,9 @@ export default function OtevruPage() {
             <p className="mt-6 max-w-xl text-lg leading-8 text-white/80">
               {otevruConfig.tagline}. Nouzové otevírání, bezpečnostní dveře,
               trezory a komplexní zabezpečení majetku.
+            </p>
+            <p className="mt-4 text-sm text-white/60">
+              {otevruConfig.serviceArea}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -39,7 +43,9 @@ export default function OtevruPage() {
                 key={service.title}
                 className="rounded-lg border border-white/15 bg-white/5 p-5"
               >
-                <span className="text-2xl">{service.icon}</span>
+                <span className="otevru-icon-wrap text-[#acf53d]">
+                  {serviceIcons[service.icon]}
+                </span>
                 <h2 className="mt-3 font-bold text-white">{service.title}</h2>
                 <p className="mt-2 text-sm leading-6 text-white/70">
                   {service.description}
@@ -47,6 +53,19 @@ export default function OtevruPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="otevru-section-dark" aria-label="Důvěryhodnost">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-8 sm:grid-cols-2 lg:grid-cols-4">
+          {otevruConfig.trust.map((item) => (
+            <div key={item.label} className="text-center sm:text-left">
+              <p className="text-lg font-bold text-[#acf53d]">{item.value}</p>
+              <p className="mt-1 text-xs uppercase tracking-[0.15em] text-white/55">
+                {item.label}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -69,7 +88,35 @@ export default function OtevruPage() {
         </div>
       </section>
 
-      <section id="sluzby" className="otevru-section-light">
+      <section id="jak" className="otevru-section-light">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <p className="otevru-title text-[#004c93]">Jak to funguje</p>
+          <h2 className="mt-3 text-3xl font-bold text-[#2f333b]">
+            Tři kroky k řešení
+          </h2>
+          <p className="mt-3 max-w-2xl text-[#717479]">
+            U nouzového otevírání voláte přímo — u montáží a poptávek se
+            domluvíme telefonicky nebo přes formulář.
+          </p>
+          <ol className="mt-10 grid gap-6 md:grid-cols-3">
+            {otevruConfig.steps.map((step) => (
+              <li key={step.num} className="otevru-card rounded-lg p-6">
+                <span className="text-sm font-bold tracking-[0.2em] text-[#ff8800]">
+                  {step.num}
+                </span>
+                <h3 className="mt-4 text-xl font-bold text-[#484d55]">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-[#919499]">
+                  {step.text}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section id="sluzby" className="otevru-section-light border-t border-[#484d55]/10">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="otevru-title text-[#004c93]">Naše nabídka</p>
           <h2 className="mt-3 text-3xl font-bold text-[#2f333b]">Naše služby</h2>
@@ -82,7 +129,9 @@ export default function OtevruPage() {
                 key={service.title}
                 className="otevru-card rounded-lg p-6"
               >
-                <span className="text-3xl">{service.icon}</span>
+                <span className="otevru-icon-wrap text-[#004c93]">
+                  {serviceIcons[service.icon]}
+                </span>
                 <h3 className="mt-4 text-lg font-bold text-[#484d55]">
                   {service.title}
                 </h3>
@@ -108,6 +157,12 @@ export default function OtevruPage() {
               nabídku na míru.
             </p>
             <p className="mt-4 text-sm text-white/60">{otevruConfig.hoursNote}</p>
+            <a
+              href={otevruConfig.phoneHref}
+              className="otevru-btn-orange mt-8 inline-flex items-center justify-center rounded-md px-6 py-3 font-bold"
+            >
+              Zavolat {otevruConfig.phone}
+            </a>
           </div>
           <div className="rounded-lg border border-white/15 bg-white/5 p-8">
             <p className="otevru-title text-[#acf53d]">Certifikáty</p>
@@ -125,6 +180,7 @@ export default function OtevruPage() {
             <p className="mt-8 text-sm text-white/70">
               Provoz: {otevruConfig.hours}
             </p>
+            <p className="mt-2 text-sm text-white/55">{otevruConfig.address}</p>
           </div>
         </div>
       </section>

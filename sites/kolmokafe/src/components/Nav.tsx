@@ -33,14 +33,22 @@ export function Nav() {
             </Link>
           ))}
         </nav>
-        <a
-          href={kolmoConfig.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium"
-        >
-          Facebook
-        </a>
+        <div className="flex items-center gap-3">
+          <a
+            href={kolmoConfig.phoneHref}
+            className="kolmo-pill kolmo-btn-ghost hidden px-4 py-2 text-sm font-medium sm:inline-flex"
+          >
+            {kolmoConfig.phone}
+          </a>
+          <a
+            href={kolmoConfig.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium"
+          >
+            Facebook
+          </a>
+        </div>
       </div>
     </header>
   );

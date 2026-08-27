@@ -26,6 +26,31 @@ export const otevruConfig = {
   address: "O. Kišové 88, 739 25 Sviadnov",
   hours: "Po–Ne 07:00–18:00",
   hoursNote: "Před návštěvou zavolejte — často jsme na montážích.",
+  serviceArea:
+    "Sviadnov, Frýdek-Místek, Ostrava a okolí — v nouzi dojedeme k vám.",
+  trust: [
+    { value: "Assa Abloy", label: "Autorizovaný partner" },
+    { value: "Mul-T-Lock", label: "Certifikované systémy" },
+    { value: "Po–Ne", label: "07:00–18:00" },
+    { value: "73290939", label: "IČO provozovatele" },
+  ] as const,
+  steps: [
+    {
+      num: "01",
+      title: "Zavoláte",
+      text: "Popíšete situaci — zablokované dveře, zámek, trezor nebo montáž.",
+    },
+    {
+      num: "02",
+      title: "Dojedeme",
+      text: "Domluvíme čas a místo. U nouzového otevírání reagujeme co nejdříve.",
+    },
+    {
+      num: "03",
+      title: "Vyřešíme",
+      text: "Otevřeme, opravíme nebo namontujeme — s důrazem na šetrnost a kvalitu.",
+    },
+  ] as const,
   promo: {
     title: "Akce na bezklíčový chytrý zámek Yale Linus",
     text: "Více informací v sekci klíčová služba nebo na telefonu.",
@@ -35,37 +60,37 @@ export const otevruConfig = {
       title: "Nouzové otevírání",
       description:
         "Byty, domy i automobily. Otevírání bez zbytečného poškození zámků.",
-      icon: "🔓",
+      icon: "unlock",
     },
     {
       title: "Klíčová služba",
       description:
         "Výroba klíčů, autoklíče, bezklíčové zámky Yale Linus a další.",
-      icon: "🔑",
+      icon: "key",
     },
     {
       title: "Bezpečnostní dveře",
       description:
         "Výběr, montáž a servis bezpečnostních i protipožárních dveří.",
-      icon: "🚪",
+      icon: "door",
     },
     {
       title: "Trezory & sejfy",
       description:
         "Montáž do zdi, servis, repas, stěhování a trezory na zbraně.",
-      icon: "🔐",
+      icon: "safe",
     },
     {
       title: "Opravy po vloupání",
       description:
         "Výměna zámků, vložek, kování a zárubní po poškození objektu.",
-      icon: "🛠️",
+      icon: "repair",
     },
     {
       title: "Komplexní zabezpečení",
       description:
         "Mříže, závory, samozavírače, systém generálního klíče na míru.",
-      icon: "🏠",
+      icon: "home",
     },
   ],
   partners: ["Assa Abloy", "Mul-T-Lock", "Prověřená společnost"],

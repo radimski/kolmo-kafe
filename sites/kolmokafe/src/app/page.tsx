@@ -102,6 +102,69 @@ export default function KolmoPage() {
         </div>
       </section>
 
+      <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#c8a27a]">
+                Z menu
+              </p>
+              <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+                Káva, sladké i slané
+              </h2>
+              <p className="mt-3 max-w-xl text-[#9a948c]">
+                Krátké menu s důrazem na kvalitu — ceny jsou orientační a
+                nabídka se mění podle sezóny.
+              </p>
+            </div>
+            <Link
+              href="/menu"
+              className="kolmo-pill kolmo-btn-ghost inline-flex shrink-0 items-center justify-center px-6 py-3 text-sm font-semibold"
+            >
+              Celé menu
+            </Link>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {(
+              [
+                {
+                  title: "Káva",
+                  items: kolmoConfig.menu.coffee.slice(0, 3),
+                },
+                {
+                  title: "Sladké",
+                  items: kolmoConfig.menu.sweet.slice(0, 3),
+                },
+                {
+                  title: "Slané",
+                  items: kolmoConfig.menu.savory.slice(0, 3),
+                },
+              ] as const
+            ).map((group) => (
+              <article key={group.title} className="kolmo-card rounded-2xl p-7">
+                <h3 className="text-lg font-semibold text-[#c8a27a]">
+                  {group.title}
+                </h3>
+                <ul className="mt-5">
+                  {group.items.map((item) => (
+                    <li
+                      key={item.name}
+                      className="kolmo-menu-row flex items-baseline justify-between gap-4 py-3"
+                    >
+                      <span className="text-sm text-[#f2ece3]">{item.name}</span>
+                      <span className="shrink-0 text-xs text-[#9a948c]">
+                        {item.price}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="kolmo-grid-lines">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1fr_1.15fr] lg:items-center">
           <div>

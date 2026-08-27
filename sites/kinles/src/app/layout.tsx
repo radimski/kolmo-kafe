@@ -87,6 +87,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <CookieBanner />
         <Script src="/form.js" strategy="beforeInteractive" />
         <FormRouteBinder />
+        <a className="navcta mobile-call" href={kinlesConfig.phoneHref}>
+          Zavolat
+        </a>
       </body>
     </html>
   );
