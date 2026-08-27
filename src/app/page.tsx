@@ -11,7 +11,7 @@ const sites = [
   {
     href: "/kinles",
     name: "kinles.cz",
-    description: "Protipožární dveře a stěny KINLES Ostrava",
+    description: "Zámečnictví a bezpečnostní technika KINLES Ostrava",
     accent: "from-orange-600/20 to-slate-900",
     border: "hover:border-orange-500/50",
   },

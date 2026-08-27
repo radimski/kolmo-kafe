@@ -11,8 +11,8 @@ const ibm = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: `${kinlesConfig.brand} | Protipožární dveře a stěny`,
-  description: kinlesConfig.tagline,
+  title: `${kinlesConfig.brand} Ostrava — ${kinlesConfig.tagline}`,
+  description: kinlesConfig.lead,
 };
 
 export default function KinlesLayout({ children }: LayoutProps<"/kinles">) {

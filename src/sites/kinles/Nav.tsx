@@ -2,7 +2,7 @@ import Link from "next/link";
 import { kinlesConfig } from "./config";
 
 const links = [
-  { href: "/kinles#produkty", label: "Produkty" },
+  { href: "/kinles/sluzby", label: "Služby" },
   { href: "/kinles#o-firme", label: "O firmě" },
   { href: "/kinles/kontakt", label: "Kontakt" },
 ] as const;
