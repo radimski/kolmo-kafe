@@ -6,6 +6,11 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./client": "./src/client.ts",
     "./core": "./src/core.mjs"
+  },
+  "peerDependencies": {
+    "next": ">=15",
+    "react": ">=19"
   }
 }

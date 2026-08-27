@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Space_Grotesk } from "next/font/google";
+import { FormRouteBinder } from "@websites/form-engine/client";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -29,7 +30,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="flex-1">{children}</div>
         <Footer />
         <CookieBanner />
-        <Script src="/form.js" strategy="afterInteractive" />
+        <Script src="/form.js" strategy="beforeInteractive" />
+        <FormRouteBinder />
       </body>
     </html>
   );

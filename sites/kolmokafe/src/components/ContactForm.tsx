@@ -1,4 +1,3 @@
-import { FormEngine } from "@/components/FormEngine";
 import { kolmoConfig } from "@/config/site";
 
 const topics = [
@@ -103,7 +102,6 @@ export function KolmoContactForm({ privacyHref }: { privacyHref: string }) {
           Facebooku.
         </p>
       </form>
-      <FormEngine />
     </>
   );
 }

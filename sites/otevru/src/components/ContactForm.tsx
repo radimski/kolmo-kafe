@@ -1,4 +1,3 @@
-import { FormEngine } from "@/components/FormEngine";
 import { otevruConfig } from "@/config/site";
 
 /**
@@ -102,7 +101,6 @@ export function OtevruContactForm({ privacyHref }: { privacyHref: string }) {
           voláme zpět obratem.
         </p>
       </form>
-      <FormEngine />
     </>
   );
 }

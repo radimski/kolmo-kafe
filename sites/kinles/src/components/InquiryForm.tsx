@@ -1,4 +1,3 @@
-import { FormEngine } from "@/components/FormEngine";
 import { kinlesConfig } from "@/config/site";
 
 /**
@@ -83,7 +82,6 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
           {kinlesConfig.phone}.
         </p>
       </form>
-      <FormEngine />
     </>
   );
 }
