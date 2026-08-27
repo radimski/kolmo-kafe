@@ -3,27 +3,34 @@ import { otevruConfig } from "./config";
 
 export function OtevruFooter() {
   return (
-    <footer className="bg-[#2f333b] text-white">
-      <div className="otevru-lime-bar h-1 w-full" />
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:justify-between">
+    <footer className="otevru-section-dark">
+      <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:grid-cols-3">
         <div>
-          <p className="font-semibold">{otevruConfig.name}</p>
-          <p className="mt-2 text-sm text-[#b1b4b9]">
-            IČO {otevruConfig.ico} · DIČ {otevruConfig.dic}
-          </p>
-          <p className="mt-1 text-sm text-[#b1b4b9]">{otevruConfig.address}</p>
+          <p className="otevru-title text-[#acf53d]">Firma</p>
+          <p className="mt-3 font-semibold text-white">{otevruConfig.name}</p>
+          <p className="mt-2 text-sm">IČO {otevruConfig.ico}</p>
+          <p className="text-sm">DIČ {otevruConfig.dic}</p>
         </div>
-        <div className="text-sm text-[#b1b4b9]">
-          <a href={otevruConfig.phoneHref} className="block hover:text-[#acf53d]">
+        <div>
+          <p className="otevru-title text-[#acf53d]">Adresa</p>
+          <p className="mt-3 text-sm">{otevruConfig.address}</p>
+          <p className="mt-2 text-sm">{otevruConfig.hours}</p>
+        </div>
+        <div>
+          <p className="otevru-title text-[#acf53d]">Kontakt</p>
+          <a
+            href={otevruConfig.phoneHref}
+            className="mt-3 block font-semibold text-white hover:text-[#acf53d]"
+          >
             {otevruConfig.phone}
           </a>
           <a
             href={`mailto:${otevruConfig.email}`}
-            className="mt-1 block hover:text-[#acf53d]"
+            className="mt-1 block text-sm hover:text-[#acf53d]"
           >
             {otevruConfig.email}
           </a>
-          <Link href="/" className="mt-4 block text-[#919499] hover:text-white">
+          <Link href="/" className="mt-4 block text-sm text-white/40 hover:text-white">
             ← Workspace
           </Link>
         </div>

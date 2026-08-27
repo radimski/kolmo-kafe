@@ -1,76 +1,145 @@
 .kolmo-root {
-  --kolmo-cream: #faf7f2;
-  --kolmo-paper: #fffdf9;
-  --kolmo-espresso: #2c2825;
-  --kolmo-warm: #6b5c52;
-  --kolmo-muted: #8a8178;
-  --kolmo-sage: #7d9b84;
-  --kolmo-lake: #8ec5d4;
-  --kolmo-dark: #1a1d21;
-  background: var(--kolmo-cream);
-  color: var(--kolmo-espresso);
+  /* Tmavá paleta navázaná na logo (#1a1d21) s teplými akcenty */
+  --kolmo-bg: #131619;
+  --kolmo-surface: #1a1d21;
+  --kolmo-surface-2: #21252a;
+  --kolmo-cream: #f2ece3;
+  --kolmo-muted: #9a948c;
+  --kolmo-crema: #c8a27a;
+  --kolmo-lake: #7fa8b5;
+  background: var(--kolmo-bg);
+  color: var(--kolmo-cream);
 }
 
-.kolmo-soft-glow {
+.kolmo-hero {
   background:
-    radial-gradient(circle at 85% 15%, rgba(142, 197, 212, 0.22), transparent 28%),
-    radial-gradient(circle at 10% 80%, rgba(125, 155, 132, 0.16), transparent 32%),
-    var(--kolmo-cream);
+    radial-gradient(
+      ellipse 60% 50% at 75% 20%,
+      rgba(200, 162, 122, 0.14),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 10% 85%,
+      rgba(127, 168, 181, 0.1),
+      transparent 70%
+    ),
+    var(--kolmo-bg);
 }
 
-.kolmo-arch {
-  border-radius: 2rem 2rem 1rem 1rem;
+.kolmo-grid-lines {
+  background-image:
+    linear-gradient(rgba(242, 236, 227, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 236, 227, 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+.kolmo-surface {
+  background: var(--kolmo-surface);
+  border: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-card {
+  background: linear-gradient(
+    160deg,
+    rgba(242, 236, 227, 0.045),
+    rgba(242, 236, 227, 0.015)
+  );
+  border: 1px solid rgba(242, 236, 227, 0.08);
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.kolmo-card:hover {
+  border-color: rgba(200, 162, 122, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(200, 162, 122, 0.08),
+    rgba(242, 236, 227, 0.02)
+  );
+  transform: translateY(-4px);
 }
 
 .kolmo-pill {
   border-radius: 999px;
 }
 
-.kolmo-card {
-  border: 1px solid rgba(44, 40, 37, 0.08);
-  background: var(--kolmo-paper);
-  box-shadow: 0 12px 40px rgba(44, 40, 37, 0.06);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+.kolmo-btn-cream {
+  background: var(--kolmo-cream);
+  color: #131619;
+  transition: background 0.25s ease;
 }
 
-.kolmo-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 48px rgba(44, 40, 37, 0.1);
+.kolmo-btn-cream:hover {
+  background: #fff;
+}
+
+.kolmo-btn-ghost {
+  border: 1px solid rgba(242, 236, 227, 0.2);
+  color: var(--kolmo-cream);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.kolmo-btn-ghost:hover {
+  border-color: var(--kolmo-crema);
+  background: rgba(200, 162, 122, 0.08);
 }
 
 .kolmo-menu-row {
-  border-bottom: 1px dashed rgba(44, 40, 37, 0.12);
+  border-bottom: 1px solid rgba(242, 236, 227, 0.07);
 }
 
 .kolmo-menu-row:last-child {
   border-bottom: none;
 }
 
-.kolmo-photo-panel {
-  background:
-    linear-gradient(145deg, rgba(142, 197, 212, 0.35), rgba(125, 155, 132, 0.25)),
-    linear-gradient(180deg, #d4e8ee 0%, #e8f0e6 100%);
-}
-
-.kolmo-logo-panel {
-  background: var(--kolmo-dark);
-}
-
 .kolmo-vertical-accent {
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.32em;
   font-weight: 700;
-  color: rgba(125, 155, 132, 0.35);
+  color: rgba(242, 236, 227, 0.05);
   user-select: none;
+}
+
+.kolmo-corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-color: rgba(200, 162, 122, 0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.kolmo-corner-tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-width: 2px 0 0 2px;
+}
+
+.kolmo-corner-br {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border-width: 0 2px 2px 0;
+}
+
+.kolmo-panel-lake {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(127, 168, 181, 0.28),
+      rgba(19, 22, 25, 0.92) 70%
+    ),
+    var(--kolmo-surface);
 }
 
 @keyframes kolmo-rise {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -79,11 +148,11 @@
 }
 
 .kolmo-rise {
-  animation: kolmo-rise 0.7s ease-out both;
+  animation: kolmo-rise 0.8s ease-out both;
 }
 
 .kolmo-rise-delay {
-  animation: kolmo-rise 0.7s ease-out 0.12s both;
+  animation: kolmo-rise 0.8s ease-out 0.15s both;
 }
 
 @media (prefers-reduced-motion: reduce) {

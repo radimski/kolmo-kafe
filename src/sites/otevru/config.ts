@@ -1,11 +1,16 @@
+/**
+ * Barvy převzaté z původního webu otevru.cz (assets/css/main.css)
+ * a z polepu firemních vozů — limetková a šedá.
+ */
 export const otevruColors = {
   lime: "#acf53d",
+  blue: "#004c93",
   orange: "#ff8800",
-  dark: "#2f333b",
+  dark: "#282b34",
+  slate: "#2f333b",
   charcoal: "#484d55",
   muted: "#919499",
-  light: "#f4f4f4",
-  white: "#ffffff",
+  light: "#f3f3f3",
 } as const;
 
 export const otevruConfig = {
@@ -21,6 +26,10 @@ export const otevruConfig = {
   address: "O. Kišové 88, 739 25 Sviadnov",
   hours: "Po–Ne 07:00–18:00",
   hoursNote: "Před návštěvou zavolejte — často jsme na montážích.",
+  promo: {
+    title: "Akce na bezklíčový chytrý zámek Yale Linus",
+    text: "Více informací v sekci klíčová služba nebo na telefonu.",
+  },
   services: [
     {
       title: "Nouzové otevírání",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { otevruConfig } from "./config";
 
@@ -9,35 +10,40 @@ const links = [
 
 export function OtevruNav() {
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-sm">
-      <div className="otevru-lime-bar h-1.5 w-full" />
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/otevru" className="flex flex-col leading-tight">
-          <span className="text-lg font-bold tracking-tight text-[#484d55]">
-            {otevruConfig.brand}
-            <span className="font-semibold text-[#919499]">.cz</span>
-          </span>
-          <span className="text-xs font-medium text-[#919499]">
-            Zámečnická pohotovost
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-8 md:flex">
+    <header className="sticky top-0 z-40 shadow-sm">
+      <div className="otevru-section-lime">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+          <Link href="/otevru" className="flex items-center">
+            <Image
+              src="/otevru/logo.gif"
+              alt={`${otevruConfig.name} — zámečnická pohotovost`}
+              width={295}
+              height={60}
+              className="h-9 w-auto"
+              priority
+              unoptimized
+            />
+          </Link>
+          <a
+            href={otevruConfig.phoneHref}
+            className="otevru-btn-orange rounded-md px-4 py-2 text-sm font-bold"
+          >
+            {otevruConfig.phone}
+          </a>
+        </div>
+      </div>
+      <div className="otevru-section-dark">
+        <nav className="mx-auto hidden max-w-6xl items-center gap-8 px-6 py-3 md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-[#484d55] transition hover:text-[#2f333b]"
+              className="text-xs font-bold uppercase tracking-[0.2em] text-white/70 transition hover:text-[#acf53d]"
             >
               {link.label}
             </Link>
           ))}
         </nav>
-        <a
-          href={otevruConfig.phoneHref}
-          className="otevru-btn-primary rounded-md px-4 py-2 text-sm font-semibold"
-        >
-          {otevruConfig.phone}
-        </a>
       </div>
     </header>
   );

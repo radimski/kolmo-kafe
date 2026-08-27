@@ -1,36 +1,93 @@
 .otevru-root {
   --otevru-lime: #acf53d;
+  --otevru-blue: #004c93;
   --otevru-orange: #ff8800;
-  --otevru-dark: #2f333b;
+  --otevru-dark: #282b34;
+  --otevru-slate: #2f333b;
   --otevru-charcoal: #484d55;
   --otevru-muted: #919499;
-  --otevru-light: #f4f4f4;
+  --otevru-light: #f3f3f3;
+  color: var(--otevru-charcoal);
 }
 
-.otevru-btn-primary {
+/* Sekce v barvách původního webu (wrapper style1/2/3) */
+.otevru-section-blue {
+  background-color: var(--otevru-blue);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.otevru-section-lime {
+  background-color: var(--otevru-lime);
+  color: var(--otevru-charcoal);
+}
+
+.otevru-section-light {
+  background-color: var(--otevru-light);
+}
+
+.otevru-section-dark {
+  background-color: var(--otevru-dark);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Tlačítka podle style1 / style3 */
+.otevru-btn-orange {
   background-color: var(--otevru-orange);
   color: #fff;
   transition: filter 0.2s ease;
 }
 
-.otevru-btn-primary:hover {
+.otevru-btn-orange:hover {
   filter: brightness(1.08);
 }
 
-.otevru-btn-secondary {
-  background-color: var(--otevru-charcoal);
+.otevru-btn-slate {
+  background-color: var(--otevru-slate);
   color: #fff;
   transition: background-color 0.2s ease;
 }
 
-.otevru-btn-secondary:hover {
+.otevru-btn-slate:hover {
   background-color: var(--otevru-dark);
 }
 
-.otevru-lime-bar {
+.otevru-btn-lime {
   background-color: var(--otevru-lime);
+  color: var(--otevru-charcoal);
+  transition: filter 0.2s ease;
+}
+
+.otevru-btn-lime:hover {
+  filter: brightness(1.06);
+}
+
+/* Titulek sekce ve stylu původního "title" pásku */
+.otevru-title {
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  font-size: 0.8rem;
+}
+
+.otevru-card {
+  background: #fff;
+  border: 1px solid rgba(72, 77, 85, 0.12);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .otevru-card:hover {
-  border-color: color-mix(in srgb, var(--otevru-lime) 50%, transparent);
+  border-color: var(--otevru-lime);
+  box-shadow: 0 8px 24px rgba(40, 43, 52, 0.1);
+}
+
+.otevru-keyhole-rule {
+  background: linear-gradient(
+    90deg,
+    var(--otevru-lime) 0%,
+    var(--otevru-lime) 60%,
+    transparent 60%
+  );
 }
