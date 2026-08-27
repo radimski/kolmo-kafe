@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { CookieConsent } from "@/components/CookieConsent";
+import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,16 +16,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Website Workspace",
-  description: "A starter workspace for building websites.",
+  description: "Pracovní prostředí pro tvorbu webů v souladu s českou legislativou.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="cs"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <div className="flex flex-1 flex-col">{children}</div>
+        <SiteFooter />
+        <CookieConsent />
+      </body>
     </html>
   );
 }
