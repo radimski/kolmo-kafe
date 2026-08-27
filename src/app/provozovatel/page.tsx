@@ -13,17 +13,19 @@ export default function OperatorPage() {
   return (
     <LegalPage
       title="Provozovatel webu"
-      description="Identifikační údaje provozovatele podle § 435 občanského zákoníku a zákona č. 480/2004 Sb."
+      description="Identifikační údaje provozovatele podle české legislativy (OZ, živnostenský zákon, zákon o službách informační společnosti)."
     >
       <LegalSection title="Identifikační údaje">
         <OperatorDetails />
       </LegalSection>
       <LegalSection title="Právní rámec">
         <p>
-          Podle § 435 občanského zákoníku je podnikatel povinen uvádět na webu
-          své identifikační údaje. Tyto informace musí být pro návštěvníky
-          snadno dohledatelné, obvykle v patičce webu nebo na samostatné
-          stránce provozovatele.
+          V České republice je podnikatel povinen uvádět na webu své
+          identifikační údaje podle § 435 zákona č. 89/2012 Sb., občanský
+          zákoník, a u živnostníků také podle § 13a zákona č. 455/1991 Sb.,
+          živnostenský zákon. Tyto informace musí být pro návštěvníky snadno
+          dohledatelné, obvykle v patičce webu nebo na samostatné stránce
+          provozovatele.
         </p>
         <p>
           Pokud prostřednictvím webu nabízíte zboží nebo služby spotřebitelům,

@@ -9,30 +9,25 @@ export default function Home() {
           Připraveno k tvorbě
         </h1>
         <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-          Next.js starter s TypeScriptem a Tailwind CSS. Základní právní rámec
-          pro české weby je nastaven — upravte údaje provozovatele v{" "}
-          <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-sm dark:bg-zinc-800">
-            src/config/site.ts
-          </code>{" "}
-          před spuštěním ostrého provozu.
+          Next.js starter s TypeScriptem a Tailwind CSS. Právní šablony jsou
+          připravené pro českou legislativu — až budete sdílet svá pravidla,
+          přizpůsobíme je pro ČR.
         </p>
         <div className="mt-10 grid gap-4 text-left sm:grid-cols-2">
           <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
             <h2 className="font-medium text-zinc-900 dark:text-zinc-50">
-              Právní stránky
+              src/app
             </h2>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Ochrana osobních údajů, cookies a identifikace provozovatele podle
-              české legislativy.
+              Stránky, layouty a routy pro vaše weby.
             </p>
           </div>
           <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
             <h2 className="font-medium text-zinc-900 dark:text-zinc-50">
-              Cookie lišta
+              projects/
             </h2>
             <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Opt-in souhlas s odmítnutím, nastavením kategorií a bez spuštění
-              trackingu před souhlasem.
+              Složka pro jednotlivé webové projekty a poznámky.
             </p>
           </div>
         </div>

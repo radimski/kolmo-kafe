@@ -1,6 +1,15 @@
 # Česká legislativa pro weby – checklist
 
-Tento projekt obsahuje základní právní rámec pro weby provozované v České republice. Před ostrým spuštěním doplňte skutečné údaje provozovatele a nechte texty zkontrolovat právníkem.
+Tento projekt je nastaven pro **Českou republiku**, ne pro Slovensko. Pokud máte pravidla nebo šablony ze slovenského prostředí, nepřenášejte je 1:1 — jiné jsou zákony, dozorové úřady i odkazy na registry.
+
+| Oblast | Česká republika | Slovensko (nepoužívat zde) |
+| --- | --- | --- |
+| Ochrana údajů | zákon č. 110/2019 Sb., ÚOOÚ | zákon č. 18/2018 Z. z., ÚOOÚ SR |
+| Cookies / e-komunikace | zákon č. 127/2005 Sb. | zákon č. 351/2011 Z. z. |
+| Spotřebitelské spory | ČOI | SOI |
+| Citace zákonů | Sb. (Sbírka zákonů) | Z. z. (Zbierka zákonov) |
+
+Před ostrým spuštěním doplňte skutečné údaje provozovatele v `src/config/site.ts` a nechte texty zkontrolovat právníkem.
 
 ## Co je již připraveno
 
@@ -12,7 +21,7 @@ Tento projekt obsahuje základní právní rámec pro weby provozované v Česk�
 | Zásady cookies | `/cookies` |
 | Jazyk webu | `lang="cs"` v layoutu |
 
-## Povinné údaje provozovatele (§ 435 občanského zákoníku)
+## Povinné údaje provozovatele (§ 435 OZ, § 13a živnostenského zákona)
 
 Upravte v `src/config/site.ts`:
 

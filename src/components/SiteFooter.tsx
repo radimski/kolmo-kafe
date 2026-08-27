@@ -35,9 +35,6 @@ export function SiteFooter() {
           </ul>
         </nav>
       </div>
-      <div className="border-t border-zinc-200 px-6 py-4 text-center text-xs text-zinc-500 dark:border-zinc-800 dark:text-zinc-500">
-        © {new Date().getFullYear()} {siteConfig.name}. Všechna práva vyhrazena.
-      </div>
     </footer>
   );
 }

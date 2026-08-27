@@ -1,6 +1,7 @@
 /**
- * Provozovatel webu – povinné identifikační údaje podle § 435 občanského zákoníku
- * a zákona č. 480/2004 Sb. Upravte před spuštěním ostrého provozu.
+ * Provozovatel webu v ČR – povinné identifikační údaje podle § 435 zákona
+ * č. 89/2012 Sb., občanský zákoník, § 13a zákona č. 455/1991 Sb.,
+ * živnostenský zákon, a zákona č. 480/2004 Sb.
  */
 export const siteConfig = {
   name: "Název společnosti nebo jméno podnikatele",
