@@ -11,9 +11,9 @@ const sites = [
   {
     href: "/kinles",
     name: "kinles.cz",
-    description: "Zámečnictví a bezpečnostní technika KINLES Ostrava",
-    accent: "from-orange-600/20 to-slate-900",
-    border: "hover:border-orange-500/50",
+    description: "Zámečnictví a bezpečnostní technika, Hlučín",
+    accent: "from-[#93641f]/25 to-[#1f3040]",
+    border: "hover:border-[#d9a64e]/50",
   },
   {
     href: "/kolmokafe",

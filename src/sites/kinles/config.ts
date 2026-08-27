@@ -1,75 +1,136 @@
 export const kinlesConfig = {
   name: "KINLES Ostrava s.r.o.",
   brand: "KINLES",
-  tagline: "Zámečnictví a bezpečnostní technika",
-  lead:
-    "Protipožární a bezpečnostní uzávěry, zámkové systémy a technická ochrana majetku pro Ostravu a Moravskoslezský kraj.",
+  title: "KINLES Ostrava — zámečnictví a bezpečnostní technika",
+  description:
+    "KINLES Ostrava s.r.o. — zámečnictví, bezpečnostní a protipožární dveře SHERLOCK a GERBRICH, trezory a elektronické zabezpečení JABLOTRON v Hlučíně a okolí Ostravy. Na trhu od roku 2013.",
+  shortDescription:
+    "Klíče, bezpečnostní a protipožární dveře, trezory a elektronické zabezpečení v Hlučíně a okolí Ostravy.",
+  url: "https://www.kinles.cz/",
+  eyebrow: "Zámečnictví · Bezpečnostní technika · Hlučín",
+  lead: "Vyrábíme klíče, montujeme bezpečnostní a protipožární dveře, dodáváme trezory a instalujeme elektronické zabezpečení — pro domácnosti i firmy v Hlučíně a okolí Ostravy. Na trhu od roku 2013.",
+
   ico: "01520130",
   dic: "CZ01520130",
-  registry: "C 55927, Krajský soud v Ostravě",
-  capital: "200 000 Kč",
-  dataBox: "26vtkyc",
-  phone: "+420 596 910 910",
+  phone: "596 910 910",
   phoneHref: "tel:+420596910910",
-  email: "info@kinles.cz",
-  emailSales: "obchod@kinles.cz",
-  seat: "Kastelána Heřmana 832/8, Heřmanice, 713 00 Ostrava",
-  office: "Hrnčířská 261/22, 748 01 Hlučín",
-  hours: "Po–Pá 08:30–12:00, 12:30–17:00",
+  phoneRaw: "+420596910910",
+  email: "obchod@kinles.cz",
+  street: "Hrnčířská 261/22",
+  zip: "748 01",
+  city: "Hlučín",
+  region: "Moravskoslezský kraj",
   founded: 2013,
 
-  /** Hlavní pilíře — protipožární výroba + bezpečnostní technika */
-  services: [
-    {
-      title: "Protipožární dveře a stěny",
-      description:
-        "Výroba a montáž plných i prosklených požárních uzávěrů ze dřeva i oceli. Každá dodávka s platnými atesty.",
-      features: ["Dřevo i ocel", "Plné i prosklené", "Platné atesty"],
-    },
-    {
-      title: "Bezpečnostní dveře a zárubně",
-      description:
-        "Dodávka a montáž bezpečnostních dveří, zárubní a kování pro byty, komerční i průmyslové objekty.",
-      features: ["Bytové i komerční", "Kování a zárubně", "Montáž na klíč"],
-    },
-    {
-      title: "Zámky a zámkové systémy",
-      description:
-        "Cylindrické vložky, bezpečnostní kování, systém generálního klíče a výměny zámků.",
-      features: ["Generální klíč", "Cylindrické vložky", "Servis a výměny"],
-    },
-    {
-      title: "Technická ochrana majetku",
-      description:
-        "Poskytování technických služeb k ochraně majetku a osob — návrh a montáž zabezpečovacích prvků.",
-      features: ["Návrh zabezpečení", "Montáž prvků", "Poradenství"],
-    },
-    {
-      title: "Kovovýroba a svařování",
-      description:
-        "Atypické zámečnické konstrukce, povrchové úpravy a svařování kovů podle zadání projektu.",
-      features: ["Atypická výroba", "Povrchové úpravy", "Svařování"],
-    },
-    {
-      title: "Servis a údržba",
-      description:
-        "Opravy, revize a údržba dveří, uzávěrů a zámkových systémů po celou dobu životnosti.",
-      features: ["Revize uzávěrů", "Opravy", "Dlouhodobá péče"],
-    },
+  hours: [
+    { days: "Pondělí – Pátek", time: "9:00 – 16:00" },
+    { days: "Sobota", time: "zavřeno" },
+    { days: "Neděle", time: "zavřeno" },
   ],
-
-  /** Segmenty zákazníků */
-  sectors: [
-    "Stavební firmy a developeři",
-    "Architekti a projektanti požární ochrany",
-    "Správci průmyslových areálů",
-    "Bytové domy a SVJ",
-    "Rekonstrukce a novostavby",
-  ],
+  hoursNote:
+    "Mimo otevírací dobu se domluvíme telefonicky nebo e-mailem — ozveme se zpět.",
 
   stats: [
-    { value: "2013", label: "Na trhu od roku" },
-    { value: "100%", label: "Dodávky s atesty" },
-    { value: "2", label: "Pobočky v regionu" },
+    { num: "2013", lbl: "Na trhu od" },
+    { num: "3", lbl: "Autorizované značky" },
+    { num: "Hlučín", lbl: "Moravskoslezský kraj" },
+    { num: "Po–Pá", lbl: "9:00–16:00" },
+  ],
+
+  services: [
+    {
+      icon: "key",
+      title: "Klíče a zámečnictví",
+      text: "Výroba klíčů na míru k autům, motorkám, lodím i veteránům, včetně čipů imobilizéru. Opravy a výměny zámků.",
+      tag: "Zámečnická služba",
+    },
+    {
+      icon: "door",
+      title: "Bezpečnostní dveře",
+      text: "Montáž bezpečnostních dveří značek SHERLOCK a GERBRICH — vstupní i interiérové, s kováním a zámkovými systémy na míru.",
+      tag: "Sherlock · Gerbrich",
+    },
+    {
+      icon: "shield",
+      title: "Protipožární dveře a stěny",
+      text: "Dodávka a montáž atestovaných protipožárních dveří a stěn, v dřevěném i ocelovém provedení.",
+      tag: "Certifikováno",
+    },
+    {
+      icon: "safe",
+      title: "Trezory",
+      text: "Dovoz, dodávka a instalace trezorů pro domácnosti i firmy — výběr podle bezpečnostní třídy a účelu.",
+      tag: "Dodávka a montáž",
+    },
+    {
+      icon: "alarm",
+      title: "Elektronické zabezpečení",
+      text: "Instalace alarmů JABLOTRON, elektronických přístupových systémů, kamer a domovních zvonků / interkomů.",
+      tag: "Jablotron",
+    },
+    {
+      icon: "lock",
+      title: "Samozamykací systémy",
+      text: "Centrální samozamykací zámky pro vchodové dveře bytových domů a společných prostor.",
+      tag: "Bytové domy",
+    },
+  ],
+
+  asideNote: {
+    strong: "A jako bonus:",
+    text: "u nás také naostříme kuchyňské nože a nůžky.",
+  },
+
+  brands: [
+    {
+      name: "SHERLOCK",
+      role: "Bezpečnostní dveře",
+      text: "Bezpečnostní dveře s vysokou úrovní odolnosti proti vloupání pro byty, domy i komerční prostory.",
+    },
+    {
+      name: "GERBRICH",
+      role: "Bezpečnostní a interiérové dveře",
+      text: "Český výrobce bezpečnostních a interiérových dveří s širokou nabídkou provedení a kování.",
+    },
+    {
+      name: "JABLOTRON",
+      role: "Zabezpečovací systémy",
+      text: "Alarmy a elektronické zabezpečovací systémy vyvíjené a vyráběné v České republice.",
+    },
+  ],
+
+  about: {
+    heading: "Řemeslo, na kterém stojí bezpečí vašeho domova",
+    paragraphs: [
+      "KINLES Ostrava s.r.o. působí v Hlučíně a okolí Ostravy od roku 2013. Zaměřujeme se na zámečnické práce, výrobu klíčů a montáž bezpečnostních, protipožárních a interiérových dveří, trezorů a elektronického zabezpečení.",
+      "Pracujeme pro rodinné domy, byty, bytové domy i firmy v celém Moravskoslezském kraji — od jednotlivého klíče až po kompletní zabezpečení objektu.",
+    ],
+    timeline: [
+      {
+        yr: "2013",
+        title: "Založení společnosti",
+        desc: "KINLES Ostrava s.r.o. zapsána v obchodním rejstříku, sídlo v Hlučíně.",
+      },
+      {
+        yr: "Obor",
+        title: "Zámečnictví a bezpečnostní technika",
+        desc: "Výroba klíčů, montáž dveří a trezorů, elektronické zabezpečení objektů.",
+      },
+      {
+        yr: "Region",
+        title: "Hlučín a Moravskoslezský kraj",
+        desc: "Servis a montáže v Hlučíně, Ostravě a blízkém okolí.",
+      },
+    ],
+  },
+
+  nav: [
+    { href: "#sluzby", label: "Služby" },
+    { href: "#znacky", label: "Značky" },
+    { href: "#o-nas", label: "O nás" },
+    { href: "#kontakt", label: "Kontakt" },
   ],
 } as const;
+
+export const kinlesMapUrl =
+  "https://www.google.com/maps/search/?api=1&query=Hrn%C4%8D%C3%AD%C5%99sk%C3%A1+261%2F22%2C+748+01+Hlu%C4%8D%C3%ADn";
