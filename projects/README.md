@@ -1,14 +1,22 @@
 # Projects
 
-Each website you build can live in its own folder here.
+Active website projects in this workspace.
 
-## Suggested layout
+| Project | Domain / presence | Status |
+| --- | --- | --- |
+| [otevru](./otevru/) | [otevru.cz](https://www.otevru.cz) | Live site — locksmith / security (Patrik Panenka) |
+| [kinles](./kinles/) | kinles.cz (down) · dvereov.cz | Corporate — fire doors & walls (KINLES Ostrava s.r.o.) |
+| [kolmokafe](./kolmokafe/) | Facebook only · kolmokafe.cz TBD | Greenfield — bistro café at Olešná |
+
+## Layout per project
 
 ```
-projects/
-  client-name/
-    README.md      # goals, pages, and notes for the site
-    ...            # site-specific assets or code, if split from the main app
+projects/<name>/
+  README.md      # brief, contacts, pages, open questions
 ```
 
-The root Next.js app in `src/` is the shared development environment. As your workflow takes shape, we can keep everything in one app, split sites into separate folders, or move to a multi-app setup.
+Site builds live in `src/` (shared Next.js app) until we split into separate apps or deploy targets.
+
+## Shared legal baseline
+
+Czech GDPR, cookies, and operator pages: see [LEGAL-CZ.md](./LEGAL-CZ.md). Each project gets its own `site.ts` values when we build.
