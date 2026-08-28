@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   facebookPageUrl,
+  formatPostCaption,
   formatPostDate,
-  formatPostExcerpt,
   type FacebookPost,
 } from "@/lib/facebookPost";
 import { kolmoConfig } from "@/config/site";
@@ -44,12 +44,12 @@ function WindowChrome() {
 
 function EmptyPostWindow() {
   return (
-    <div className="fb-window">
+    <div className="fb-window fb-window-photo">
       <WindowChrome />
-      <div className="fb-window-body fb-window-empty">
+      <div className="fb-window-empty-photo">
         <p className="text-sm leading-7 text-[#9a948c]">
-          Nejnovější příspěvek zatím nemůžeme načíst. Sledujte nás na Facebooku
-          — tam vždy najdete aktuální otevírací dobu, menu a akce u vody.
+          Fotky z kuchyně a moučníků zatím nemůžeme načíst. Sledujte nás na
+          Facebooku — tam pravidelně dáváme, co právě pečeme a vaříme.
         </p>
         <a
           href={facebookPageUrl}
@@ -57,7 +57,7 @@ function EmptyPostWindow() {
           rel="noopener noreferrer"
           className="kolmo-pill kolmo-btn-cream mt-6 inline-flex items-center justify-center px-6 py-3 text-sm font-semibold"
         >
-          Přejít na Facebook
+          Fotky na Facebooku
         </a>
       </div>
     </div>
@@ -73,73 +73,73 @@ export function FacebookPostWindow({
     return <EmptyPostWindow />;
   }
 
-  const excerpt = formatPostExcerpt(post.message, compact ? 220 : 420);
-  const showFullHint =
-    post.message.replace(/\s+/g, " ").trim().length > (compact ? 220 : 420);
+  const caption = formatPostCaption(post.message, compact ? 100 : 160);
+  const showMore =
+    post.message.replace(/\s+/g, " ").trim().length > (compact ? 100 : 160);
 
   return (
-    <div className="fb-window">
+    <div className="fb-window fb-window-photo">
       <WindowChrome />
-      <div className="fb-window-body">
-        <div className="fb-window-meta">
-          <p className="fb-window-page">{kolmoConfig.name}</p>
-          <time className="fb-window-time" dateTime={post.createdAt}>
-            {formatPostDate(post.createdAt)}
-          </time>
-          {source === "manual" ? (
-            <span className="fb-window-badge">Ukázka</span>
-          ) : null}
+      <a
+        href={post.permalinkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fb-window-photo-link"
+        aria-label={`${post.imageAlt ?? post.message} — zobrazit na Facebooku`}
+      >
+        <div className={`fb-window-photo-frame ${compact ? "is-compact" : ""}`}>
+          <Image
+            src={post.imageUrl}
+            alt={post.imageAlt ?? post.message}
+            width={900}
+            height={1125}
+            className="fb-window-photo-img"
+            unoptimized={post.imageUrl.startsWith("http")}
+            priority={!compact}
+          />
+          <div className="fb-window-photo-overlay">
+            <div className="fb-window-photo-meta">
+              <p className="fb-window-page">{kolmoConfig.name}</p>
+              <time className="fb-window-time" dateTime={post.createdAt}>
+                {formatPostDate(post.createdAt)}
+              </time>
+              {source === "manual" ? (
+                <span className="fb-window-badge">Ukázka</span>
+              ) : null}
+            </div>
+            <p className="fb-window-photo-caption">{caption}</p>
+          </div>
         </div>
+      </a>
 
-        {post.imageUrl ? (
+      <div className="fb-window-footer">
+        {showMore ? (
           <a
             href={post.permalinkUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fb-window-media"
+            className="fb-window-link"
           >
-            <Image
-              src={post.imageUrl}
-              alt=""
-              width={800}
-              height={500}
-              className="h-full w-full object-cover"
-              unoptimized
-            />
+            Celý příspěvek na Facebooku →
           </a>
-        ) : null}
-
-        <p className="fb-window-message whitespace-pre-line">{excerpt}</p>
-
-        <div className="fb-window-actions">
-          {showFullHint ? (
-            <a
-              href={post.permalinkUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="fb-window-link"
-            >
-              Celý příspěvek na Facebooku →
-            </a>
-          ) : (
-            <a
-              href={post.permalinkUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="fb-window-link"
-            >
-              Zobrazit na Facebooku →
-            </a>
-          )}
+        ) : (
           <a
-            href={facebookPageUrl}
+            href={post.permalinkUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="kolmo-pill kolmo-btn-ghost px-4 py-2 text-xs font-medium"
+            className="fb-window-link"
           >
-            Sledovat stránku
+            Zobrazit na Facebooku →
           </a>
-        </div>
+        )}
+        <a
+          href={facebookPageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="kolmo-pill kolmo-btn-ghost px-4 py-2 text-xs font-medium"
+        >
+          Více fotek
+        </a>
       </div>
     </div>
   );
@@ -153,17 +153,18 @@ type FacebookPostSectionProps = {
 export function FacebookPostSection({ post, source }: FacebookPostSectionProps) {
   return (
     <section className="kolmo-grid-lines border-y border-[#f2ece3]/8">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-        <div>
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+        <div className="lg:pt-4">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#7fa8b5]">
             Živě z Facebooku
           </p>
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Poslední příspěvek
+            Co právě vyfotili
           </h2>
           <p className="mt-4 max-w-md leading-7 text-[#9a948c]">
-            Otevírací doba, akce u vody a novinky z kuchyně — všechno nejdřív
-            na naší Facebookové stránce. Tady ji máte přehledně na webu.
+            Moučníky, káva a talíře z kuchyně — na Facebooku to fotíme skoro
+            pořád. Poslední fotku vám ukážeme tady, ať nemusíte hned otevírat
+            aplikaci.
           </p>
           <Link
             href="/akce"

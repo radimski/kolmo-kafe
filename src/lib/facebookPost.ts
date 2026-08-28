@@ -6,17 +6,19 @@ export type FacebookPost = {
   message: string;
   createdAt: string;
   permalinkUrl: string;
-  imageUrl?: string | null;
+  imageUrl: string;
+  imageAlt?: string;
   source: "facebook" | "manual";
 };
 
 type PostFile = {
-  post: FacebookPost | null;
+  post: Omit<FacebookPost, "imageUrl"> & { imageUrl?: string | null } | null;
 };
 
 type GraphAttachment = {
   media_type?: string;
-  media?: { image?: { src?: string } };
+  type?: string;
+  media?: { image?: { src?: string; height?: number; width?: number } };
   subattachments?: { data?: GraphAttachment[] };
 };
 
@@ -34,10 +36,21 @@ const REVALIDATE_SECONDS = 1800;
 
 function parseManualPost(): FacebookPost | null {
   const post = (postFile as PostFile).post;
-  if (!post?.id || !post.message || !post.createdAt || !post.permalinkUrl) {
+  if (
+    !post?.id ||
+    !post.message ||
+    !post.createdAt ||
+    !post.permalinkUrl ||
+    !post.imageUrl
+  ) {
     return null;
   }
-  return post;
+
+  return {
+    ...post,
+    imageUrl: post.imageUrl,
+    imageAlt: post.imageAlt ?? post.message.slice(0, 120),
+  };
 }
 
 function extractImage(post: GraphPost): string | undefined {
@@ -45,24 +58,35 @@ function extractImage(post: GraphPost): string | undefined {
     return post.full_picture;
   }
 
-  const attachment = post.attachments?.data?.[0];
-  if (!attachment) {
-    return undefined;
+  const queue = [...(post.attachments?.data ?? [])];
+  while (queue.length) {
+    const attachment = queue.shift();
+    if (!attachment) {
+      continue;
+    }
+
+    if (attachment.media?.image?.src) {
+      return attachment.media.image.src;
+    }
+
+    if (attachment.subattachments?.data?.length) {
+      queue.push(...attachment.subattachments.data);
+    }
   }
 
-  if (attachment.media?.image?.src) {
-    return attachment.media.image.src;
-  }
-
-  const nested = attachment.subattachments?.data?.[0];
-  return nested?.media?.image?.src;
+  return undefined;
 }
 
 function mapGraphPost(post: GraphPost): FacebookPost | null {
-  const message = post.message?.trim() || post.story?.trim();
-  if (!message) {
+  const imageUrl = extractImage(post);
+  if (!imageUrl) {
     return null;
   }
+
+  const message =
+    post.message?.trim() ||
+    post.story?.trim() ||
+    "Nový příspěvek z kuchyně KOLMO kafe";
 
   return {
     id: post.id,
@@ -71,7 +95,8 @@ function mapGraphPost(post: GraphPost): FacebookPost | null {
     permalinkUrl:
       post.permalink_url ??
       `https://www.facebook.com/${post.id.replace("_", "/posts/")}`,
-    imageUrl: extractImage(post),
+    imageUrl,
+    imageAlt: message.slice(0, 120),
     source: "facebook",
   };
 }
@@ -84,37 +109,37 @@ async function fetchLatestFacebookPost(): Promise<FacebookPost | null> {
     return null;
   }
 
-  const url = new URL(`https://graph.facebook.com/v21.0/${pageId}/posts`);
-  url.searchParams.set(
-    "fields",
-    "id,message,story,created_time,permalink_url,full_picture,attachments{media_type,media,subattachments}",
-  );
-  url.searchParams.set("limit", "5");
-  url.searchParams.set("access_token", token);
+  const fields =
+    "id,message,story,created_time,permalink_url,full_picture,attachments{media_type,type,media{image},subattachments{media_type,type,media{image}}}";
 
-  try {
-    const response = await fetch(url, {
-      next: { revalidate: REVALIDATE_SECONDS },
-    });
+  for (const edge of ["posts", "published_posts"] as const) {
+    const url = new URL(`https://graph.facebook.com/v21.0/${pageId}/${edge}`);
+    url.searchParams.set("fields", fields);
+    url.searchParams.set("limit", "12");
+    url.searchParams.set("access_token", token);
 
-    if (!response.ok) {
-      console.warn("[kolmokafe/post] Facebook API returned", response.status);
-      return null;
-    }
+    try {
+      const response = await fetch(url, {
+        next: { revalidate: REVALIDATE_SECONDS },
+      });
 
-    const payload = (await response.json()) as { data?: GraphPost[] };
-    for (const item of payload.data ?? []) {
-      const mapped = mapGraphPost(item);
-      if (mapped) {
-        return mapped;
+      if (!response.ok) {
+        continue;
       }
-    }
 
-    return null;
-  } catch (error) {
-    console.warn("[kolmokafe/post] Facebook API fetch failed", error);
-    return null;
+      const payload = (await response.json()) as { data?: GraphPost[] };
+      for (const item of payload.data ?? []) {
+        const mapped = mapGraphPost(item);
+        if (mapped) {
+          return mapped;
+        }
+      }
+    } catch (error) {
+      console.warn(`[kolmokafe/post] Facebook ${edge} fetch failed`, error);
+    }
   }
+
+  return null;
 }
 
 export async function getLatestFacebookPost(): Promise<{
@@ -147,7 +172,7 @@ export function formatPostDate(iso: string): string {
   return postDateFormatter.format(new Date(iso));
 }
 
-export function formatPostExcerpt(message: string, maxLength = 320): string {
+export function formatPostCaption(message: string, maxLength = 140): string {
   const normalized = message.replace(/\s+/g, " ").trim();
   if (normalized.length <= maxLength) {
     return normalized;
