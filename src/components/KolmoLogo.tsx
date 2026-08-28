@@ -8,10 +8,10 @@ type KolmoLogoProps = {
 
 const letters = [
   { char: "K", x: 36, y: 78, delay: 0 },
-  { char: "O", x: 36, y: 158, delay: 90 },
-  { char: "L", x: 36, y: 238, delay: 180 },
-  { char: "M", x: 36, y: 318, delay: 360 },
-  { char: "O", x: 36, y: 398, delay: 450 },
+  { char: "O", x: 36, y: 158, delay: 160 },
+  { char: "L", x: 36, y: 238, delay: 320 },
+  { char: "M", x: 36, y: 318, delay: 720 },
+  { char: "O", x: 36, y: 398, delay: 880 },
 ] as const;
 
 export function KolmoLogo({
@@ -22,12 +22,12 @@ export function KolmoLogo({
   const isHero = variant === "hero";
   const letterClass = animate ? "kolmo-logo-letter" : undefined;
 
-  return (
+  const svg = (
     <svg
       viewBox="0 0 260 440"
       role="img"
       aria-label={kolmoConfig.name}
-      className={`kolmo-logo-svg ${isHero ? "kolmo-logo-svg-hero" : "kolmo-logo-svg-nav"} ${className}`.trim()}
+      className={`kolmo-logo-svg ${isHero ? "kolmo-logo-svg-hero" : "kolmo-logo-svg-nav"} ${animate ? "kolmo-logo-svg-animate" : ""} ${className}`.trim()}
     >
       {letters.map((letter, index) => (
         <g
@@ -47,7 +47,7 @@ export function KolmoLogo({
 
       <g
         className={letterClass}
-        style={animate ? { animationDelay: "270ms" } : undefined}
+        style={animate ? { animationDelay: "480ms" } : undefined}
       >
         <text x={108} y={238} className="kolmo-logo-glyph kolmo-logo-glyph-kafe">
           kafe
@@ -56,7 +56,7 @@ export function KolmoLogo({
 
       <g
         className={letterClass}
-        style={animate ? { animationDelay: "320ms" } : undefined}
+        style={animate ? { animationDelay: "560ms" } : undefined}
       >
         <path
           d="M 188 206 H 228 V 246"
@@ -66,4 +66,10 @@ export function KolmoLogo({
       </g>
     </svg>
   );
+
+  if (animate && isHero) {
+    return <div className="kolmo-logo-animate-wrap">{svg}</div>;
+  }
+
+  return svg;
 }
