@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { KolmoLogo } from "@/components/KolmoLogo";
 import Link from "next/link";
 import { kolmoConfig } from "@/config/site";
 
@@ -14,14 +14,7 @@ export function Nav() {
     <header className="sticky top-0 z-40 border-b border-[#f2ece3]/8 bg-[#131619]/85 backdrop-blur-lg">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="kolmo-logo-nav">
-          <Image
-            src="/logo.png"
-            alt={kolmoConfig.name}
-            width={520}
-            height={927}
-            className="kolmo-logo kolmo-logo-nav-img"
-            priority
-          />
+          <KolmoLogo variant="nav" />
         </Link>
         <nav className="hidden items-center gap-9 md:flex">
           {links.map((link) => (

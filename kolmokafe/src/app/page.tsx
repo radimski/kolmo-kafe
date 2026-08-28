@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { KolmoLogo } from "@/components/KolmoLogo";
 import Link from "next/link";
 import { FacebookPostFloat } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
@@ -76,14 +76,7 @@ export default async function KolmoPage() {
               <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_70%_30%,rgba(200,162,122,0.12),transparent_55%)]" />
               <div className="relative flex flex-col items-center">
                 <div className="kolmo-logo-wrap w-full max-w-md">
-                  <Image
-                    src="/logo.png"
-                    alt={kolmoConfig.name}
-                    width={520}
-                    height={927}
-                    className="kolmo-logo kolmo-logo-hero mx-auto"
-                    priority
-                  />
+                  <KolmoLogo variant="hero" animate className="mx-auto" />
                 </div>
                 <p className="mt-8 max-w-xs text-center text-sm leading-7 text-[#9a948c]">
                   Název není náhoda — <em className="text-[#c8a27a]">kolmo</em>{" "}

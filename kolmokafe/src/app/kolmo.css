@@ -53,6 +53,69 @@
   padding: 0.35rem 0.65rem 0.35rem 0.5rem;
 }
 
+.kolmo-logo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.kolmo-logo-svg-hero {
+  width: min(100%, 14.5rem);
+}
+
+.kolmo-logo-svg-nav {
+  height: 2.75rem;
+  width: auto;
+}
+
+.kolmo-logo-glyph {
+  fill: var(--kolmo-cream);
+  font-family: var(--font-kolmo), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.kolmo-logo-glyph-main {
+  font-size: 72px;
+}
+
+.kolmo-logo-svg-nav .kolmo-logo-glyph-main {
+  font-size: 72px;
+}
+
+.kolmo-logo-glyph-kafe {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.kolmo-logo-mark {
+  stroke: var(--kolmo-cream);
+  stroke-width: 7;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+@keyframes kolmo-letter-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-52px);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kolmo-logo-letter {
+  animation: kolmo-letter-fall 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .kolmo-logo {
   display: block;
   height: auto;
@@ -563,6 +626,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .kolmo-logo-letter {
+    animation: none;
+    opacity: 1;
+  }
+
   .kolmo-rise,
   .kolmo-rise-delay {
     animation: none;
