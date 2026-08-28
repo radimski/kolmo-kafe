@@ -4,6 +4,8 @@ export const kolmoConfig = {
   nameDictionary: {
     headword: "Kolmo",
     pronunciation: "kol·mo",
+    footnote:
+      "Kolmo znamená na kole — ale nechte nám i představu, že jsme kolmo k vodě.",
     senses: [
       {
         term: "na kole",
