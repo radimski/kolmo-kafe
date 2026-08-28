@@ -1,0 +1,337 @@
+.kolmo-root {
+  /* Tmavá paleta navázaná na logo (#1a1d21) s teplými akcenty */
+  --kolmo-bg: #131619;
+  --kolmo-surface: #1a1d21;
+  --kolmo-surface-2: #21252a;
+  --kolmo-cream: #f2ece3;
+  --kolmo-muted: #9a948c;
+  --kolmo-crema: #c8a27a;
+  --kolmo-lake: #7fa8b5;
+  background: var(--kolmo-bg);
+  color: var(--kolmo-cream);
+}
+
+.kolmo-hero {
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 75% 20%,
+      rgba(200, 162, 122, 0.14),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 10% 85%,
+      rgba(127, 168, 181, 0.1),
+      transparent 70%
+    ),
+    var(--kolmo-bg);
+}
+
+.kolmo-grid-lines {
+  background-image:
+    linear-gradient(rgba(242, 236, 227, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 236, 227, 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+.kolmo-surface {
+  background: var(--kolmo-surface);
+  border: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-card {
+  background: linear-gradient(
+    160deg,
+    rgba(242, 236, 227, 0.045),
+    rgba(242, 236, 227, 0.015)
+  );
+  border: 1px solid rgba(242, 236, 227, 0.08);
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.kolmo-card:hover {
+  border-color: rgba(200, 162, 122, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(200, 162, 122, 0.08),
+    rgba(242, 236, 227, 0.02)
+  );
+  transform: translateY(-4px);
+}
+
+.kolmo-pill {
+  border-radius: 999px;
+}
+
+.kolmo-btn-cream {
+  background: var(--kolmo-cream);
+  color: #131619;
+  transition: background 0.25s ease;
+}
+
+.kolmo-btn-cream:hover {
+  background: #fff;
+}
+
+.kolmo-btn-ghost {
+  border: 1px solid rgba(242, 236, 227, 0.2);
+  color: var(--kolmo-cream);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.kolmo-btn-ghost:hover {
+  border-color: var(--kolmo-crema);
+  background: rgba(200, 162, 122, 0.08);
+}
+
+.kolmo-menu-row {
+  border-bottom: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-menu-row:last-child {
+  border-bottom: none;
+}
+
+.kolmo-vertical-accent {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  color: rgba(242, 236, 227, 0.05);
+  user-select: none;
+}
+
+.kolmo-corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-color: rgba(200, 162, 122, 0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.kolmo-corner-tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-width: 2px 0 0 2px;
+}
+
+.kolmo-corner-br {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border-width: 0 2px 2px 0;
+}
+
+.kolmo-panel-lake {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(127, 168, 181, 0.28),
+      rgba(19, 22, 25, 0.92) 70%
+    ),
+    var(--kolmo-surface);
+}
+
+/* ============ FORMULÁŘ ============ */
+.kolmo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.kolmo-form-row {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .kolmo-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kolmo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form input[type="text"],
+.kolmo-form select,
+.kolmo-form textarea {
+  font-family: inherit;
+  /* 16px minimum stops iOS Safari zooming in on focus. */
+  font-size: max(0.98rem, 16px);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--kolmo-cream);
+  background: rgba(242, 236, 227, 0.04);
+  border: 1px solid rgba(242, 236, 227, 0.14);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  resize: vertical;
+  width: 100%;
+  min-width: 0;
+}
+
+.kolmo-form [aria-invalid="true"] {
+  border-color: #e8938a;
+  background: rgba(232, 147, 138, 0.08);
+}
+
+.kolmo-form [data-form-error] {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #e8938a;
+}
+
+.kolmo-form[data-form-done] input,
+.kolmo-form[data-form-done] select,
+.kolmo-form[data-form-done] textarea,
+.kolmo-form[data-form-done] button {
+  opacity: 0.55;
+}
+
+.kolmo-form select option {
+  color: #131619;
+}
+
+.kolmo-form input::placeholder,
+.kolmo-form textarea::placeholder {
+  color: rgba(154, 148, 140, 0.7);
+}
+
+.kolmo-form input:focus-visible,
+.kolmo-form select:focus-visible,
+.kolmo-form textarea:focus-visible {
+  outline: 2px solid var(--kolmo-crema);
+  outline-offset: 1px;
+  border-color: var(--kolmo-crema);
+}
+
+.kolmo-consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.65rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1.6;
+}
+
+.kolmo-consent input[type="checkbox"] {
+  margin-top: 0.15rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--kolmo-crema);
+  flex: none;
+}
+
+.kolmo-consent a {
+  color: var(--kolmo-crema);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.kolmo-form-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* Comfortable thumb target on phones. */
+  min-height: 48px;
+  padding: 0.85rem 1.75rem;
+}
+
+.kolmo-form-submit[aria-busy="true"],
+.kolmo-form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .kolmo-form-submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Status paragraph — the engine sets data-state="info|ok|error". */
+.kolmo-form-status {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+
+.kolmo-form-status[hidden] {
+  display: none;
+}
+
+.kolmo-form-status[data-state="info"] {
+  background: rgba(242, 236, 227, 0.06);
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form-status[data-state="ok"] {
+  background: rgba(200, 162, 122, 0.14);
+  color: var(--kolmo-crema);
+}
+
+.kolmo-form-status[data-state="error"] {
+  background: rgba(232, 147, 138, 0.12);
+  color: #e8938a;
+}
+
+.kolmo-form-note {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--kolmo-muted);
+}
+
+@keyframes kolmo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kolmo-rise {
+  animation: kolmo-rise 0.8s ease-out both;
+}
+
+.kolmo-rise-delay {
+  animation: kolmo-rise 0.8s ease-out 0.15s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kolmo-rise,
+  .kolmo-rise-delay {
+    animation: none;
+  }
+
+  .kolmo-card:hover {
+    transform: none;
+  }
+}
