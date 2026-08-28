@@ -68,18 +68,3 @@ export function FacebookPostWindow({
     </div>
   );
 }
-
-type FacebookPostFloatProps = {
-  post: FacebookPost | null;
-  source: "facebook" | "manual" | "none";
-};
-
-export function FacebookPostFloat({ post, source }: FacebookPostFloatProps) {
-  if (!post) return null;
-
-  return (
-    <div className="fb-float">
-      <FacebookPostWindow post={post} source={source} compact />
-    </div>
-  );
-}
