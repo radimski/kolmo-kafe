@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { kinlesConfig } from "@/config/site";
 import { KinlesMark } from "@/components/icons";
+import { OpenStatus } from "@/components/OpenStatus";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -21,6 +22,10 @@ export function Nav() {
             </li>
           ))}
         </ul>
+        <OpenStatus
+          schedule={kinlesConfig.openingSchedule}
+          className="open-status open-status-nav"
+        />
         <span className="navphone">
           <a href={kinlesConfig.phoneHref}>{kinlesConfig.phone}</a>
         </span>
@@ -51,6 +56,10 @@ export function Nav() {
             </li>
           ))}
         </ul>
+        <OpenStatus
+          schedule={kinlesConfig.openingSchedule}
+          className="open-status open-status-mobile"
+        />
         <div className="mobile-nav-actions">
           <a className="btn btn-primary" href={kinlesConfig.phoneHref}>
             Zavolat {kinlesConfig.phone}

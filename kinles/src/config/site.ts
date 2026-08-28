@@ -30,6 +30,19 @@ export const kinlesConfig = {
   hoursNote:
     "Mimo otevírací dobu se domluvíme telefonicky nebo e-mailem — ozveme se zpět.",
 
+  openingSchedule: {
+    timezone: "Europe/Prague",
+    week: [
+      null,
+      { open: "09:00", close: "16:00" },
+      { open: "09:00", close: "16:00" },
+      { open: "09:00", close: "16:00" },
+      { open: "09:00", close: "16:00" },
+      { open: "09:00", close: "16:00" },
+      null,
+    ],
+  },
+
   stats: [
     { num: "2013", lbl: "Na trhu od" },
     { num: "3", lbl: "Autorizované značky" },
