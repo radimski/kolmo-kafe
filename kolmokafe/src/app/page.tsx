@@ -1,5 +1,6 @@
 import { KolmoDictionary } from "@/components/KolmoDictionary";
 import { KolmoLogo } from "@/components/KolmoLogo";
+import { KolmoMap } from "@/components/KolmoMap";
 import Link from "next/link";
 import { FacebookPostWindow } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
@@ -199,15 +200,7 @@ export default async function KolmoPage() {
               </a>
             </div>
           </div>
-          <div className="kolmo-card rounded-3xl p-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#7fa8b5]">
-              Resort Olešná
-            </p>
-            <p className="mt-5 leading-8 text-[#f2ece3]/85">
-              Moderní bistro v areálu u vodní nádrže — přímo na cyklostezce,
-              kousek od sportovišť, stezek i pláže.
-            </p>
-          </div>
+          <KolmoMap />
         </div>
       </section>
     </div>

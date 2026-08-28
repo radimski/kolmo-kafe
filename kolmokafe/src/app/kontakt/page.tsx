@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { KolmoContactForm } from "@/components/ContactForm";
+import { KolmoMap } from "@/components/KolmoMap";
 import { kolmoConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -39,14 +40,9 @@ export default function KolmoKontaktPage() {
               <p className="mt-2 text-sm text-[#9a948c]">
                 {kolmoConfig.location}
               </p>
-              <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(kolmoConfig.address)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="kolmo-pill kolmo-btn-cream mt-6 inline-flex px-6 py-3 text-sm font-semibold"
-              >
-                Navigovat
-              </a>
+              <div className="mt-6">
+                <KolmoMap compact />
+              </div>
             </div>
 
             <div className="kolmo-surface rounded-3xl p-8">

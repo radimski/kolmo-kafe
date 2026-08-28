@@ -13,6 +13,10 @@ export const kolmoConfig = {
         term: "kolmo k vodě",
         definition: "U přehrady Olešná, kousek od pláže a stezek.",
       },
+      {
+        term: "kolmo (geom.)",
+        definition: "Úhel 90° — místo kolmo k břehu přehrady.",
+      },
     ],
   },
   phone: "+420 725 311 139",
@@ -20,6 +24,12 @@ export const kolmoConfig = {
   email: "info@kolmokafe.cz",
   address: "Nad Přehradou 2483, 738 01 Frýdek-Místek",
   location: "Resort Olešná · u přehrady",
+  map: {
+    lat: 49.6644,
+    lng: 18.3122,
+    zoom: 15,
+    imageAlt: "Mapa Resortu Olešná — KOLMO kafe u přehrady",
+  },
   facebook: "https://www.facebook.com/kolmokafe",
   hoursTypical: "Po–Ne 10:00–21:00 (sezónně)",
   hoursShort: "10–21 · sezónně",
