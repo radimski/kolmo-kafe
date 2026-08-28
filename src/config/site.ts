@@ -10,6 +10,18 @@ export const kolmoConfig = {
   hoursTypical: "Typicky denně 10:00–21:00 (sezónně se liší)",
   hoursNote:
     "Otevírací doba se mění podle sezóny. Aktuální časy najdete na Facebooku.",
+  openingSchedule: {
+    timezone: "Europe/Prague",
+    week: [
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+      { open: "10:00", close: "21:00" },
+    ],
+  },
   menu: {
     coffee: [
       { name: "Espresso", price: "55 Kč" },

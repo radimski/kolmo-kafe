@@ -337,6 +337,46 @@
   color: var(--kolmo-muted);
 }
 
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kolmo-cream);
+  white-space: nowrap;
+}
+
+.open-status-kolmo {
+  color: var(--kolmo-cream);
+}
+
+.open-status-detail {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+  color: var(--kolmo-muted);
+}
+
+.open-status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  flex: none;
+}
+
+.open-status-dot.is-open {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.55);
+}
+
+.open-status-dot.is-closed {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
+}
+
 @keyframes kolmo-rise {
   from {
     opacity: 0;
