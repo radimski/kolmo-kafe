@@ -1,21 +1,22 @@
 import type { Operator } from "@websites/legal-cz";
 
-/**
- * TODO: doplnit skutečné údaje provozovatele (jméno/firma, IČO, zápis
- * v rejstříku). Zatím nebyly od klienta potvrzeny — před spuštěním
- * ostrého provozu je nutné je vyplnit, viz § 435 OZ.
- */
+/** KOLMO motion s.r.o. — veřejně dostupné údaje (IČO 08011150). */
 export const operator: Operator = {
-  name: "Doplnit — provozovatel Kolmo kafe",
+  name: "KOLMO motion",
+  legalForm: "s.r.o.",
   address: {
     street: "Nad Přehradou 2483",
     zip: "738 01",
     city: "Frýdek-Místek",
     country: "Česká republika",
   },
-  ico: "00000000",
+  ico: "08011150",
+  dic: "CZ08011150",
   registry: {
-    type: "zivnostensky",
+    type: "obchodni",
+    court: "Krajský soud v Ostravě",
+    section: "C",
+    insert: "78034",
   },
   contact: {
     email: "info@kolmokafe.cz",
@@ -23,6 +24,6 @@ export const operator: Operator = {
   },
 };
 
-export const operatorIncomplete = true;
+export const operatorIncomplete = false;
 
 export const SITE_ID = "kolmokafe";
