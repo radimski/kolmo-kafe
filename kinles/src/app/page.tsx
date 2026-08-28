@@ -1,4 +1,5 @@
 import { kinlesConfig, kinlesMapUrl } from "@/config/site";
+import { registeredSeat } from "@/config/operator";
 import { LockAnimation, serviceIcons } from "@/components/icons";
 import { InquiryForm } from "@/components/InquiryForm";
 
@@ -170,6 +171,10 @@ export default function KinlesPage() {
                       <br />
                       {kinlesConfig.zip} {kinlesConfig.city}
                     </span>
+                  </div>
+                  <div className="row">
+                    <span className="k">Zapsané sídlo</span>
+                    <span className="v">{registeredSeat}</span>
                   </div>
                   <div className="row">
                     <span className="k">Telefon</span>

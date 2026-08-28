@@ -23,10 +23,11 @@ export const kinlesConfig = {
   founded: 2013,
 
   hours: [
-    { days: "Pondělí – Pátek", time: "9:00 – 16:00" },
+    { days: "Pondělí – Pátek", time: "8:30 – 12:00, 12:30 – 17:00" },
     { days: "Sobota", time: "zavřeno" },
     { days: "Neděle", time: "zavřeno" },
   ],
+  hoursShort: "Po–Pá 8:30–17:00",
   hoursNote:
     "Mimo otevírací dobu se domluvíme telefonicky nebo e-mailem — ozveme se zpět.",
 
@@ -34,11 +35,11 @@ export const kinlesConfig = {
     timezone: "Europe/Prague",
     week: [
       null,
-      { open: "09:00", close: "16:00" },
-      { open: "09:00", close: "16:00" },
-      { open: "09:00", close: "16:00" },
-      { open: "09:00", close: "16:00" },
-      { open: "09:00", close: "16:00" },
+      { open: "08:30", close: "17:00" },
+      { open: "08:30", close: "17:00" },
+      { open: "08:30", close: "17:00" },
+      { open: "08:30", close: "17:00" },
+      { open: "08:30", close: "17:00" },
       null,
     ],
   },
@@ -47,7 +48,7 @@ export const kinlesConfig = {
     { num: "2013", lbl: "Na trhu od" },
     { num: "3", lbl: "Autorizované značky" },
     { num: "Hlučín", lbl: "Moravskoslezský kraj" },
-    { num: "Po–Pá", lbl: "9:00–16:00" },
+    { num: "Po–Pá", lbl: "8:30–17:00" },
   ],
 
   services: [

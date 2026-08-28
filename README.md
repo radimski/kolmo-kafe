@@ -20,6 +20,20 @@ npm run dev
 
 Shared code (`legal-cz`, `form-engine`) lives inside each project's `packages/` folder so deployments do not depend on a parent monorepo.
 
+## Before going live
+
+Each site needs these steps once before production:
+
+1. **Forms** — set `FORM_SECRET` (≥16 characters) and wire SMTP / mail delivery in `form-engine` (see each project's `.env.example`).
+2. **Domain** — point DNS at your host and set `FORM_ALLOWED_ORIGINS` to the live URL.
+3. **Legal** — have a lawyer skim GDPR / cookie texts in `packages/legal-cz` (templates are in place).
+4. **Site-specific**
+   - **otevru** — confirm hours and service area with Patrik Panenka.
+   - **kinles** — confirm split lunch hours (8:30–12:00, 12:30–17:00) on site match reality.
+   - **kolmokafe** — set `FACEBOOK_PAGE_ACCESS_TOKEN` for live photos/events; hours are seasonal (Facebook is source of truth).
+
+All three sites include `/provozovatel`, `/ochrana-osobnich-udaju`, `/cookies`, and cookie consent.
+
 ## Creating separate repositories
 
 To publish each site as its own repo, initialize git inside the project folder (or use `git subtree split` / copy the folder). Each directory already has everything needed to build and deploy independently.

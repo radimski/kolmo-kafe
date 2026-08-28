@@ -65,7 +65,7 @@ export default async function KolmoPage() {
                 rel="noopener noreferrer"
                 className="kolmo-pill kolmo-btn-ghost inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold"
               >
-                Aktuální otevírací doba
+                Aktuální doba
               </a>
             </div>
           </div>

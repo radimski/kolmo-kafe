@@ -21,6 +21,7 @@ export function Footer() {
           <p className="mt-2 text-sm text-[#c8a27a]/90">
             {kolmoConfig.hoursTypical}
           </p>
+          <p className="mt-1 text-xs text-[#9a948c]">IČO 08011150</p>
         </div>
         <div className="text-sm text-[#9a948c]">
           <a
