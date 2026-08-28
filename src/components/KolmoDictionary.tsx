@@ -1,7 +1,8 @@
 import { kolmoConfig } from "@/config/site";
 
 export function KolmoDictionary() {
-  const { headword, pronunciation, senses } = kolmoConfig.nameDictionary;
+  const { headword, pronunciation, footnote, senses } =
+    kolmoConfig.nameDictionary;
 
   return (
     <aside className="kolmo-dict" aria-label={`Význam názvu ${headword}`}>
@@ -17,6 +18,7 @@ export function KolmoDictionary() {
           </li>
         ))}
       </ol>
+      {footnote ? <p className="kolmo-dict-footnote">{footnote}</p> : null}
     </aside>
   );
 }
