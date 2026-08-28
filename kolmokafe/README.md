@@ -26,10 +26,10 @@ docs/             Client brief and legal checklist
 
 ### Latest post (homepage window)
 
-The styled “Facebook window” on `/` and `/akce` shows the most recent post from [facebook.com/kolmokafe](https://www.facebook.com/kolmokafe).
+The photo-first “Facebook window” on `/` and `/akce` shows the **latest photo post** from [facebook.com/kolmokafe](https://www.facebook.com/kolmokafe) — moučníky, káva, talíře.
 
-1. **Automatic** — set `FACEBOOK_PAGE_ACCESS_TOKEN` (Page access token for a page admin).
-2. **Manual fallback** — edit `src/config/latest-post.json` with the latest post text, date, link, and optional image URL.
+1. **Automatic** — set `FACEBOOK_PAGE_ACCESS_TOKEN` (Page access token for a page admin). The site skips text-only posts and picks the newest post that includes a photo.
+2. **Manual fallback** — edit `src/config/latest-post.json`. **`imageUrl` is required** (local path like `/social/latest-post.jpg` or a direct image URL). Replace `public/social/latest-post.jpg` when you sync a new post.
 
 Posts refresh every 30 minutes when the token is set.
 

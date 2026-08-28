@@ -1,11 +1,12 @@
 {
-  "_comment": "Fallback when FACEBOOK_PAGE_ACCESS_TOKEN is not set. Paste the latest post from facebook.com/kolmokafe.",
+  "_comment": "Fallback when FACEBOOK_PAGE_ACCESS_TOKEN is not set. Copy the latest photo post from facebook.com/kolmokafe — imageUrl is required.",
   "post": {
     "id": "manual-latest",
-    "message": "Ahoj Olešná! ☕ Sezóna běží — u vody servírujeme výběrovou kávu, domácí moučníky a lehké bistro. Aktuální otevírací dobu a akce najdete vždy tady na Facebooku.",
-    "createdAt": "2026-08-20T10:00:00+02:00",
+    "message": "Dneska by to taky šlo, těšíme se na Vás.",
+    "createdAt": "2026-08-27T11:00:00+02:00",
     "permalinkUrl": "https://www.facebook.com/kolmokafe",
-    "imageUrl": null,
+    "imageUrl": "/social/latest-post.jpg",
+    "imageAlt": "Domácí dort a káva v KOLMO kafe u přehrady Olešná",
     "source": "manual"
   }
 }

@@ -382,14 +382,15 @@
   overflow: hidden;
   border-radius: 1.25rem;
   border: 1px solid rgba(242, 236, 227, 0.1);
-  background: linear-gradient(
-    180deg,
-    rgba(242, 236, 227, 0.04),
-    rgba(19, 22, 25, 0.2)
-  );
+  background: #14171a;
   box-shadow:
     0 24px 48px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(242, 236, 227, 0.06);
+}
+
+.fb-window-photo {
+  display: flex;
+  flex-direction: column;
 }
 
 .fb-window-chrome {
@@ -399,6 +400,7 @@
   border-bottom: 1px solid rgba(242, 236, 227, 0.08);
   background: rgba(26, 29, 33, 0.92);
   padding: 0.75rem 1rem;
+  flex-shrink: 0;
 }
 
 .fb-window-dots {
@@ -457,68 +459,95 @@
   color: var(--kolmo-crema);
 }
 
-.fb-window-body {
-  padding: 1.25rem 1.25rem 1.35rem;
+.fb-window-photo-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
-.fb-window-empty {
-  padding: 1.5rem;
+.fb-window-photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #21252a;
 }
 
-.fb-window-meta {
+.fb-window-photo-frame.is-compact {
+  aspect-ratio: 1 / 1;
+}
+
+.fb-window-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s ease;
+}
+
+.fb-window-photo-link:hover .fb-window-photo-img {
+  transform: scale(1.03);
+}
+
+.fb-window-photo-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 4.5rem 1.1rem 1.1rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(19, 22, 25, 0.55) 38%,
+    rgba(19, 22, 25, 0.92) 100%
+  );
+}
+
+.fb-window-photo-meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.45rem 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.55rem;
 }
 
 .fb-window-page {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--kolmo-cream);
 }
 
 .fb-window-time {
-  font-size: 0.78rem;
-  color: var(--kolmo-muted);
+  font-size: 0.74rem;
+  color: rgba(242, 236, 227, 0.72);
 }
 
 .fb-window-badge {
   border-radius: 999px;
-  background: rgba(127, 168, 181, 0.14);
+  background: rgba(127, 168, 181, 0.18);
   padding: 0.15rem 0.55rem;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #7fa8b5;
 }
 
-.fb-window-media {
-  display: block;
-  overflow: hidden;
-  border-radius: 0.9rem;
-  border: 1px solid rgba(242, 236, 227, 0.08);
-  margin-bottom: 1rem;
-  aspect-ratio: 16 / 10;
-  background: #21252a;
+.fb-window-photo-caption {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(242, 236, 227, 0.92);
+  text-wrap: balance;
 }
 
-.fb-window-message {
-  font-size: 0.98rem;
-  line-height: 1.75;
-  color: rgba(242, 236, 227, 0.88);
-}
-
-.fb-window-actions {
+.fb-window-footer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem 1rem;
-  margin-top: 1.15rem;
-  padding-top: 1rem;
+  padding: 0.9rem 1rem 1rem;
   border-top: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.fb-window-empty-photo {
+  padding: 1.5rem;
 }
 
 .fb-window-link {
@@ -531,6 +560,12 @@
 
 .fb-window-link:hover {
   color: var(--kolmo-cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fb-window-photo-link:hover .fb-window-photo-img {
+    transform: none;
+  }
 }
 
 @keyframes kolmo-rise {
