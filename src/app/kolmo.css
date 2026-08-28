@@ -134,6 +134,75 @@
   width: auto;
 }
 
+.kolmo-dict {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 18rem;
+  border-top: 1px solid rgba(242, 236, 227, 0.1);
+  padding-top: 1.25rem;
+  text-align: left;
+}
+
+.kolmo-dict-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.kolmo-dict-word {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kolmo-cream);
+}
+
+.kolmo-dict-pron {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-dict-senses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: kolmo-sense;
+}
+
+.kolmo-dict-senses li {
+  display: grid;
+  grid-template-columns: 1.35rem 1fr;
+  gap: 0.35rem 0.5rem;
+  counter-increment: kolmo-sense;
+  padding: 0.55rem 0;
+  border-top: 1px solid rgba(242, 236, 227, 0.06);
+}
+
+.kolmo-dict-senses li::before {
+  content: counter(kolmo-sense) ".";
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+  padding-top: 0.15rem;
+}
+
+.kolmo-dict-term {
+  grid-column: 2;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+}
+
+.kolmo-dict-def {
+  grid-column: 2;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--kolmo-muted);
+}
+
 .kolmo-offerings {
   background: var(--kolmo-bg);
 }
