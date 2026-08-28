@@ -1,15 +1,12 @@
 import Link from "next/link";
 import { EventsList } from "@/components/EventsList";
-import { FacebookPostWindow } from "@/components/FacebookPostWindow";
 import { facebookEventsUrl, getUpcomingEvents } from "@/lib/events";
-import { getLatestFacebookPost } from "@/lib/facebookPost";
 import { kolmoConfig } from "@/config/site";
 
 export const revalidate = 1800;
 
 export default async function AkcePage() {
-  const [{ events, source: eventsSource }, { post, source: postSource }] =
-    await Promise.all([getUpcomingEvents(12), getLatestFacebookPost()]);
+  const { events, source: eventsSource } = await getUpcomingEvents(12);
 
   const sourceNote =
     eventsSource === "facebook"
@@ -30,14 +27,11 @@ export default async function AkcePage() {
           Co se děje u vody
         </h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
-          Poslední příspěvek z Facebooku a nadcházející akce v Resortu Olešná.
+          Nadcházející akce v Resortu Olešná — grilování, večery u vody a
+          sezónní program.
         </p>
 
-        <div className="mt-10 max-w-3xl">
-          <FacebookPostWindow post={post} source={postSource} />
-        </div>
-
-        <div className="mt-16">
+        <div className="mt-12">
           <h2 className="text-2xl font-bold sm:text-3xl">Nadcházející akce</h2>
           <p className="mt-3 max-w-2xl text-sm text-[#9a948c]">{sourceNote}</p>
           <div className="mt-8">

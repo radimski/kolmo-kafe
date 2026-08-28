@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FacebookPostSection } from "@/components/FacebookPostWindow";
+import { FacebookPostFloat } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
 import { getLatestFacebookPost } from "@/lib/facebookPost";
 
@@ -37,6 +37,7 @@ export default async function KolmoPage() {
         >
           KOLMO
         </span>
+        <FacebookPostFloat post={post} source={source} />
 
         <div className="relative mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-24">
           <div className="kolmo-rise">
@@ -109,8 +110,6 @@ export default async function KolmoPage() {
           ))}
         </div>
       </section>
-
-      <FacebookPostSection post={post} source={source} />
 
       <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
         <div className="mx-auto max-w-6xl px-6 py-20">
