@@ -98,15 +98,19 @@ export default async function KolmoPage() {
               <p className="mt-3 text-sm leading-7 text-[#9a948c]">
                 {item.text}
               </p>
-              {item.label === "02" && post ? (
-                <div className="fb-aside mt-6">
-                  <FacebookPostWindow post={post} source={source} compact />
-                </div>
-              ) : null}
             </article>
           ))}
         </div>
       </section>
+
+      {post ? (
+        <section className="kolmo-grid-lines border-y border-[#f2ece3]/8">
+          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:py-20">
+            <div className="hidden lg:block" aria-hidden />
+            <FacebookPostWindow post={post} source={source} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
         <div className="mx-auto max-w-6xl px-6 py-20">
