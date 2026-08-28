@@ -65,17 +65,19 @@ export default function KolmoPage() {
           </div>
 
           <div className="kolmo-rise-delay">
-            <div className="kolmo-surface relative overflow-hidden rounded-3xl p-10">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(200,162,122,0.12),transparent_55%)]" />
+            <div className="kolmo-surface relative rounded-3xl p-8 sm:p-10">
+              <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_70%_30%,rgba(200,162,122,0.12),transparent_55%)]" />
               <div className="relative flex flex-col items-center">
-                <Image
-                  src="/logo.png"
-                  alt={kolmoConfig.name}
-                  width={320}
-                  height={120}
-                  className="h-auto w-56 sm:w-72"
-                  priority
-                />
+                <div className="kolmo-logo-wrap w-full max-w-md">
+                  <Image
+                    src="/logo.png"
+                    alt={kolmoConfig.name}
+                    width={520}
+                    height={927}
+                    className="kolmo-logo kolmo-logo-hero mx-auto"
+                    priority
+                  />
+                </div>
                 <p className="mt-8 max-w-xs text-center text-sm leading-7 text-[#9a948c]">
                   Název není náhoda — <em className="text-[#c8a27a]">kolmo</em>{" "}
                   drží logo i místo u vody ve stejné rovině.

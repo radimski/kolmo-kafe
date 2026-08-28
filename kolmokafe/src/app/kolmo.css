@@ -1,8 +1,9 @@
 .kolmo-root {
-  /* Tmavá paleta navázaná na logo (#1a1d21) s teplými akcenty */
+  /* Tmavá paleta navázaná na logo (#191e23) s teplými akcenty */
   --kolmo-bg: #131619;
   --kolmo-surface: #1a1d21;
   --kolmo-surface-2: #21252a;
+  --kolmo-logo-bg: #191e23;
   --kolmo-cream: #f2ece3;
   --kolmo-muted: #9a948c;
   --kolmo-crema: #c8a27a;
@@ -36,6 +37,36 @@
 .kolmo-surface {
   background: var(--kolmo-surface);
   border: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-logo-wrap {
+  background: var(--kolmo-logo-bg);
+  border-radius: 1rem;
+  padding: 1.75rem 2rem 1.5rem;
+}
+
+.kolmo-logo-nav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--kolmo-logo-bg);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.65rem 0.35rem 0.5rem;
+}
+
+.kolmo-logo {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+.kolmo-logo-hero {
+  width: min(100%, 22rem);
+  max-height: none;
+}
+
+.kolmo-logo-nav-img {
+  height: 2.75rem;
+  width: auto;
 }
 
 .kolmo-card {
