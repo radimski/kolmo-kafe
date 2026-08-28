@@ -8,10 +8,10 @@ type KolmoLogoProps = {
 
 const letters = [
   { char: "K", x: 36, y: 78, delay: 0 },
-  { char: "O", x: 36, y: 158, delay: 160 },
-  { char: "L", x: 36, y: 238, delay: 320 },
-  { char: "M", x: 36, y: 318, delay: 720 },
-  { char: "O", x: 36, y: 398, delay: 880 },
+  { char: "O", x: 36, y: 158, delay: 110 },
+  { char: "L", x: 36, y: 238, delay: 220 },
+  { char: "M", x: 36, y: 318, delay: 440 },
+  { char: "O", x: 36, y: 398, delay: 550 },
 ] as const;
 
 export function KolmoLogo({
@@ -47,7 +47,7 @@ export function KolmoLogo({
 
       <g
         className={letterClass}
-        style={animate ? { animationDelay: "480ms" } : undefined}
+        style={animate ? { animationDelay: "330ms" } : undefined}
       >
         <text x={108} y={238} className="kolmo-logo-glyph kolmo-logo-glyph-kafe">
           kafe
@@ -56,7 +56,7 @@ export function KolmoLogo({
 
       <g
         className={letterClass}
-        style={animate ? { animationDelay: "560ms" } : undefined}
+        style={animate ? { animationDelay: "385ms" } : undefined}
       >
         <path
           d="M 188 206 H 228 V 246"
@@ -66,10 +66,6 @@ export function KolmoLogo({
       </g>
     </svg>
   );
-
-  if (animate && isHero) {
-    return <div className="kolmo-logo-animate-wrap">{svg}</div>;
-  }
 
   return svg;
 }
