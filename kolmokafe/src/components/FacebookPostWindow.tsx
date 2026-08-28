@@ -28,10 +28,10 @@ export function FacebookPostWindow({
   source,
   compact = false,
 }: FacebookPostWindowProps) {
-  const caption = formatPostCaption(post.message, compact ? 72 : 120);
+  const caption = formatPostCaption(post.message, compact ? 72 : 160);
 
   return (
-    <div className="fb-window fb-window-photo">
+    <div className={`fb-window fb-window-photo ${compact ? "fb-window-compact" : ""}`}>
       <WindowChrome />
       <a
         href={post.permalinkUrl}
