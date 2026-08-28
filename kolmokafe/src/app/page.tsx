@@ -1,3 +1,4 @@
+import { KolmoDictionary } from "@/components/KolmoDictionary";
 import { KolmoLogo } from "@/components/KolmoLogo";
 import Link from "next/link";
 import { FacebookPostWindow } from "@/components/FacebookPostWindow";
@@ -75,9 +76,7 @@ export default async function KolmoPage() {
                 <div className="kolmo-logo-wrap w-full max-w-md">
                   <KolmoLogo variant="hero" animate className="mx-auto" />
                 </div>
-                <p className="mt-8 max-w-xs text-center text-sm leading-7 text-[#9a948c]">
-                  {kolmoConfig.nameStory}
-                </p>
+                <KolmoDictionary />
               </div>
             </div>
           </div>

@@ -1,8 +1,20 @@
 export const kolmoConfig = {
   name: "KOLMO kafe",
   tagline: "Bistro na cyklostezce u přehrady Olešná",
-  nameStory:
-    "Kolmo zní skoro jako na kole — a cyklostezka vede přímo kolem. Zastávka pro cyklisty i pěší u vody.",
+  nameDictionary: {
+    headword: "Kolmo",
+    pronunciation: "kol·mo",
+    senses: [
+      {
+        term: "na kole",
+        definition: "Zastávka na cyklostezce — cyklotrasa vede přímo kolem.",
+      },
+      {
+        term: "kolmo k vodě",
+        definition: "U přehrady Olešná, kousek od pláže a stezek.",
+      },
+    ],
+  },
   phone: "+420 725 311 139",
   phoneHref: "tel:+420725311139",
   email: "info@kolmokafe.cz",
