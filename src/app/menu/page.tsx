@@ -41,7 +41,7 @@ export default function KolmoMenuPage() {
           Menu
         </p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">
-          Jednoduché. Fresh. Kolmo.
+          Jednoduché. Fresh. Na kole i pěšky.
         </h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
           Nabídka se mění podle sezóny. Ceny jsou orientační — aktuální výběr

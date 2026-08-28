@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: `${kolmoConfig.name} | Bistro u přehrady Olešná`,
+  title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
 };
 
