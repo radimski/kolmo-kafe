@@ -1,20 +1,23 @@
 {
-  "name": "@sites/otevru",
+  "name": "kinles",
   "version": "0.1.0",
   "private": true,
-  "description": "otevru.cz — zámečnická pohotovost Patrik Panenka",
+  "description": "kinles.cz — zámečnictví a bezpečnostní technika KINLES Ostrava",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev --webpack --port 43124",
+    "dev": "next dev --webpack --port 43125",
     "build": "next build",
-    "start": "next start --port 43124",
+    "start": "next start --port 43125",
     "lint": "eslint"
   },
   "dependencies": {
+    "@websites/form-engine": "*",
     "@websites/legal-cz": "*",
     "next": "16.3.3",
     "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "@websites/form-engine": "*"
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
