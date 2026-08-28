@@ -113,6 +113,8 @@
 }
 
 .kolmo-logo-letter {
+  transform-box: fill-box;
+  transform-origin: center top;
   animation: kolmo-letter-fall 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
