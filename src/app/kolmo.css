@@ -134,6 +134,55 @@
   width: auto;
 }
 
+.kolmo-offerings {
+  background: var(--kolmo-bg);
+}
+
+.kolmo-offerings-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .kolmo-offerings-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kolmo-offerings-item:not(:first-child) {
+    border-left: 1px solid rgba(242, 236, 227, 0.08);
+    padding-left: 2rem;
+  }
+
+  .kolmo-offerings-item:not(:last-child) {
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .kolmo-offerings-item:not(:last-child) {
+    border-bottom: 1px solid rgba(242, 236, 227, 0.08);
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+}
+
+.kolmo-offerings-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--kolmo-cream);
+}
+
+.kolmo-offerings-text {
+  margin-top: 0.65rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--kolmo-muted);
+}
+
 .kolmo-card {
   background: linear-gradient(
     160deg,
