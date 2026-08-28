@@ -1,6 +1,6 @@
 import { KolmoLogo } from "@/components/KolmoLogo";
 import Link from "next/link";
-import { FacebookPostFloat } from "@/components/FacebookPostWindow";
+import { FacebookPostWindow } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
 import { getLatestFacebookPost } from "@/lib/facebookPost";
 
@@ -37,7 +37,6 @@ export default async function KolmoPage() {
         >
           KOLMO
         </span>
-        <FacebookPostFloat post={post} source={source} />
 
         <div className="relative mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:pt-24">
           <div className="kolmo-rise">
@@ -99,6 +98,11 @@ export default async function KolmoPage() {
               <p className="mt-3 text-sm leading-7 text-[#9a948c]">
                 {item.text}
               </p>
+              {item.label === "02" && post ? (
+                <div className="fb-aside mt-6">
+                  <FacebookPostWindow post={post} source={source} compact />
+                </div>
+              ) : null}
             </article>
           ))}
         </div>
