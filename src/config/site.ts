@@ -14,8 +14,9 @@ export const kolmoConfig = {
         definition: "U přehrady Olešná, kousek od pláže a stezek.",
       },
       {
-        term: "kolmo (geom.)",
-        definition: "Úhel 90° — místo kolmo k břehu přehrady.",
+        term: "kolmo (geom.)*",
+        definition:
+          "Úhel 90° — spíš slovní hříčka než přesná geografie. Ale zní to hezky.",
       },
     ],
   },
@@ -29,6 +30,10 @@ export const kolmoConfig = {
     lng: 18.3122,
     zoom: 15,
     imageAlt: "Mapa Resortu Olešná — KOLMO kafe u přehrady",
+  },
+  mapCaption: {
+    title: "kolmo k vodě*",
+    note: "Jsme u vody, na cyklostezce — geometricky kolmo spíš v hlavě. Nechte nám tu hru se slovy.",
   },
   facebook: "https://www.facebook.com/kolmokafe",
   hoursTypical: "Po–Ne 10:00–21:00 (sezónně)",
