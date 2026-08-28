@@ -71,16 +71,14 @@ export default function KolmoMenuPage() {
 
         <div className="kolmo-surface mt-8 rounded-2xl p-8">
           <h2 className="text-xl font-semibold">Sezónní akce</h2>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-3">
-            {kolmoConfig.events.map((event) => (
-              <li
-                key={event}
-                className="rounded-xl bg-[#f2ece3]/[0.04] px-4 py-3 text-sm text-[#9a948c]"
-              >
-                {event}
-              </li>
-            ))}
-          </ul>
+          <p className="mt-3 text-sm text-[#9a948c]">
+            Grilování, koktejly u vody a tematické večery — aktuální termíny
+            na stránce{" "}
+            <a href="/akce" className="text-[#c8a27a] hover:underline">
+              Akce
+            </a>{" "}
+            nebo na Facebooku.
+          </p>
         </div>
       </div>
     </div>
