@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EventsSection } from "@/components/EventsList";
 import { kolmoConfig } from "@/config/site";
+import { getUpcomingEvents } from "@/lib/events";
+
+export const revalidate = 3600;
 
 const highlights = [
   {
@@ -20,7 +24,9 @@ const highlights = [
   },
 ] as const;
 
-export default function KolmoPage() {
+export default async function KolmoPage() {
+  const { events, source } = await getUpcomingEvents(3);
+
   return (
     <div>
       <section className="kolmo-hero kolmo-grid-lines relative overflow-hidden">
@@ -167,38 +173,7 @@ export default function KolmoPage() {
         </div>
       </section>
 
-      <section className="kolmo-grid-lines">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1fr_1.15fr] lg:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#7fa8b5]">
-              Sezónně
-            </p>
-            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-              Večery u přehrady
-            </h2>
-            <p className="mt-4 leading-7 text-[#9a948c]">
-              Grilovací a koktejlové večery, tematické akce a posezení venku.
-              Termíny hlásíme na Facebooku.
-            </p>
-            <ul className="mt-7 space-y-3 text-sm text-[#9a948c]">
-              {kolmoConfig.events.map((event) => (
-                <li key={event} className="flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#c8a27a]" />
-                  {event}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="kolmo-panel-lake relative overflow-hidden rounded-3xl border border-[#f2ece3]/8 p-10">
-            <p className="max-w-sm text-xl font-medium leading-9 text-[#f2ece3]">
-              „Ta nejlepší káva a moučníky na Olešné.“
-            </p>
-            <p className="mt-5 text-sm text-[#9a948c]">
-              Nejen pro aktivní sportovce a rodiny s dětmi.
-            </p>
-          </div>
-        </div>
-      </section>
+      <EventsSection events={events} source={source} />
 
       <section
         id="kde"

@@ -22,6 +22,32 @@ packages/
 docs/             Client brief and legal checklist
 ```
 
+## Facebook events
+
+The `/akce` page and homepage events block show upcoming events from:
+
+1. **Facebook Graph API** (automatic) when these env vars are set:
+   - `FACEBOOK_PAGE_ACCESS_TOKEN` — Page access token for [kolmokafe](https://www.facebook.com/kolmokafe) (page admin)
+   - `FACEBOOK_PAGE_ID` — optional, defaults to `kolmokafe`
+
+2. **`src/config/events.json`** — manual fallback / supplement when the API is unavailable.
+
+Facebook restricts event API access for most apps; a **Page access token** from someone who administers the KOLMO kafe page usually works. Events refresh every hour.
+
+To add an event manually, edit `src/config/events.json`:
+
+```json
+{
+  "id": "unique-id",
+  "title": "Název akce",
+  "startAt": "2026-09-05T16:00:00+02:00",
+  "endAt": "2026-09-05T22:00:00+02:00",
+  "location": "KOLMO kafe · Resort Olešná",
+  "url": "https://www.facebook.com/events/…/",
+  "source": "manual"
+}
+```
+
 ## Before launch
 
 - Fill in legal operator data in `src/config/operator.ts` (IČO still TBD)

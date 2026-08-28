@@ -5,6 +5,7 @@ import { kolmoConfig } from "@/config/site";
 const links = [
   { href: "/", label: "Domů" },
   { href: "/menu", label: "Menu" },
+  { href: "/akce", label: "Akce" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
 
