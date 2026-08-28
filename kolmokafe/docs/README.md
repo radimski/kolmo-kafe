@@ -19,7 +19,9 @@
 
 ## Concept
 
-Nadčasová moderní stavba s uvolněnou atmosférou — nejen pro sportovce a rodiny s dětmi. Jednoduchá fresh kuchyně, výběrová káva, moučníky.
+Nadčasová moderná stavba s uvolněnou atmosférou — nejen pro sportovce a rodiny s dětmi. Jednoduchá fresh kuchyně, výběrová káva, moučníky.
+
+**Název:** *Kolmo* — wordplay on *na kole* (on a bike); the café sits on a cycling route at Resort Olešná, not a geometric “kolmo k vodě” angle.
 
 ### Offer (from listings)
 

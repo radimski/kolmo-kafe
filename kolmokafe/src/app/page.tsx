@@ -41,13 +41,14 @@ export default async function KolmoPage() {
               {kolmoConfig.location}
             </p>
             <h1 className="mt-7 text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
-              Káva
+              Zastávka
               <br />
-              <span className="text-[#c8a27a]">kolmo</span> k vodě.
+              <span className="text-[#c8a27a]">na kole</span> u vody.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-[#9a948c]">
-              Bistro a kavárna u přehrady Olešná. Fresh kuchyně, výběrová káva a
-              večery u grilu — v prostoru, kde se dá na chvíli zpomalit.
+              Bistro a kavárna na cyklostezce u přehrady Olešná. Fresh kuchyně,
+              výběrová káva a večery u grilu — místo, kde se dá na chvíli
+              zpomalit.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -75,8 +76,7 @@ export default async function KolmoPage() {
                   <KolmoLogo variant="hero" animate className="mx-auto" />
                 </div>
                 <p className="mt-8 max-w-xs text-center text-sm leading-7 text-[#9a948c]">
-                  Název není náhoda — <em className="text-[#c8a27a]">kolmo</em>{" "}
-                  drží logo i místo u vody ve stejné rovině.
+                  {kolmoConfig.nameStory}
                 </p>
               </div>
             </div>
@@ -205,8 +205,8 @@ export default async function KolmoPage() {
               Resort Olešná
             </p>
             <p className="mt-5 leading-8 text-[#f2ece3]/85">
-              Moderní bistro v areálu u vodní nádrže — kousek od sportovišť,
-              stezek i pláže.
+              Moderní bistro v areálu u vodní nádrže — přímo na cyklostezce,
+              kousek od sportovišť, stezek i pláže.
             </p>
           </div>
         </div>
