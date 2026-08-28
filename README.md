@@ -22,6 +22,21 @@ packages/
 docs/             Client brief and legal checklist
 ```
 
+## Facebook integration
+
+### Latest post (homepage window)
+
+The styled “Facebook window” on `/` and `/akce` shows the most recent post from [facebook.com/kolmokafe](https://www.facebook.com/kolmokafe).
+
+1. **Automatic** — set `FACEBOOK_PAGE_ACCESS_TOKEN` (Page access token for a page admin).
+2. **Manual fallback** — edit `src/config/latest-post.json` with the latest post text, date, link, and optional image URL.
+
+Posts refresh every 30 minutes when the token is set.
+
+### Events (`/akce`)
+
+Upcoming events use the same token plus `src/config/events.json` as fallback. See the events section below in this README for details.
+
 ## Facebook events
 
 The `/akce` page and homepage events block show upcoming events from:

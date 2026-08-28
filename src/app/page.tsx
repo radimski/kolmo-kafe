@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { EventsSection } from "@/components/EventsList";
+import { FacebookPostSection } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
-import { getUpcomingEvents } from "@/lib/events";
+import { getLatestFacebookPost } from "@/lib/facebookPost";
 
 export const revalidate = 3600;
 
@@ -25,7 +25,7 @@ const highlights = [
 ] as const;
 
 export default async function KolmoPage() {
-  const { events, source } = await getUpcomingEvents(3);
+  const { post, source } = await getLatestFacebookPost();
 
   return (
     <div>
@@ -110,6 +110,8 @@ export default async function KolmoPage() {
         </div>
       </section>
 
+      <FacebookPostSection post={post} source={source} />
+
       <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -172,8 +174,6 @@ export default async function KolmoPage() {
           </div>
         </div>
       </section>
-
-      <EventsSection events={events} source={source} />
 
       <section
         id="kde"

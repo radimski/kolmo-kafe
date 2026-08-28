@@ -377,6 +377,162 @@
   box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
 }
 
+/* ============ FACEBOOK POST WINDOW ============ */
+.fb-window {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(242, 236, 227, 0.1);
+  background: linear-gradient(
+    180deg,
+    rgba(242, 236, 227, 0.04),
+    rgba(19, 22, 25, 0.2)
+  );
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(242, 236, 227, 0.06);
+}
+
+.fb-window-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(242, 236, 227, 0.08);
+  background: rgba(26, 29, 33, 0.92);
+  padding: 0.75rem 1rem;
+}
+
+.fb-window-dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.fb-window-dots span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(242, 236, 227, 0.16);
+}
+
+.fb-window-dots span:first-child {
+  background: rgba(200, 162, 122, 0.55);
+}
+
+.fb-window-title {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--kolmo-cream);
+}
+
+.fb-window-sub {
+  color: var(--kolmo-muted);
+  font-weight: 500;
+}
+
+.fb-window-icon {
+  display: inline-flex;
+  height: 1.25rem;
+  width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.35rem;
+  background: #1877f2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: white;
+}
+
+.fb-window-open {
+  color: var(--kolmo-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.fb-window-open:hover {
+  color: var(--kolmo-crema);
+}
+
+.fb-window-body {
+  padding: 1.25rem 1.25rem 1.35rem;
+}
+
+.fb-window-empty {
+  padding: 1.5rem;
+}
+
+.fb-window-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.fb-window-page {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--kolmo-cream);
+}
+
+.fb-window-time {
+  font-size: 0.78rem;
+  color: var(--kolmo-muted);
+}
+
+.fb-window-badge {
+  border-radius: 999px;
+  background: rgba(127, 168, 181, 0.14);
+  padding: 0.15rem 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7fa8b5;
+}
+
+.fb-window-media {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(242, 236, 227, 0.08);
+  margin-bottom: 1rem;
+  aspect-ratio: 16 / 10;
+  background: #21252a;
+}
+
+.fb-window-message {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(242, 236, 227, 0.88);
+}
+
+.fb-window-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.15rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.fb-window-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.fb-window-link:hover {
+  color: var(--kolmo-cream);
+}
+
 @keyframes kolmo-rise {
   from {
     opacity: 0;
