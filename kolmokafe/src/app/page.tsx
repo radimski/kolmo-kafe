@@ -8,17 +8,14 @@ export const revalidate = 3600;
 
 const highlights = [
   {
-    label: "01",
     title: "Výběrová káva",
     text: "Espresso, filtr i ledová káva. Krátké menu, poctivá příprava, žádné zkratky.",
   },
   {
-    label: "02",
     title: "Domácí moučníky",
     text: "Lívance, sezónní zákusky a cheesecake — to nejlepší sladké na Olešné.",
   },
   {
-    label: "03",
     title: "Lehké bistro",
     text: "Sendviče, quesadilly a bagely. Rychlé jídlo po kole nebo plavání.",
   },
@@ -87,19 +84,16 @@ export default async function KolmoPage() {
         </div>
       </section>
 
-      <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
-        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-20 md:grid-cols-3">
-          {highlights.map((item) => (
-            <article key={item.label} className="kolmo-card rounded-2xl p-8">
-              <span className="text-sm font-bold tracking-[0.2em] text-[#c8a27a]">
-                {item.label}
-              </span>
-              <h2 className="mt-5 text-2xl font-semibold">{item.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-[#9a948c]">
-                {item.text}
-              </p>
-            </article>
-          ))}
+      <section className="kolmo-offerings border-y border-[#f2ece3]/8">
+        <div className="mx-auto max-w-6xl px-6 py-14 lg:py-16">
+          <ul className="kolmo-offerings-list">
+            {highlights.map((item) => (
+              <li key={item.title} className="kolmo-offerings-item">
+                <h2 className="kolmo-offerings-title">{item.title}</h2>
+                <p className="kolmo-offerings-text">{item.text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
