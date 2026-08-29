@@ -22,6 +22,7 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
         data-msg-option="Vyberte prosím jednu z možností."
         data-msg-rate="Poptávku jste odeslali příliš mnohokrát. Zkuste to prosím později."
         data-msg-offline="Vypadá to, že jste offline. Zkontrolujte připojení a zkuste to znovu."
+        data-msg-captcha="Potvrďte prosím, že nejste robot, a zkuste to znovu."
       >
         <label>
           Jméno a příjmení
@@ -74,6 +75,7 @@ export function InquiryForm({ privacyHref }: { privacyHref: string }) {
             Více v <a href={privacyHref}>zásadách ochrany osobních údajů</a>.
           </span>
         </label>
+        <div data-turnstile className="inquiry-turnstile" />
         <button
           type="submit"
           data-form-submit

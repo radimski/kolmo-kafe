@@ -1095,6 +1095,11 @@
   min-height: 6.5rem;
 }
 
+.kinles-root .inquiry-form .inquiry-turnstile {
+  margin-top: 0.25rem;
+  min-height: 65px;
+}
+
 .kinles-root .inquiry-form .form-submit {
   width: 100%;
   justify-content: center;
