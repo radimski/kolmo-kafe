@@ -566,6 +566,11 @@
   text-underline-offset: 2px;
 }
 
+.kolmo-turnstile {
+  margin-top: 0.25rem;
+  min-height: 65px;
+}
+
 .kolmo-form-submit {
   align-self: flex-start;
   border: none;

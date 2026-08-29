@@ -18,6 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", reviewCount: "256", bestRating: "5" },
 };
 
 const structuredData = {
@@ -45,6 +46,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="cs" className={`${spaceGrotesk.variable} h-full`}>
       <body
         data-form-endpoint="/api/form"
+        data-turnstile-site-key={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+        data-turnstile-theme="dark"
         className="kolmo-root flex min-h-full flex-col font-[family-name:var(--font-kolmo)] antialiased"
       >
         <script
