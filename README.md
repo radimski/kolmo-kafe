@@ -24,7 +24,7 @@ Shared code (`legal-cz`, `form-engine`) lives inside each project's `packages/` 
 
 Each site needs these steps once before production:
 
-1. **Forms** — set `FORM_SECRET` (≥16 characters), **Cloudflare Turnstile** keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY`), and wire SMTP / mail delivery in `form-engine` (see each project's `.env.example`).
+1. **Forms** — set `FORM_SECRET` (≥16 characters), **Cloudflare Turnstile** keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY` in your host's env), and wire SMTP / mail delivery in `form-engine`. Local dev loads always-pass Turnstile test keys from each project's `.env.development`.
 2. **Domain** — point DNS at your host and set `FORM_ALLOWED_ORIGINS` to the live URL.
 3. **Legal** — have a lawyer skim GDPR / cookie texts in `packages/legal-cz` (templates are in place).
 4. **Site-specific**
