@@ -1,6 +1,9 @@
 export const kolmoConfig = {
   name: "KOLMO kafe",
   tagline: "Bistro na cyklostezce u přehrady Olešná",
+  shortDescription:
+    "Bistro a kavárna na cyklostezce u přehrady Olešná — káva, jídlo a večery u vody.",
+  url: "https://www.kolmokafe.cz/",
   nameDictionary: {
     headword: "Kolmo",
     pronunciation: "kol·mo",

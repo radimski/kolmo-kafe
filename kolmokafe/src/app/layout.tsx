@@ -18,14 +18,28 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", reviewCount: "256", bestRating: "5" },
+  robots: { index: true, follow: true },
+  alternates: { canonical: kolmoConfig.url },
+  openGraph: {
+    type: "website",
+    siteName: kolmoConfig.name,
+    title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
+    description: kolmoConfig.shortDescription,
+    url: kolmoConfig.url,
+    locale: "cs_CZ",
+  },
+  twitter: {
+    card: "summary",
+    title: kolmoConfig.name,
+    description: kolmoConfig.shortDescription,
+  },
 };
 
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "CafeOrCoffeeShop",
   name: kolmoConfig.name,
-  url: "https://www.kolmokafe.cz/",
+  url: kolmoConfig.url,
   telephone: "+420725311139",
   email: kolmoConfig.email,
   address: {

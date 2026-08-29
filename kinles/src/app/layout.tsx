@@ -41,7 +41,11 @@ export const metadata: Metadata = {
     url: kinlesConfig.url,
     locale: "cs_CZ",
   },
-  twitter: { card: "summary" },
+  twitter: {
+    card: "summary",
+    title: kinlesConfig.title,
+    description: kinlesConfig.shortDescription,
+  },
 };
 
 const structuredData = {

@@ -34,6 +34,8 @@ Each site needs these steps once before production:
 
 All three sites include `/provozovatel`, `/ochrana-osobnich-udaju`, `/cookies`, and cookie consent.
 
+Security headers (CSP, HSTS, X-Frame-Options, etc.) are configured in each site's `next.config.ts`. See [DEPLOY.md](./DEPLOY.md) for Cloudflare Pages setup and post-deploy checks.
+
 ## Creating separate repositories
 
 To publish each site as its own repo, initialize git inside the project folder (or use `git subtree split` / copy the folder). Each directory already has everything needed to build and deploy independently.
