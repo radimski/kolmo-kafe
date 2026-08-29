@@ -66,6 +66,6 @@ To add an event manually, edit `src/config/events.json`:
 ## Before launch
 
 - Fill in legal operator data in `src/config/operator.ts` (IČO still TBD)
-- Set `FORM_SECRET` and SMTP for production forms
+- Set `FORM_SECRET`, Turnstile keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), and SMTP for production forms
 - Add hero photography (terrace, lake, food)
 - Point `kolmokafe.cz` at this deployment
