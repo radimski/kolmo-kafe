@@ -36,7 +36,7 @@ All three sites include `/provozovatel`, `/ochrana-osobnich-udaju`, `/cookies`, 
 
 Security headers (CSP, HSTS, X-Frame-Options, etc.) are configured in each site's `next.config.ts`. See [DEPLOY.md](./DEPLOY.md) for Cloudflare Pages setup and post-deploy checks.
 
-**Agents:** read [RULEBOOK.md](./RULEBOOK.md) for Turnstile requirements and the mandatory pre-launch audit (`./scripts/launch-audit.sh`).
+**Agents:** read [RULEBOOK.md](./RULEBOOK.md) (English) for Turnstile, security headers, and the mandatory pre-launch audit. Each site lists audited paths in `<site>/audit-pages.txt`. New sites: [docs/NEW-SITE.md](./docs/NEW-SITE.md).
 
 ## Creating separate repositories
 

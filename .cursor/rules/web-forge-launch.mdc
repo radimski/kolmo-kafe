@@ -1,42 +1,43 @@
 ---
-description: Launch requirements for otevru, kinles, and kolmokafe — Turnstile, security headers, and pre-deploy audit
+description: Launch requirements for all Web Forge sites and pages — Turnstile, security headers, pre-deploy audit (English)
 globs:
-  - otevru/**/*
-  - kinles/**/*
-  - kolmokafe/**/*
-  - scripts/**/*
-  - RULEBOOK.md
+  - "**/*"
 alwaysApply: true
 ---
 
 # Web Forge launch rules
 
-Read **`RULEBOOK.md`** at the repo root before shipping site changes.
+Read **`RULEBOOK.md`** at the repo root before shipping **any site or page** (current or future).
 
-## Turnstile (mandatory)
+**Agent docs: English.** **Site copy for .cz clients: Czech.**
 
-Every contact form must have:
+## Turnstile (mandatory on every form)
 
 - Server: `verifyTurnstile()` in `packages/form-engine/src/handler.ts`
-- Client: Turnstile widget via `public/form.js` + `<div data-turnstile />`
+- Client: `public/form.js` + `<div data-turnstile />` on every `[data-form]`
 - Layout: `data-turnstile-site-key={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}`
 - CSP allows `https://challenges.cloudflare.com`
-- Production env: both `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` (never test keys on prod)
+- Production: both Turnstile env vars set; never ship test keys to prod
 
 ## Pre-launch audit (mandatory before deploy)
 
-1. **view-source** — save homepage + contact HTML; check Turnstile, meta, no mixed HTTP, no test keys in prod
-2. **Multi-perspective review** — security, performance, SEO/a11y (separate passes or report sections)
-3. **External tools** — PageSpeed, securityheaders.com, Mozilla Observatory, SSL Labs on the **live URL**
+1. **view-source** — all paths in `<site>/audit-pages.txt`
+2. **Multi-perspective review** — security, performance, SEO/a11y per saved HTML
+3. **External tools** — PageSpeed, securityheaders.com, Mozilla Observatory, SSL Labs on live URL
 
-Run: `./scripts/launch-audit.sh https://www.<domain>.cz`
+```bash
+./scripts/launch-audit.sh https://www.<domain>.cz --file <site>/audit-pages.txt
+```
 
-## Security headers
+When adding a **new page**, add its path to `audit-pages.txt` and re-run the audit.
 
-Keep `src/lib/security-headers.ts` + `poweredByHeader: false` in `next.config.ts`. Update CSP when adding third-party scripts.
+## New site
+
+Follow `docs/NEW-SITE.md` and `RULEBOOK.md` §5.
 
 ## Do not launch if
 
 - Turnstile test key in production HTML
+- Form without Turnstile mount
 - Security Headers grade F
 - TLS/DNS still on old hosting
