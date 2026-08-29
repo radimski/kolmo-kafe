@@ -18,6 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", reviewCount: "256", bestRating: "5" },
 };
 
 const structuredData = {
@@ -34,8 +35,10 @@ const structuredData = {
     addressLocality: "Frýdek-Místek",
     addressCountry: "CZ",
   },
+  geo: { "@type": "GeoCoordinates", latitude: 49.6881, longitude: 18.3536 },
   sameAs: [kolmoConfig.facebook],
   description: kolmoConfig.tagline,
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", reviewCount: "256", bestRating: "5" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

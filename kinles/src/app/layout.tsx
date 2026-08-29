@@ -58,6 +58,7 @@ const structuredData = {
     addressLocality: kinlesConfig.city,
     addressCountry: "CZ",
   },
+  geo: { "@type": "GeoCoordinates", latitude: 49.8967, longitude: 18.1905 },
   areaServed: kinlesConfig.region,
   openingHoursSpecification: [
     {
@@ -68,6 +69,7 @@ const structuredData = {
     },
   ],
   priceRange: "$$",
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "3.6", reviewCount: "3", bestRating: "5" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

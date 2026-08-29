@@ -34,6 +34,7 @@ const structuredData = {
     addressCountry: "CZ",
   },
   areaServed: "Frýdek-Místek, Ostrava a okolí",
+  geo: { "@type": "GeoCoordinates", latitude: 49.6892, longitude: 18.3278 },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -50,6 +51,7 @@ const structuredData = {
       closes: "18:00",
     },
   ],
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "4", bestRating: "5" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
