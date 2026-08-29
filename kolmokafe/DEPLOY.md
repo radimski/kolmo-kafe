@@ -1,59 +1,37 @@
-# Deploying to Cloudflare Pages
+# Deploying Kolmo kafe to Cloudflare Pages
 
-Each site is a standalone Next.js app connected to its GitHub repo.
-
-| Site | GitHub repo | Domain |
-| --- | --- | --- |
-| OTEVŘU | `radimski/otevru-cz` | www.otevru.cz |
-| KINLES | `radimski/kinles-cz` | www.kinles.cz |
-| Kolmo | `radimski/kolmo-kafe` | www.kolmokafe.cz |
+**Repo:** `radimski/kolmo-kafe` · **Domain:** www.kolmokafe.cz
 
 ## 1. Create Pages project
 
 1. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. Pick the repo and set **Production branch** to `main`
-3. Framework preset: **Next.js** (Cloudflare auto-detect)
-4. Root directory: `/` (repo root is already the site)
+2. Repository: `radimski/kolmo-kafe`, branch `main`
+3. Framework: **Next.js** (auto-detect)
 
-## 2. Environment variables (Production)
-
-Set these in **Settings → Environment variables** for **Production** (not Preview unless testing):
+## 2. Production environment variables
 
 ```bash
-NEXT_PUBLIC_TURNSTILE_SITE_KEY=<site key from Turnstile widget>
-TURNSTILE_SECRET_KEY=<secret key>
-FORM_SECRET=<random string, 16+ chars>
-FORM_ALLOWED_ORIGINS=www.otevru.cz
-```
-
-Use the real domain per project (`www.kinles.cz`, `www.kolmokafe.cz`).
-
-Optional:
-
-```bash
-FACEBOOK_PAGE_ACCESS_TOKEN=...   # kolmokafe only
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=<Turnstile site key>
+TURNSTILE_SECRET_KEY=<Turnstile secret>
+FORM_SECRET=<random 16+ chars>
+FORM_ALLOWED_ORIGINS=www.kolmokafe.cz
+FACEBOOK_PAGE_ACCESS_TOKEN=<optional, for live FB photos/events>
 FACEBOOK_PAGE_ID=kolmokafe
 ```
 
-Do **not** copy `.env.development` test Turnstile keys into Production.
+Do not use test keys from `.env.development` in Production.
 
 ## 3. Custom domain
 
-1. Pages project → **Custom domains** → add `www.example.cz` and apex `example.cz`
-2. Cloudflare will issue TLS and enable HTTP/2/3
-3. Remove old DNS records pointing at Aruba (A/CNAME to old host)
+Add `www.kolmokafe.cz` and `kolmokafe.cz`. Fix/remove broken Aruba TLS on current DNS.
 
 ## 4. Post-deploy checks
 
-Re-run on the live URL:
+- https://pagespeed.web.dev/?url=https://www.kolmokafe.cz
+- https://securityheaders.com/?q=https://www.kolmokafe.cz
+- https://developer.mozilla.org/en-US/observatory/analyze?host=www.kolmokafe.cz
+- https://www.ssllabs.com/ssltest/analyze.html?d=www.kolmokafe.cz
 
-- https://pagespeed.web.dev/
-- https://securityheaders.com/
-- https://developer.mozilla.org/en-US/observatory
-- https://www.ssllabs.com/ssltest/
+## 5. Forms
 
-Expected after deploy: security headers from `next.config.ts`, HTTPS via Cloudflare, Turnstile on contact forms.
-
-## 5. Forms & email
-
-Submissions are stored under `.form-data/` on the server filesystem. On Cloudflare Pages this is ephemeral — wire SMTP or a webhook in `form-engine` before relying on forms in production, or forward forms to shared hosting `api/form.php`.
+Wire SMTP or mail delivery in `form-engine` before relying on contact forms in production.

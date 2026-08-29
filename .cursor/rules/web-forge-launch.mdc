@@ -1,0 +1,42 @@
+---
+description: Launch requirements for otevru, kinles, and kolmokafe — Turnstile, security headers, and pre-deploy audit
+globs:
+  - otevru/**/*
+  - kinles/**/*
+  - kolmokafe/**/*
+  - scripts/**/*
+  - RULEBOOK.md
+alwaysApply: true
+---
+
+# Web Forge launch rules
+
+Read **`RULEBOOK.md`** at the repo root before shipping site changes.
+
+## Turnstile (mandatory)
+
+Every contact form must have:
+
+- Server: `verifyTurnstile()` in `packages/form-engine/src/handler.ts`
+- Client: Turnstile widget via `public/form.js` + `<div data-turnstile />`
+- Layout: `data-turnstile-site-key={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}`
+- CSP allows `https://challenges.cloudflare.com`
+- Production env: both `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY` (never test keys on prod)
+
+## Pre-launch audit (mandatory before deploy)
+
+1. **view-source** — save homepage + contact HTML; check Turnstile, meta, no mixed HTTP, no test keys in prod
+2. **Multi-perspective review** — security, performance, SEO/a11y (separate passes or report sections)
+3. **External tools** — PageSpeed, securityheaders.com, Mozilla Observatory, SSL Labs on the **live URL**
+
+Run: `./scripts/launch-audit.sh https://www.<domain>.cz`
+
+## Security headers
+
+Keep `src/lib/security-headers.ts` + `poweredByHeader: false` in `next.config.ts`. Update CSP when adding third-party scripts.
+
+## Do not launch if
+
+- Turnstile test key in production HTML
+- Security Headers grade F
+- TLS/DNS still on old hosting
