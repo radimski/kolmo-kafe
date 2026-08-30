@@ -1,43 +1,71 @@
-# Client websites
+# Kolmo kafe
 
-Three independent Next.js projects — each can be cloned, deployed, and maintained on its own.
+Website for **KOLMO kafe** — bistro a kavárna u přehrady Olešná (Resort Olešná, Frýdek-Místek).
 
-| Project | Folder | Domain | Dev port |
-| --- | --- | --- | --- |
-| OTEVŘU | [`otevru/`](./otevru/) | otevru.cz | 43124 |
-| KINLES | [`kinles/`](./kinles/) | kinles.cz | 43125 |
-| Kolmo kafe | [`kolmokafe/`](./kolmokafe/) | kolmokafe.cz | 43126 |
-
-## Quick start
-
-Each project is self-contained. From its folder:
+## Run locally
 
 ```bash
-cd otevru    # or kinles / kolmokafe
 npm install
-npm run dev
+npm run dev      # http://localhost:43126
+npm run build
+npm run start
 ```
 
-Shared code (`legal-cz`, `form-engine`) lives inside each project's `packages/` folder so deployments do not depend on a parent monorepo.
+## Structure
 
-## Before going live
+```
+src/              Next.js app (App Router)
+public/           Logo and static assets
+packages/
+  legal-cz/       Czech GDPR, cookies, operator content
+  form-engine/    Contact form handler + browser client
+docs/             Client brief and legal checklist
+```
 
-Each site needs these steps once before production:
+## Facebook integration
 
-1. **Forms** — set `FORM_SECRET` (≥16 characters), **Cloudflare Turnstile** keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` + `TURNSTILE_SECRET_KEY` in your host's env), and wire SMTP / mail delivery in `form-engine`. Local dev loads always-pass Turnstile test keys from each project's `.env.development`.
-2. **Domain** — point DNS at your host and set `FORM_ALLOWED_ORIGINS` to the live URL.
-3. **Legal** — have a lawyer skim GDPR / cookie texts in `packages/legal-cz` (templates are in place).
-4. **Site-specific**
-   - **otevru** — confirm hours and service area with Patrik Panenka.
-   - **kinles** — confirm split lunch hours (8:30–12:00, 12:30–17:00) on site match reality.
-   - **kolmokafe** — set `FACEBOOK_PAGE_ACCESS_TOKEN` for live photos/events; hours are seasonal (Facebook is source of truth).
+### Latest post (homepage window)
 
-All three sites include `/provozovatel`, `/ochrana-osobnich-udaju`, `/cookies`, and cookie consent.
+The photo-first “Facebook window” on `/` and `/akce` shows the **latest photo post** from [facebook.com/kolmokafe](https://www.facebook.com/kolmokafe) — moučníky, káva, talíře.
 
-Security headers (CSP, HSTS, X-Frame-Options, etc.) are configured in each site's `next.config.ts`. See [DEPLOY.md](./DEPLOY.md) for Cloudflare Pages setup and post-deploy checks.
+1. **Automatic** — set `FACEBOOK_PAGE_ACCESS_TOKEN` (Page access token for a page admin). The site skips text-only posts and picks the newest post that includes a photo.
+2. **Manual fallback** — edit `src/config/latest-post.json`. **`imageUrl` is required** (local path like `/social/latest-post.jpg` or a direct image URL). Replace `public/social/latest-post.jpg` when you sync a new post.
 
-**Agents:** read [RULEBOOK.md](./RULEBOOK.md) (English) for Turnstile, security headers, and the mandatory pre-launch audit. Each site lists audited paths in `<site>/audit-pages.txt`. New sites: [docs/NEW-SITE.md](./docs/NEW-SITE.md).
+Posts refresh every 30 minutes when the token is set.
 
-## Creating separate repositories
+### Events (`/akce`)
 
-To publish each site as its own repo, initialize git inside the project folder (or use `git subtree split` / copy the folder). Each directory already has everything needed to build and deploy independently.
+Upcoming events use the same token plus `src/config/events.json` as fallback. See the events section below in this README for details.
+
+## Facebook events
+
+The `/akce` page and homepage events block show upcoming events from:
+
+1. **Facebook Graph API** (automatic) when these env vars are set:
+   - `FACEBOOK_PAGE_ACCESS_TOKEN` — Page access token for [kolmokafe](https://www.facebook.com/kolmokafe) (page admin)
+   - `FACEBOOK_PAGE_ID` — optional, defaults to `kolmokafe`
+
+2. **`src/config/events.json`** — manual fallback / supplement when the API is unavailable.
+
+Facebook restricts event API access for most apps; a **Page access token** from someone who administers the KOLMO kafe page usually works. Events refresh every hour.
+
+To add an event manually, edit `src/config/events.json`:
+
+```json
+{
+  "id": "unique-id",
+  "title": "Název akce",
+  "startAt": "2026-09-05T16:00:00+02:00",
+  "endAt": "2026-09-05T22:00:00+02:00",
+  "location": "KOLMO kafe · Resort Olešná",
+  "url": "https://www.facebook.com/events/…/",
+  "source": "manual"
+}
+```
+
+## Before launch
+
+- Operator data is in `src/config/operator.ts` (KOLMO motion s.r.o., IČO 08011150)
+- Set `FORM_SECRET`, Turnstile keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), and SMTP vars for production forms
+- Add hero photography (terrace, lake, food)
+- Point `kolmokafe.cz` at this deployment
