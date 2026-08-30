@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { KolmoContactForm } from "@/components/ContactForm";
+import { EmailLink } from "@/components/EmailLink";
 import { KolmoMap } from "@/components/KolmoMap";
 import { kolmoConfig } from "@/config/site";
 import { withCanonical } from "@/lib/page-metadata";
@@ -56,12 +57,10 @@ export default function KolmoKontaktPage() {
               >
                 {kolmoConfig.phone}
               </a>
-              <a
-                href={`mailto:${kolmoConfig.email}`}
+              <EmailLink
+                email={kolmoConfig.email}
                 className="mt-1 block text-[#9a948c] transition hover:text-[#c8a27a]"
-              >
-                {kolmoConfig.email}
-              </a>
+              />
               <a
                 href={kolmoConfig.facebook}
                 target="_blank"

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { kolmoConfig } from "@/config/site";
 import { CookieSettingsButton } from "@/components/CookieBanner";
+import { EmailLink } from "@/components/EmailLink";
 
 const legalLinks = [
   { href: "/provozovatel", label: "Provozovatel" },
@@ -30,12 +31,10 @@ export function Footer() {
           >
             {kolmoConfig.phone}
           </a>
-          <a
-            href={`mailto:${kolmoConfig.email}`}
+          <EmailLink
+            email={kolmoConfig.email}
             className="mt-1 block transition hover:text-[#c8a27a]"
-          >
-            {kolmoConfig.email}
-          </a>
+          />
           <a
             href={kolmoConfig.facebook}
             target="_blank"
