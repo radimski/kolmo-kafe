@@ -2,6 +2,9 @@
   "name": "kolmokafe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22"
+  },
   "description": "Kolmo kafe — bistro a kavárna u přehrady Olešná",
   "scripts": {
     "dev": "next dev --webpack --port 43126",
