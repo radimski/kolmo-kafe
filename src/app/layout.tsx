@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Space_Grotesk } from "next/font/google";
+import { Lora, Space_Grotesk } from "next/font/google";
 import { FormRouteBinder } from "@websites/form-engine/client";
 import { Nav } from "@/components/Nav";
 import { HoursBar } from "@/components/HoursBar";
@@ -13,6 +13,12 @@ import "./kolmo.css";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin", "latin-ext"],
   variable: "--font-kolmo",
+});
+
+const lora = Lora({
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600", "700"],
+  variable: "--font-kolmo-display",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +62,7 @@ const structuredData = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="cs" className={`${spaceGrotesk.variable} h-full`}>
+    <html lang="cs" className={`${spaceGrotesk.variable} ${lora.variable} h-full`}>
       <body
         data-form-endpoint="/api/form"
         data-turnstile-site-key={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}

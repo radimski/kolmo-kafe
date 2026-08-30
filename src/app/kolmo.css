@@ -21,10 +21,64 @@
     ),
     radial-gradient(
       ellipse 50% 40% at 10% 85%,
-      rgba(127, 168, 181, 0.1),
+      rgba(127, 168, 181, 0.14),
       transparent 70%
     ),
     var(--kolmo-bg);
+}
+
+.kolmo-display {
+  font-family: var(--font-kolmo-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.kolmo-hours-bar {
+  border-left: 3px solid var(--kolmo-lake);
+}
+
+.kolmo-hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.kolmo-hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      160deg,
+      rgba(19, 22, 25, 0.92) 0%,
+      rgba(19, 22, 25, 0.55) 45%,
+      rgba(19, 22, 25, 0.88) 100%
+    ),
+    url("/social/latest-post.jpg");
+  background-size: cover;
+  background-position: center 35%;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.kolmo-hero-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kolmo-nav-link {
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--kolmo-muted);
+  transition: color 0.2s ease;
+}
+
+.kolmo-nav-link:hover,
+.kolmo-nav-link[aria-current="page"] {
+  color: var(--kolmo-cream);
+}
+
+.kolmo-nav-link[aria-current="page"] {
+  box-shadow: inset 0 -2px 0 var(--kolmo-crema);
+  padding-bottom: 0.15rem;
 }
 
 .kolmo-grid-lines {
@@ -343,6 +397,7 @@
 }
 
 .kolmo-offerings-title {
+  font-family: var(--font-kolmo-display), Georgia, serif;
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -404,6 +459,11 @@
 .kolmo-btn-ghost:hover {
   border-color: var(--kolmo-crema);
   background: rgba(200, 162, 122, 0.08);
+}
+
+.kolmo-btn-ghost:focus-visible {
+  outline: 2px solid var(--kolmo-lake);
+  outline-offset: 2px;
 }
 
 .kolmo-menu-row {
@@ -660,13 +720,13 @@
 }
 
 .open-status-dot.is-open {
-  background: #22c55e;
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.55);
+  background: var(--kolmo-lake);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--kolmo-lake) 55%, transparent);
 }
 
 .open-status-dot.is-closed {
-  background: #ef4444;
-  box-shadow: 0 0 8px rgba(239, 68, 68, 0.45);
+  background: var(--kolmo-crema);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--kolmo-crema) 45%, transparent);
 }
 
 /* ============ FACEBOOK POST WINDOW ============ */

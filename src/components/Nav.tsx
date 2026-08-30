@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { KolmoLogo } from "@/components/KolmoLogo";
 import { kolmoConfig } from "@/config/site";
 
@@ -14,6 +15,7 @@ const links = [
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-40 border-b border-[#f2ece3]/8 bg-[#131619]/85 backdrop-blur-lg">
@@ -26,7 +28,8 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm tracking-wide text-[#9a948c] transition hover:text-[#f2ece3]"
+              className="kolmo-nav-link"
+              aria-current={pathname === link.href ? "page" : undefined}
             >
               {link.label}
             </Link>
@@ -69,6 +72,7 @@ export function Nav() {
               key={link.href}
               href={link.href}
               className="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5"
+              aria-current={pathname === link.href ? "page" : undefined}
               onClick={() => setOpen(false)}
             >
               {link.label}

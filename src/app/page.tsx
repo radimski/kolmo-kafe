@@ -49,7 +49,7 @@ export default async function KolmoPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[#c8a27a]">
               {kolmoConfig.location}
             </p>
-            <h1 className="mt-7 text-5xl font-bold leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="kolmo-display mt-7 text-5xl leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
               Zastávka
               <br />
               <span className="text-[#c8a27a]">na kole</span> u vody.
@@ -66,19 +66,17 @@ export default async function KolmoPage() {
               >
                 Prohlédnout menu
               </Link>
-              <a
-                href={kolmoConfig.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="#kde"
                 className="kolmo-pill kolmo-btn-ghost inline-flex items-center justify-center px-7 py-3.5 text-sm font-semibold"
               >
-                Aktuální doba
-              </a>
+                Kde nás najdete
+              </Link>
             </div>
           </div>
 
           <div className="kolmo-rise-delay">
-            <div className="kolmo-surface relative rounded-3xl p-8 sm:p-10">
+            <div className="kolmo-surface kolmo-hero-panel relative rounded-3xl p-8 sm:p-10">
               <div className="absolute inset-0 rounded-3xl bg-[radial-gradient(circle_at_70%_30%,rgba(200,162,122,0.12),transparent_55%)]" />
               <div className="relative flex flex-col items-center">
                 <div className="kolmo-logo-wrap w-full max-w-md">

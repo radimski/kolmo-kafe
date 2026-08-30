@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { kolmoConfig } from "@/config/site";
 import { OpenStatus } from "@/components/OpenStatus";
 
@@ -17,11 +18,17 @@ export function HoursBar() {
           <span className="sm:hidden">{kolmoConfig.hoursShort}</span>
           <span className="hidden sm:inline">{kolmoConfig.hoursTypical}</span>
         </span>
+        <Link
+          href="/menu"
+          className="ml-auto hidden shrink-0 font-medium text-[#7fa8b5] transition hover:text-[#f2ece3] sm:inline"
+        >
+          Menu →
+        </Link>
         <a
           href={kolmoConfig.facebook}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto shrink-0 font-medium text-[#c8a27a] transition hover:text-[#f2ece3]"
+          className="shrink-0 font-medium text-[#c8a27a] transition hover:text-[#f2ece3] sm:ml-3"
         >
           Facebook →
         </a>
