@@ -65,7 +65,7 @@ To add an event manually, edit `src/config/events.json`:
 
 ## Before launch
 
-- Fill in legal operator data in `src/config/operator.ts` (IČO still TBD)
-- Set `FORM_SECRET`, Turnstile keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), and SMTP for production forms
+- Operator data is in `src/config/operator.ts` (KOLMO motion s.r.o., IČO 08011150)
+- Set `FORM_SECRET`, Turnstile keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), and SMTP vars for production forms
 - Add hero photography (terrace, lake, food)
 - Point `kolmokafe.cz` at this deployment

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { kolmoConfig } from "@/config/site";
+import { withCanonical } from "@/lib/page-metadata";
+
+export const metadata: Metadata = withCanonical("/menu", {
+  title: `Menu | ${kolmoConfig.name}`,
+  description:
+    "Káva, sladké i slané bistro pokrmy u přehrady Olešná — sezónní nabídka.",
+});
 
 function MenuSection({
   index,

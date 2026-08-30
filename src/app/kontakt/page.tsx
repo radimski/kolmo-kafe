@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { KolmoContactForm } from "@/components/ContactForm";
 import { KolmoMap } from "@/components/KolmoMap";
 import { kolmoConfig } from "@/config/site";
+import { withCanonical } from "@/lib/page-metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withCanonical("/kontakt", {
   title: `Kontakt | ${kolmoConfig.name}`,
   description: `Napište nám nebo se zastavte — ${kolmoConfig.address}.`,
-};
+});
 
 export default function KolmoKontaktPage() {
   return (

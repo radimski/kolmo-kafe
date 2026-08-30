@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { EventsList } from "@/components/EventsList";
 import { facebookEventsUrl, getUpcomingEvents } from "@/lib/events";
 import { kolmoConfig } from "@/config/site";
+import { withCanonical } from "@/lib/page-metadata";
+
+export const metadata: Metadata = withCanonical("/akce", {
+  title: `Akce | ${kolmoConfig.name}`,
+  description:
+    "Grilování, koktejlové večery a sezónní akce u přehrady Olešná.",
+});
 
 export const revalidate = 1800;
 

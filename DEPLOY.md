@@ -15,6 +15,11 @@ NEXT_PUBLIC_TURNSTILE_SITE_KEY=<Turnstile site key>
 TURNSTILE_SECRET_KEY=<Turnstile secret>
 FORM_SECRET=<random 16+ chars>
 FORM_ALLOWED_ORIGINS=www.kolmokafe.cz
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=<smtp user>
+SMTP_PASS=<smtp password>
+SMTP_FROM=KOLMO kafe <info@kolmokafe.cz>
 FACEBOOK_PAGE_ACCESS_TOKEN=<optional, for live FB photos/events>
 FACEBOOK_PAGE_ID=kolmokafe
 ```
@@ -34,4 +39,4 @@ Add `www.kolmokafe.cz` and `kolmokafe.cz`. Fix/remove broken Aruba TLS on curren
 
 ## 5. Forms
 
-Wire SMTP or mail delivery in `form-engine` before relying on contact forms in production.
+Set SMTP variables (see `.env.example`) so contact forms deliver email in production.
