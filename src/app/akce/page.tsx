@@ -36,7 +36,7 @@ export default async function AkcePage() {
         </h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
           Nadcházející akce v Resortu Olešná — grilování, večery u vody a
-          sezónní program.
+          sezónní program. Termíny nejdřív zveřejňujeme na Facebooku.
         </p>
 
         <div className="mt-12">
@@ -50,8 +50,8 @@ export default async function AkcePage() {
         <div className="kolmo-surface mt-10 rounded-2xl p-8">
           <h2 className="text-xl font-semibold">Facebook je hlavní kalendář</h2>
           <p className="mt-4 text-sm leading-7 text-[#9a948c]">
-            Termíny grilování, koktejlových večerů a sezónních akcí nejdřív
-            zveřejňujeme na Facebooku. Web je průběžně synchronizuje, pokud je
+            Termíny grilování, koktejlových večerů a sezónních akcí zveřejňujeme
+            nejdřív na Facebooku. Web je průběžně synchronizuje, pokud je
             nastaveno propojení.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

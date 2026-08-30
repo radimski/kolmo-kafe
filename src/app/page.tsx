@@ -18,11 +18,11 @@ export const revalidate = 3600;
 const highlights = [
   {
     title: "Výběrová káva",
-    text: "Espresso, filtr i ledová káva. Krátké menu, poctivá příprava, žádné zkratky.",
+    text: "Espresso, filtr i ledová káva. Krátké menu, poctivá příprava.",
   },
   {
     title: "Domácí moučníky",
-    text: "Lívance, sezónní zákusky a cheesecake — to nejlepší sladké na Olešné.",
+    text: "Lívance, sezónní zákusky a cheesecake — sladká zastávka u Olešné.",
   },
   {
     title: "Lehké bistro",
@@ -55,7 +55,7 @@ export default async function KolmoPage() {
               <span className="text-[#c8a27a]">na kole</span> u vody.
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-[#9a948c]">
-              Bistro a kavárna na cyklostezce u přehrady Olešná. Fresh kuchyně,
+              Bistro a kavárna na cyklostezce u přehrady Olešná. Sezónní kuchyně,
               výběrová káva a večery u grilu — místo, kde se dá na chvíli
               zpomalit.
             </p>

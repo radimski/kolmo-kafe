@@ -19,7 +19,7 @@ export default function KolmoKontaktPage() {
         </p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">Ozvěte se nám</h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
-          Rezervace, soukromá akce nebo jen dotaz — napište a odpovíme. Aktuální
+          Rezervace, soukromá akce nebo dotaz — napište a ozveme se. Aktuální
           otevírací dobu najdete na Facebooku.
         </p>
 

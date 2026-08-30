@@ -8,7 +8,7 @@ export const kolmoConfig = {
     headword: "Kolmo",
     pronunciation: "kol·mo",
     footnote:
-      "Kolmo znamená na kole — ale nechte nám i představu, že jsme kolmo k vodě.",
+      "Kolmo znamená na kole — a rádi si hrajeme i s tím, že jsme kolmo k vodě.",
     senses: [
       {
         term: "na kole",
@@ -21,7 +21,7 @@ export const kolmoConfig = {
       {
         term: "kolmo (geom.)*",
         definition:
-          "Úhel 90° — spíš slovní hříčka než přesná geografie. Ale zní to hezky.",
+          "Úhel 90° — spíš slovní hříčka než přesná geografie, ale sedí to.",
       },
     ],
   },
@@ -38,7 +38,7 @@ export const kolmoConfig = {
   },
   mapCaption: {
     title: "kolmo k vodě*",
-    note: "Jsme u vody, na cyklostezce — geometricky kolmo spíš v hlavě. Nechte nám tu hru se slovy.",
+    note: "U vody, na cyklostezce — geometricky kolmo spíš v naší hlavě.",
   },
   facebook: "https://www.facebook.com/kolmokafe",
   hoursTypical: "Po–Ne 10:00–21:00 (sezónně)",
@@ -80,6 +80,6 @@ export const kolmoConfig = {
   events: [
     "Grilovací večery u vody",
     "Koktejlové pátky a soboty",
-    "Tematické sezónní akce",
+    "Sezónní tematické akce",
   ],
 } as const;
