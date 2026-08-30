@@ -16,10 +16,10 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(kolmoConfig.url),
   title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
   robots: { index: true, follow: true },
-  alternates: { canonical: kolmoConfig.url },
   openGraph: {
     type: "website",
     siteName: kolmoConfig.name,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: "cs_CZ",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: kolmoConfig.name,
     description: kolmoConfig.shortDescription,
   },
@@ -52,7 +52,6 @@ const structuredData = {
   geo: { "@type": "GeoCoordinates", latitude: 49.6881, longitude: 18.3536 },
   sameAs: [kolmoConfig.facebook],
   description: kolmoConfig.tagline,
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", reviewCount: "256", bestRating: "5" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

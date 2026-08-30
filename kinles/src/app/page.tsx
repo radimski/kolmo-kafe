@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import { kinlesConfig, kinlesMapUrl } from "@/config/site";
 import { registeredSeat } from "@/config/operator";
 import { LockAnimation, serviceIcons } from "@/components/icons";
 import { InquiryForm } from "@/components/InquiryForm";
+import { withCanonical } from "@/lib/page-metadata";
+
+export const metadata: Metadata = withCanonical("/", {
+  title: kinlesConfig.title,
+  description: kinlesConfig.description,
+});
 
 export default function KinlesPage() {
   return (

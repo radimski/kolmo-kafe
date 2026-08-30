@@ -29,10 +29,10 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(kinlesConfig.url),
   title: kinlesConfig.title,
   description: kinlesConfig.description,
   robots: { index: true, follow: true },
-  alternates: { canonical: kinlesConfig.url },
   openGraph: {
     type: "website",
     siteName: "KINLES Ostrava",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "cs_CZ",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: kinlesConfig.title,
     description: kinlesConfig.shortDescription,
   },
@@ -69,11 +69,16 @@ const structuredData = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       opens: "08:30",
+      closes: "12:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "12:30",
       closes: "17:00",
     },
   ],
   priceRange: "$$",
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "3.6", reviewCount: "3", bestRating: "5" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { KolmoDictionary } from "@/components/KolmoDictionary";
 import { KolmoLogo } from "@/components/KolmoLogo";
 import { KolmoMap } from "@/components/KolmoMap";
@@ -5,6 +6,12 @@ import Link from "next/link";
 import { FacebookPostWindow } from "@/components/FacebookPostWindow";
 import { kolmoConfig } from "@/config/site";
 import { getLatestFacebookPost } from "@/lib/facebookPost";
+import { withCanonical } from "@/lib/page-metadata";
+
+export const metadata: Metadata = withCanonical("/", {
+  title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
+  description: kolmoConfig.tagline,
+});
 
 export const revalidate = 3600;
 

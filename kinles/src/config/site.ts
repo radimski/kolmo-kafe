@@ -35,11 +35,36 @@ export const kinlesConfig = {
     timezone: "Europe/Prague",
     week: [
       null,
-      { open: "08:30", close: "17:00" },
-      { open: "08:30", close: "17:00" },
-      { open: "08:30", close: "17:00" },
-      { open: "08:30", close: "17:00" },
-      { open: "08:30", close: "17:00" },
+      {
+        periods: [
+          { open: "08:30", close: "12:00" },
+          { open: "12:30", close: "17:00" },
+        ],
+      },
+      {
+        periods: [
+          { open: "08:30", close: "12:00" },
+          { open: "12:30", close: "17:00" },
+        ],
+      },
+      {
+        periods: [
+          { open: "08:30", close: "12:00" },
+          { open: "12:30", close: "17:00" },
+        ],
+      },
+      {
+        periods: [
+          { open: "08:30", close: "12:00" },
+          { open: "12:30", close: "17:00" },
+        ],
+      },
+      {
+        periods: [
+          { open: "08:30", close: "12:00" },
+          { open: "12:30", close: "17:00" },
+        ],
+      },
       null,
     ],
   },
