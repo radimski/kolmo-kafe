@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { kinlesConfig, kinlesMapUrl } from "@/config/site";
 import { registeredSeat } from "@/config/operator";
+import { EmailLink } from "@/components/EmailLink";
 import { LockAnimation, serviceIcons } from "@/components/icons";
 import { InquiryForm } from "@/components/InquiryForm";
 import { withCanonical } from "@/lib/page-metadata";
@@ -192,9 +193,7 @@ export default function KinlesPage() {
                   <div className="row">
                     <span className="k">E-mail</span>
                     <span className="v">
-                      <a href={`mailto:${kinlesConfig.email}`}>
-                        {kinlesConfig.email}
-                      </a>
+                      <EmailLink email={kinlesConfig.email} />
                     </span>
                   </div>
                   <div className="row">
@@ -239,9 +238,12 @@ export default function KinlesPage() {
           </div>
 
           <div className="cta-block">
-            <a className="btn btn-primary" href={`mailto:${kinlesConfig.email}`}>
+            <EmailLink
+              email={kinlesConfig.email}
+              className="btn btn-primary"
+            >
               Napsat poptávku e-mailem
-            </a>
+            </EmailLink>
             <a className="btn btn-ghost" href={kinlesConfig.phoneHref}>
               Zavolat {kinlesConfig.phone}
             </a>
