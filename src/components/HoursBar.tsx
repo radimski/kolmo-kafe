@@ -32,6 +32,14 @@ export function HoursBar() {
         >
           Facebook →
         </a>
+        <a
+          href={kolmoConfig.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 font-medium text-[#c8a27a] transition hover:text-[#f2ece3] sm:ml-3"
+        >
+          Instagram →
+        </a>
       </div>
     </div>
   );

@@ -50,6 +50,14 @@ export function Nav() {
           >
             Facebook
           </a>
+          <a
+            href={kolmoConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="kolmo-pill kolmo-btn-ghost hidden px-4 py-2 text-sm font-medium md:inline-flex"
+          >
+            Instagram
+          </a>
           <button
             type="button"
             className="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium md:hidden"
@@ -83,6 +91,14 @@ export function Nav() {
             className="mt-2 rounded-lg px-3 py-2.5 text-sm font-medium text-[#c8a27a]"
           >
             {kolmoConfig.phone}
+          </a>
+          <a
+            href={kolmoConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5"
+          >
+            Instagram
           </a>
         </nav>
       </div>

@@ -20,7 +20,7 @@ export default function KolmoKontaktPage() {
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">Ozvěte se nám</h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
           Rezervace, soukromá akce nebo dotaz — napište a ozveme se. Aktuální
-          otevírací dobu najdete na Facebooku.
+          otevírací dobu najdete na Facebooku nebo Instagramu.
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -61,14 +61,24 @@ export default function KolmoKontaktPage() {
                 email={kolmoConfig.email}
                 className="mt-1 block text-[#9a948c] transition hover:text-[#c8a27a]"
               />
-              <a
-                href={kolmoConfig.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="kolmo-pill kolmo-btn-ghost mt-6 inline-flex px-6 py-3 text-sm font-medium"
-              >
-                Facebook
-              </a>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={kolmoConfig.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="kolmo-pill kolmo-btn-ghost inline-flex px-6 py-3 text-sm font-medium"
+                >
+                  Facebook
+                </a>
+                <a
+                  href={kolmoConfig.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="kolmo-pill kolmo-btn-ghost inline-flex px-6 py-3 text-sm font-medium"
+                >
+                  Instagram
+                </a>
+              </div>
             </div>
           </div>
         </div>

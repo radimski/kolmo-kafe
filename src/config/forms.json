@@ -8,6 +8,12 @@
       "cc": [],
       "subject": "Zpráva z webu — {tema}, {jmeno}",
       "replyTo": "kontakt",
+      "confirmation": {
+        "field": "kontakt",
+        "subject": "Potvrzení — obdrželi jsme vaši zprávu | KOLMO kafe",
+        "intro": "Děkujeme za zprávu. Potvrzujeme, že jsme ji obdrželi a co nejdříve se vám ozveme.",
+        "footer": "KOLMO kafe · Resort Olešná\nTelefon: +420 725 311 139"
+      },
       "minSeconds": 3,
       "maxPerHour": 5,
       "maxPerDay": 20,

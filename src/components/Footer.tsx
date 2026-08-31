@@ -43,6 +43,14 @@ export function Footer() {
           >
             Facebook
           </a>
+          <a
+            href={kolmoConfig.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 block transition hover:text-[#c8a27a]"
+          >
+            Instagram
+          </a>
         </div>
         <nav aria-label="Právní informace" className="text-sm text-[#9a948c]">
           <ul className="space-y-1.5">

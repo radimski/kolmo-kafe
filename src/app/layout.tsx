@@ -56,7 +56,7 @@ const structuredData = {
     addressCountry: "CZ",
   },
   geo: { "@type": "GeoCoordinates", latitude: 49.6881, longitude: 18.3536 },
-  sameAs: [kolmoConfig.facebook],
+  sameAs: [kolmoConfig.facebook, kolmoConfig.instagram],
   description: kolmoConfig.tagline,
 };
 

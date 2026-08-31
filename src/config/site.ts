@@ -41,10 +41,11 @@ export const kolmoConfig = {
     note: "U vody, na cyklostezce — geometricky kolmo spíš v naší hlavě.",
   },
   facebook: "https://www.facebook.com/kolmokafe",
+  instagram: "https://www.instagram.com/kolmokafe",
   hoursTypical: "Po–Ne 10:00–21:00 (sezónně)",
   hoursShort: "10–21 · sezónně",
   hoursNote:
-    "Otevírací doba se mění podle sezóny — aktuální časy na Facebooku.",
+    "Otevírací doba se mění podle sezóny — aktuální časy na Facebooku nebo Instagramu.",
   openingSchedule: {
     timezone: "Europe/Prague",
     week: [
