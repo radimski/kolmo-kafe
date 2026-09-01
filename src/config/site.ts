@@ -46,6 +46,18 @@ export const kolmoConfig = {
   hoursShort: "Po–Pá 14–20 · So–Ne 10–20",
   hoursNote:
     "Po prázdninách: pondělí–pátek 14:00–20:00, sobota–neděle 10:00–20:00.",
+  instagramLead: {
+    href: "https://www.instagram.com/kolmokafe",
+    image: "/social/instagram-hours.jpg",
+    imageAlt:
+      "KOLMO kafe — nová otevírací doba: pondělí až pátek 14:00–20:00, sobota a neděle 10:00–20:00",
+    kicker: "Instagram",
+    title: "Nová otevírací doba",
+    caption:
+      "S koncem prázdnin přichází i naše nová otevírací doba. Těšíme se na vás!",
+    weekdays: "Po–Pá 14:00–20:00",
+    weekend: "So–Ne 10:00–20:00",
+  },
   openingSchedule: {
     timezone: "Europe/Prague",
     week: [

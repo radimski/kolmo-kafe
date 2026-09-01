@@ -411,6 +411,29 @@
   color: var(--kolmo-muted);
 }
 
+.kolmo-ig-lead {
+  background: #1a1d21;
+}
+
+.kolmo-ig-lead-photo {
+  display: block;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(200, 162, 122, 0.28);
+  background: #e8dfd0;
+}
+
+.kolmo-ig-lead-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.45s ease;
+}
+
+.kolmo-ig-lead-photo:hover .kolmo-ig-lead-img {
+  transform: scale(1.02);
+}
+
 .kolmo-card {
   background: linear-gradient(
     160deg,

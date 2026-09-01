@@ -4,6 +4,7 @@ import { KolmoLogo } from "@/components/KolmoLogo";
 import { KolmoMap } from "@/components/KolmoMap";
 import Link from "next/link";
 import { FacebookPostWindow } from "@/components/FacebookPostWindow";
+import { InstagramLead } from "@/components/InstagramLead";
 import { kolmoConfig } from "@/config/site";
 import { getLatestFacebookPost } from "@/lib/facebookPost";
 import { withCanonical } from "@/lib/page-metadata";
@@ -88,6 +89,8 @@ export default async function KolmoPage() {
           </div>
         </div>
       </section>
+
+      <InstagramLead />
 
       <section className="kolmo-offerings border-y border-[#f2ece3]/8">
         <div className="mx-auto max-w-6xl px-6 py-14 lg:py-16">
