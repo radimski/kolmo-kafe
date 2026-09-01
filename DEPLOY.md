@@ -1,40 +1,26 @@
-# Deploying Kolmo kafe to Cloudflare Pages
+# Deploying Kolmo kafe
 
-**Repo:** `radimski/kolmo-kafe` · **Domain:** www.kolmokafe.cz
+**Repo (private):** `radimski/kolmo-kafe`  
+**Preview:** https://kolmo-kafe.radim-pajurek.workers.dev/  
+**Domain:** www.kolmokafe.cz
 
-## 1. Create Pages project
+Push `main` → Cloudflare Workers Builds deploys automatically. No FTP.
 
-1. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. Repository: `radimski/kolmo-kafe`, branch `main`
-3. Framework: **Next.js** (auto-detect)
+After the repo was made private, GitHub → Settings → Applications → **Cloudflare Workers and Pages** must include this repository (or All repositories).
 
-## 2. Production environment variables
+Build command: `npm run build` · Deploy: `npx opennextjs-cloudflare deploy` · Node **22**.
+
+`.cz` DNS is still FORPSI until nameservers move to Cloudflare.
+
+## Production environment variables
+
+Worker → **Settings → Variables**:
 
 ```bash
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=<Turnstile site key>
 TURNSTILE_SECRET_KEY=<Turnstile secret>
 FORM_SECRET=<random 16+ chars>
 FORM_ALLOWED_ORIGINS=www.kolmokafe.cz
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_USER=<smtp user>
-SMTP_PASS=<smtp password>
-SMTP_FROM=KOLMO kafe <info@kolmokafe.cz>
 ```
 
 Do not use test keys from `.env.development` in Production.
-
-## 3. Custom domain
-
-Add `www.kolmokafe.cz` and `kolmokafe.cz`. Fix/remove broken Aruba TLS on current DNS.
-
-## 4. Post-deploy checks
-
-- https://pagespeed.web.dev/?url=https://www.kolmokafe.cz
-- https://securityheaders.com/?q=https://www.kolmokafe.cz
-- https://developer.mozilla.org/en-US/observatory/analyze?host=www.kolmokafe.cz
-- https://www.ssllabs.com/ssltest/analyze.html?d=www.kolmokafe.cz
-
-## 5. Forms
-
-Set SMTP variables (see `.env.example`) so contact forms deliver email in production.
