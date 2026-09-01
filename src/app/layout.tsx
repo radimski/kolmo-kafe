@@ -58,6 +58,20 @@ const structuredData = {
   geo: { "@type": "GeoCoordinates", latitude: 49.6881, longitude: 18.3536 },
   sameAs: [kolmoConfig.facebook, kolmoConfig.instagram],
   description: kolmoConfig.tagline,
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "14:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "20:00",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

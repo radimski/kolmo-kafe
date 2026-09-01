@@ -29,15 +29,12 @@ Nadčasová moderní stavba s uvolněnou atmosférou — nejen pro sportovce a r
 - Slané: lívance, quesadilla, sendviče, croissanty, bagely
 - Sezónně: grilovací a koktejlové večery (často čt–so, tematické akce)
 
-## Opening hours — inconsistent sources
+## Opening hours (from Instagram, září 2026)
 
-| Source | Hours |
+| Day | Hours |
 | --- | --- |
-| Resort / autokemp (2024) | Denně 10:00–21:00 |
-| makro.bar listing | Po–pá 14:00–17:00, víkendy 10:00–17:00 |
-| Facebook | **Authoritative** — client should confirm integration strategy |
-
-**Recommendation:** Site shows “aktuální otevírací doba na Facebooku” + embed/link until stable hours; or manual weekly update.
+| Pondělí–pátek | 14:00–20:00 |
+| Sobota–neděle | 10:00–20:00 |
 
 ## Suggested site goals
 

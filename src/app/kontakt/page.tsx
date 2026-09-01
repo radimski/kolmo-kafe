@@ -19,8 +19,8 @@ export default function KolmoKontaktPage() {
         </p>
         <h1 className="mt-4 text-4xl font-bold sm:text-5xl">Ozvěte se nám</h1>
         <p className="mt-4 max-w-2xl text-[#9a948c]">
-          Rezervace, soukromá akce nebo dotaz — napište a ozveme se. Aktuální
-          otevírací dobu najdete na Facebooku nebo Instagramu.
+          Rezervace, soukromá akce nebo dotaz — napište a ozveme se. Otevřeno
+          Po–Pá 14:00–20:00, So–Ne 10:00–20:00.
         </p>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
@@ -41,6 +41,9 @@ export default function KolmoKontaktPage() {
               </p>
               <p className="mt-2 text-sm text-[#9a948c]">
                 {kolmoConfig.location}
+              </p>
+              <p className="mt-3 text-sm text-[#f2ece3]/80">
+                {kolmoConfig.hoursTypical}
               </p>
               <div className="mt-6">
                 <KolmoMap compact />
