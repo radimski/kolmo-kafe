@@ -8,7 +8,7 @@
   "description": "Kolmo kafe — bistro a kavárna u přehrady Olešná",
   "scripts": {
     "dev": "next dev --webpack --port 43126",
-    "build": "next build && opennextjs-cloudflare build",
+    "build": "opennextjs-cloudflare build",
     "build:worker": "opennextjs-cloudflare build",
     "start": "next start --port 43126",
     "lint": "eslint",
