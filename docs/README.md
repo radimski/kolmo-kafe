@@ -15,7 +15,7 @@
 | **Email** | info@kolmokafe.cz |
 | **Address** | Nad Přehradou 2483, 738 01 Frýdek-Místek |
 | **Location** | Resort Olešná — u vodní nádrže, sport/recreation area |
-| **Facebook** | Primary channel for **aktuální otevírací dobu** |
+| **Instagram** | [instagram.com/kolmokafe](https://www.instagram.com/kolmokafe) — hours announcements |
 
 ## Concept
 
