@@ -20,8 +20,6 @@ SMTP_PORT=587
 SMTP_USER=<smtp user>
 SMTP_PASS=<smtp password>
 SMTP_FROM=KOLMO kafe <info@kolmokafe.cz>
-FACEBOOK_PAGE_ACCESS_TOKEN=<optional, for live FB photos/events>
-FACEBOOK_PAGE_ID=kolmokafe
 ```
 
 Do not use test keys from `.env.development` in Production.

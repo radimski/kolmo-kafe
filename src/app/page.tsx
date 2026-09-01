@@ -3,18 +3,14 @@ import { KolmoDictionary } from "@/components/KolmoDictionary";
 import { KolmoLogo } from "@/components/KolmoLogo";
 import { KolmoMap } from "@/components/KolmoMap";
 import Link from "next/link";
-import { FacebookPostWindow } from "@/components/FacebookPostWindow";
 import { InstagramLead } from "@/components/InstagramLead";
 import { kolmoConfig } from "@/config/site";
-import { getLatestFacebookPost } from "@/lib/facebookPost";
 import { withCanonical } from "@/lib/page-metadata";
 
 export const metadata: Metadata = withCanonical("/", {
   title: `${kolmoConfig.name} | Bistro na cyklostezce u Olešné`,
   description: kolmoConfig.tagline,
 });
-
-export const revalidate = 3600;
 
 const highlights = [
   {
@@ -31,9 +27,7 @@ const highlights = [
   },
 ] as const;
 
-export default async function KolmoPage() {
-  const { post, source } = await getLatestFacebookPost();
-
+export default function KolmoPage() {
   return (
     <div>
       <section className="kolmo-hero kolmo-grid-lines relative overflow-hidden">
@@ -104,15 +98,6 @@ export default async function KolmoPage() {
           </ul>
         </div>
       </section>
-
-      {post ? (
-        <section className="kolmo-grid-lines border-y border-[#f2ece3]/8">
-          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:py-20">
-            <div className="hidden lg:block" aria-hidden />
-            <FacebookPostWindow post={post} source={source} />
-          </div>
-        </section>
-      ) : null}
 
       <section className="border-y border-[#f2ece3]/8 bg-[#1a1d21]">
         <div className="mx-auto max-w-6xl px-6 py-20">

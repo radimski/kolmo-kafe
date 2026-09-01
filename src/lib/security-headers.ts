@@ -9,7 +9,7 @@ export function buildSecurityHeaders(): { key: string; value: string }[] {
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob: https://*.fbcdn.net",
+    "img-src 'self' data: blob:",
     "font-src 'self'",
     "connect-src 'self' https://challenges.cloudflare.com",
     "frame-src 'self' https://www.google.com https://maps.google.com",
