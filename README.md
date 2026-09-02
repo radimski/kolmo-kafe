@@ -2,7 +2,7 @@
 
 Plain static HTML — same layout as the original Next.js site.
 
-**On GitHub (private):** [radimski/kolmo-kafe](https://github.com/radimski/kolmo-kafe) — `site/` with `index.html`, `main.js`, `form.js`, `api/`, `fonts/`, …
+**On GitHub:** `index.html`, `main.js`, `form.js`, `api/`, `fonts/`, … at repo root (like otevru-cz).
 
 **Local only (gitignored):** `build/`, `ftp/`, `DEPLOY.md`, `RULEBOOK.md`
 
@@ -25,4 +25,4 @@ Upload **contents** of `ftp/` to web root. On server: copy `api/config.example.p
 
 ## Cloudflare Pages
 
-Framework: None · Build: empty · Output directory: `site`
+Framework: None · Build: empty · Root: `/`

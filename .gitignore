@@ -1,6 +1,8 @@
 # secrets
-site/api/config.php
 api/config.php
+api/data/*
+!api/data/.gitkeep
+!api/data/.htaccess
 build/config.php
 .env
 .env*
@@ -9,19 +11,27 @@ build/config.php
 # local-only (not on GitHub) — same pattern as otevru-cz
 build/
 ftp/
+export/
 node_modules/
 package.json
 DEPLOY.md
 RULEBOOK.md
 RULEBOOK-STATIC.md
+HANDOVER.md
 
-# site build artifacts (CSS is inlined into HTML; JS lives at site/main.js)
-site/css/
-site/js/
-site/styles.css
-site/fonts.css
+# build artifacts (CSS is inlined into HTML)
+css/
+js/
+styles.css
+fonts.css
 
-# misc
+# Next.js / Workers leftovers (not part of static site)
+.github/
+.nvmrc
+.deploy-trigger
+audit-pages.txt
+docs/
+
 .DS_Store
 Thumbs.db
 *.pem
