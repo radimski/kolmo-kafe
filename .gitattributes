@@ -1,0 +1,4 @@
+# Match otevru-cz on GitHub: PHP form API repo, not an HTML/CSS project.
+*.html linguist-detectable=false
+*.css linguist-detectable=false
+*.js linguist-detectable=false

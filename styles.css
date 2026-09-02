@@ -1,0 +1,1043 @@
+/* KOLMO kafe — static site styles */
+/* Base + layout utilities (replaces Tailwind for this site) */
+*,*::before,*::after{box-sizing:border-box}
+html{line-height:1.5;-webkit-text-size-adjust:100%;scroll-padding-top:6rem}
+body{margin:0;min-height:100%;display:flex;flex-direction:column;font-family:var(--font-kolmo),system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img,svg,iframe{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+ul,ol{list-style:none;margin:0;padding:0}
+:root{
+  --font-kolmo:"Space Grotesk",system-ui,sans-serif;
+  --font-kolmo-display:Lora,Georgia,serif;
+  --spacing:.25rem;
+}
+.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}
+.absolute{position:absolute}.relative{position:relative}.fixed{position:fixed}.sticky{position:sticky}
+.inset-0{inset:0}.inset-x-0{inset-inline:0}.top-0{top:0}.bottom-0{bottom:0}
+.right-5{right:1.25rem}.bottom-5{bottom:1.25rem}.right-8{right:2rem}.top-20{top:5rem}
+.z-40{z-index:40}.z-50{z-index:50}
+.mx-auto{margin-inline:auto}.ml-auto{margin-left:auto}
+.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}
+.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.mt-7{margin-top:1.75rem}.mt-8{margin-top:2rem}
+.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}
+.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}
+.hidden{display:none}.contents{display:contents}
+.flex-1{flex:1}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+.shrink-0{flex-shrink:0}.items-center{align-items:center}.items-start{align-items:flex-start}
+.items-baseline{align-items:baseline}.items-end{align-items:flex-end}
+.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}
+.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-2\.5{gap:.625rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}
+.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-9{gap:2.25rem}.gap-10{gap:2.5rem}.gap-14{gap:3.5rem}
+.space-y-1\.5>:not(:last-child){margin-bottom:.375rem}
+.space-y-2>:not(:last-child){margin-bottom:.5rem}
+.space-y-3>:not(:last-child){margin-bottom:.75rem}
+.space-y-8>:not(:last-child){margin-bottom:2rem}
+.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}
+.min-w-0{min-width:0}.w-full{width:100%}.max-w-md{max-width:28rem}.max-w-lg{max-width:32rem}
+.max-w-xl{max-width:36rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}
+.max-h-\[min\(70vh\,28rem\)\]{max-height:min(70vh,28rem)}
+.min-h-full{min-height:100%}
+.rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}
+.border{border-width:1px;border-style:solid}.border-b{border-bottom-width:1px;border-bottom-style:solid}
+.border-t{border-top-width:1px;border-top-style:solid}.border-y{border-top-width:1px;border-bottom-width:1px;border-style:solid}
+.border-\[\#f2ece3\]\/8{border-color:rgba(242,236,227,.08)}
+.border-\[\#f2ece3\]\/10{border-color:rgba(242,236,227,.1)}
+.border-\[\#c8a27a\]\/30{border-color:rgba(200,162,122,.3)}
+.border-\[\#c8a27a\]\/40{border-color:rgba(200,162,122,.4)}
+.bg-\[\#131619\]{background:#131619}.bg-\[\#131619\]\/85{background:rgba(19,22,25,.85)}
+.bg-\[\#1a1d21\]{background:#1a1d21}.bg-\[\#c8a27a\]\/8{background:rgba(200,162,122,.08)}
+.backdrop-blur-lg{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.p-3{padding:.75rem}.p-7{padding:1.75rem}.p-8{padding:2rem}
+.px-3{padding-inline:.75rem}.px-4{padding-inline:1rem}.px-5{padding-inline:1.25rem}.px-6{padding-inline:1.5rem}.px-7{padding-inline:1.75rem}
+.py-2{padding-block:.5rem}.py-2\.5{padding-block:.625rem}.py-3{padding-block:.75rem}.py-3\.5{padding-block:.875rem}
+.py-4{padding-block:1rem}.py-12{padding-block:3rem}.py-14{padding-block:3.5rem}.py-16{padding-block:4rem}
+.py-20{padding-block:5rem}.py-24{padding-block:6rem}
+.pt-16{padding-top:4rem}.pb-24{padding-bottom:6rem}.pt-3{padding-top:.75rem}.pl-5{padding-left:1.25rem}
+.text-left{text-align:left}.text-center{text-align:center}
+.text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}
+.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-7xl{font-size:4.5rem;line-height:1}
+.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}
+.uppercase{text-transform:uppercase}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}
+.tracking-\[0\.15em\]{letter-spacing:.15em}.tracking-\[0\.2em\]{letter-spacing:.2em}
+.tracking-\[0\.3em\]{letter-spacing:.3em}.tracking-\[0\.35em\]{letter-spacing:.35em}.tracking-\[0\.4em\]{letter-spacing:.4em}
+.leading-\[0\.98\]{line-height:.98}.leading-6{line-height:1.5rem}.leading-7{line-height:1.75rem}.leading-8{line-height:2rem}
+.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.text-\[\#c8a27a\]{color:#c8a27a}.text-\[\#c8a27a\]\/90{color:rgba(200,162,122,.9)}
+.text-\[\#9a948c\]{color:#9a948c}.text-\[\#f2ece3\]{color:#f2ece3}
+.text-\[\#f2ece3\]\/80{color:rgba(242,236,227,.8)}.text-\[\#f2ece3\]\/85{color:rgba(242,236,227,.85)}
+.text-\[\#f2ece3\]\/90{color:rgba(242,236,227,.9)}.text-\[\#f2ece3\]\/20{color:rgba(242,236,227,.2)}
+.text-\[\#7fa8b5\]{color:#7fa8b5}
+.underline{text-decoration:underline}.underline-offset-4{text-underline-offset:4px}
+.shadow-lg{box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1)}
+.shadow-\[0_8px_40px_rgba\(0\,0\,0\,0\.45\)\]{box-shadow:0 8px 40px rgba(0,0,0,.45)}
+.transition{transition:color .15s,background-color .15s,border-color .15s,opacity .15s,transform .15s}
+.list-disc{list-style-type:disc}
+.hover\:underline:hover{text-decoration:underline}
+.hover\:text-\[\#c8a27a\]:hover{color:#c8a27a}
+.hover\:text-\[\#f2ece3\]:hover{color:#f2ece3}
+.hover\:bg-\[\#f2ece3\]\/5:hover{background:rgba(242,236,227,.05)}
+.last\:border-none:last-child{border:none}
+@media (min-width:640px){
+  .sm\:hidden{display:none}.sm\:inline{display:inline}.sm\:inline-flex{display:inline-flex}
+  .sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:items-end{align-items:flex-end}
+  .sm\:justify-between{justify-content:space-between}.sm\:justify-center{justify-content:center}
+  .sm\:gap-3{gap:.75rem}.sm\:gap-6{gap:1.5rem}.sm\:ml-3{margin-left:.75rem}
+  .sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sm\:col-span-2{grid-column:span 2/span 2}
+  .sm\:p-4{padding:1rem}.sm\:p-8{padding:2rem}.sm\:p-10{padding:2.5rem}
+  .sm\:px-5{padding-inline:1.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}
+  .sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-6xl{font-size:3.75rem;line-height:1}
+}
+@media (min-width:768px){
+  .md\:flex{display:flex}.md\:hidden{display:none}.md\:inline-flex{display:inline-flex}
+  .md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (min-width:1024px){
+  .lg\:block{display:block}.lg\:flex-row{flex-direction:row}.lg\:items-center{align-items:center}
+  .lg\:justify-between{justify-content:space-between}.lg\:text-left{text-align:left}
+  .lg\:gap-16{gap:4rem}.lg\:py-16{padding-block:4rem}.lg\:pt-24{padding-top:6rem}
+  .lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .lg\:grid-cols-\[1\.05fr_0\.95fr\]{grid-template-columns:1.05fr .95fr}
+  .lg\:grid-cols-\[1\.1fr_0\.9fr\]{grid-template-columns:1.1fr .9fr}
+  .lg\:text-7xl{font-size:4.5rem;line-height:1}
+}
+.kolmo-header{background:rgba(19,22,25,.85)}
+
+.kolmo-root {
+  /* Tmavá paleta navázaná na logo (#191e23) s teplými akcenty */
+  --kolmo-bg: #131619;
+  --kolmo-surface: #1a1d21;
+  --kolmo-surface-2: #21252a;
+  --kolmo-logo-bg: #191e23;
+  --kolmo-cream: #f2ece3;
+  --kolmo-muted: #9a948c;
+  --kolmo-crema: #c8a27a;
+  --kolmo-lake: #7fa8b5;
+  background: var(--kolmo-bg);
+  color: var(--kolmo-cream);
+}
+
+.kolmo-hero {
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 75% 20%,
+      rgba(200, 162, 122, 0.14),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 10% 85%,
+      rgba(127, 168, 181, 0.14),
+      transparent 70%
+    ),
+    var(--kolmo-bg);
+}
+
+.kolmo-display {
+  font-family: var(--font-kolmo-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.kolmo-hours-bar {
+  border-left: 3px solid var(--kolmo-lake);
+}
+
+.kolmo-hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.kolmo-hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 70% 20%,
+      rgba(200, 162, 122, 0.16),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 15% 90%,
+      rgba(127, 168, 181, 0.12),
+      transparent 65%
+    );
+  pointer-events: none;
+}
+
+.kolmo-hero-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.kolmo-nav-link {
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  color: var(--kolmo-muted);
+  transition: color 0.2s ease;
+}
+
+.kolmo-nav-link:hover,
+.kolmo-nav-link[aria-current="page"] {
+  color: var(--kolmo-cream);
+}
+
+.kolmo-nav-link[aria-current="page"] {
+  box-shadow: inset 0 -2px 0 var(--kolmo-crema);
+  padding-bottom: 0.15rem;
+}
+
+.kolmo-grid-lines {
+  background-image:
+    linear-gradient(rgba(242, 236, 227, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 236, 227, 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+.kolmo-surface {
+  background: var(--kolmo-surface);
+  border: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-logo-wrap {
+  background: var(--kolmo-logo-bg);
+  border-radius: 1rem;
+  padding: 1.75rem 2rem 1.5rem;
+}
+
+.kolmo-logo-nav {
+  display: inline-flex;
+  align-items: center;
+  background: var(--kolmo-logo-bg);
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.65rem 0.35rem 0.5rem;
+}
+
+.kolmo-logo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.kolmo-logo-svg-hero {
+  width: min(100%, 15rem);
+}
+
+@keyframes kolmo-letter-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-88px) scale(0.88) rotate(-3deg);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.04) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+.kolmo-logo-letter {
+  transform-box: fill-box;
+  transform-origin: center top;
+  animation: kolmo-letter-fall 0.78s cubic-bezier(0.3, 1.2, 0.5, 1) both;
+}
+
+.kolmo-logo-svg-nav {
+  height: 2.75rem;
+  width: auto;
+}
+
+.kolmo-logo-glyph {
+  fill: var(--kolmo-cream);
+  font-family: var(--font-kolmo), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.kolmo-logo-glyph-main {
+  font-size: 72px;
+}
+
+.kolmo-logo-svg-nav .kolmo-logo-glyph-main {
+  font-size: 72px;
+}
+
+.kolmo-logo-glyph-kafe {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.kolmo-logo-mark {
+  stroke: var(--kolmo-cream);
+  stroke-width: 7;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.kolmo-logo {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+.kolmo-logo-hero {
+  width: min(100%, 22rem);
+  max-height: none;
+}
+
+.kolmo-logo-nav-img {
+  height: 2.75rem;
+  width: auto;
+}
+
+.kolmo-dict {
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 18rem;
+  border-top: 1px solid rgba(242, 236, 227, 0.1);
+  padding-top: 1.25rem;
+  text-align: left;
+}
+
+.kolmo-dict-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.kolmo-dict-word {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kolmo-cream);
+}
+
+.kolmo-dict-pron {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-dict-senses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: kolmo-sense;
+}
+
+.kolmo-dict-senses li {
+  display: grid;
+  grid-template-columns: 1.35rem 1fr;
+  gap: 0.35rem 0.5rem;
+  counter-increment: kolmo-sense;
+  padding: 0.55rem 0;
+  border-top: 1px solid rgba(242, 236, 227, 0.06);
+}
+
+.kolmo-dict-senses li::before {
+  content: counter(kolmo-sense) ".";
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+  padding-top: 0.15rem;
+}
+
+.kolmo-dict-term {
+  grid-column: 2;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+}
+
+.kolmo-dict-def {
+  grid-column: 2;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-dict-footnote {
+  margin: 1rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(242, 236, 227, 0.06);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--kolmo-muted);
+}
+
+/* ============ KOLMO MAP ============ */
+.kolmo-map {
+  margin: 0;
+}
+
+.kolmo-map-iframe {
+  display: block;
+  width: 100%;
+  min-height: 16rem;
+  aspect-ratio: 5 / 4;
+  border: 0;
+  filter: saturate(0.88) contrast(1.04) brightness(0.94);
+  transition: filter 0.35s ease;
+}
+
+.kolmo-map-compact .kolmo-map-iframe {
+  min-height: 12rem;
+}
+
+.kolmo-map-frame:hover .kolmo-map-iframe {
+  filter: saturate(1) contrast(1.04) brightness(0.98);
+}
+
+.kolmo-map-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(242, 236, 227, 0.1);
+  background: #0f1214;
+}
+
+.kolmo-map-wink {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.75rem;
+  margin: 0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.45rem;
+  background: rgba(19, 22, 25, 0.82);
+  border: 1px dashed rgba(200, 162, 122, 0.45);
+  font-size: 0.72rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: rgba(242, 236, 227, 0.72);
+  pointer-events: none;
+  transform: rotate(-4deg);
+}
+
+.kolmo-map-caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  padding-left: 0.15rem;
+}
+
+.kolmo-map-caption-term {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--kolmo-crema);
+}
+
+.kolmo-map-caption-note {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-map-open {
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--kolmo-crema);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.kolmo-map-open:hover {
+  color: var(--kolmo-cream);
+}
+
+.kolmo-map-compact .kolmo-map-frame {
+  border-radius: 1rem;
+}
+
+.kolmo-map-compact .kolmo-map-wink {
+  display: none;
+}
+
+.kolmo-map-compact .kolmo-map-caption-note {
+  font-size: 0.78rem;
+}
+
+.kolmo-offerings {
+  background: var(--kolmo-bg);
+}
+
+.kolmo-offerings-list {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .kolmo-offerings-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .kolmo-offerings-item:not(:first-child) {
+    border-left: 1px solid rgba(242, 236, 227, 0.08);
+    padding-left: 2rem;
+  }
+
+  .kolmo-offerings-item:not(:last-child) {
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .kolmo-offerings-item:not(:last-child) {
+    border-bottom: 1px solid rgba(242, 236, 227, 0.08);
+    padding-bottom: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+}
+
+.kolmo-offerings-title {
+  font-family: var(--font-kolmo-display), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--kolmo-cream);
+}
+
+.kolmo-offerings-text {
+  margin-top: 0.65rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-social-lead {
+  background: #1a1d21;
+}
+
+.kolmo-social-icon {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(242, 236, 227, 0.1);
+  background: linear-gradient(
+    160deg,
+    rgba(242, 236, 227, 0.06),
+    rgba(242, 236, 227, 0.02)
+  );
+  color: var(--kolmo-cream);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+  animation: kolmo-social-float 5s ease-in-out infinite;
+}
+
+.kolmo-social-icon--instagram {
+  animation-delay: 0.6s;
+}
+
+.kolmo-social-icon-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(
+    circle at 50% 30%,
+    rgba(200, 162, 122, 0.22),
+    transparent 65%
+  );
+}
+
+.kolmo-social-icon-svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  transition: transform 0.35s ease;
+}
+
+.kolmo-social-icon-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kolmo-muted);
+  transition: color 0.35s ease;
+}
+
+.kolmo-social-icon:hover,
+.kolmo-social-icon:focus-visible {
+  transform: translateY(-6px) scale(1.04);
+  outline: none;
+}
+
+.kolmo-social-icon:hover .kolmo-social-icon-ring,
+.kolmo-social-icon:focus-visible .kolmo-social-icon-ring {
+  opacity: 1;
+}
+
+.kolmo-social-icon:hover .kolmo-social-icon-svg,
+.kolmo-social-icon:focus-visible .kolmo-social-icon-svg {
+  transform: scale(1.08);
+}
+
+.kolmo-social-icon--facebook:hover,
+.kolmo-social-icon--facebook:focus-visible {
+  border-color: rgba(24, 119, 242, 0.55);
+  color: #6ba3f7;
+  box-shadow: 0 12px 40px rgba(24, 119, 242, 0.18);
+}
+
+.kolmo-social-icon--facebook:hover .kolmo-social-icon-label,
+.kolmo-social-icon--facebook:focus-visible .kolmo-social-icon-label {
+  color: #6ba3f7;
+}
+
+.kolmo-social-icon--instagram:hover,
+.kolmo-social-icon--instagram:focus-visible {
+  border-color: rgba(225, 48, 108, 0.5);
+  color: #f472b6;
+  box-shadow: 0 12px 40px rgba(225, 48, 108, 0.16);
+}
+
+.kolmo-social-icon--instagram:hover .kolmo-social-icon-label,
+.kolmo-social-icon--instagram:focus-visible .kolmo-social-icon-label {
+  color: #f472b6;
+}
+
+@keyframes kolmo-social-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kolmo-social-icon {
+    animation: none;
+  }
+}
+
+.kolmo-card {
+  background: linear-gradient(
+    160deg,
+    rgba(242, 236, 227, 0.045),
+    rgba(242, 236, 227, 0.015)
+  );
+  border: 1px solid rgba(242, 236, 227, 0.08);
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.kolmo-card:hover {
+  border-color: rgba(200, 162, 122, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(200, 162, 122, 0.08),
+    rgba(242, 236, 227, 0.02)
+  );
+  transform: translateY(-4px);
+}
+
+.kolmo-pill {
+  border-radius: 999px;
+}
+
+.kolmo-btn-cream {
+  background: var(--kolmo-cream);
+  color: #131619;
+  transition: background 0.25s ease;
+}
+
+.kolmo-btn-cream:hover {
+  background: #fff;
+}
+
+.kolmo-btn-ghost {
+  border: 1px solid rgba(242, 236, 227, 0.2);
+  color: var(--kolmo-cream);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.kolmo-btn-ghost:hover {
+  border-color: var(--kolmo-crema);
+  background: rgba(200, 162, 122, 0.08);
+}
+
+.kolmo-btn-ghost:focus-visible {
+  outline: 2px solid var(--kolmo-lake);
+  outline-offset: 2px;
+}
+
+.kolmo-menu-row {
+  border-bottom: 1px solid rgba(242, 236, 227, 0.07);
+}
+
+.kolmo-menu-row:last-child {
+  border-bottom: none;
+}
+
+.kolmo-vertical-accent {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  color: rgba(242, 236, 227, 0.05);
+  user-select: none;
+}
+
+.kolmo-corner {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-color: rgba(200, 162, 122, 0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.kolmo-corner-tl {
+  top: 1.5rem;
+  left: 1.5rem;
+  border-width: 2px 0 0 2px;
+}
+
+.kolmo-corner-br {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border-width: 0 2px 2px 0;
+}
+
+.kolmo-panel-lake {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(127, 168, 181, 0.28),
+      rgba(19, 22, 25, 0.92) 70%
+    ),
+    var(--kolmo-surface);
+}
+
+/* ============ FORMULÁŘ ============ */
+.kolmo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.kolmo-form-row {
+  display: grid;
+  gap: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .kolmo-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.kolmo-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form input[type="text"],
+.kolmo-form select,
+.kolmo-form textarea {
+  font-family: inherit;
+  /* 16px minimum stops iOS Safari zooming in on focus. */
+  font-size: max(0.98rem, 16px);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--kolmo-cream);
+  background: rgba(242, 236, 227, 0.04);
+  border: 1px solid rgba(242, 236, 227, 0.14);
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  resize: vertical;
+  width: 100%;
+  min-width: 0;
+}
+
+.kolmo-form [aria-invalid="true"] {
+  border-color: #e8938a;
+  background: rgba(232, 147, 138, 0.08);
+}
+
+.kolmo-form [data-form-error] {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #e8938a;
+}
+
+.kolmo-form[data-form-done] input,
+.kolmo-form[data-form-done] select,
+.kolmo-form[data-form-done] textarea,
+.kolmo-form[data-form-done] button {
+  opacity: 0.55;
+}
+
+.kolmo-form select option {
+  color: #131619;
+}
+
+.kolmo-form input::placeholder,
+.kolmo-form textarea::placeholder {
+  color: rgba(154, 148, 140, 0.7);
+}
+
+.kolmo-form input:focus-visible,
+.kolmo-form select:focus-visible,
+.kolmo-form textarea:focus-visible {
+  outline: 2px solid var(--kolmo-crema);
+  outline-offset: 1px;
+  border-color: var(--kolmo-crema);
+}
+
+.kolmo-consent {
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 0.65rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1.6;
+}
+
+.kolmo-consent input[type="checkbox"] {
+  margin-top: 0.15rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--kolmo-crema);
+  flex: none;
+}
+
+.kolmo-consent a {
+  color: var(--kolmo-crema);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.kolmo-turnstile {
+  margin-top: 0.25rem;
+  min-height: 65px;
+}
+
+.kolmo-form-submit {
+  align-self: flex-start;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  /* Comfortable thumb target on phones. */
+  min-height: 48px;
+  padding: 0.85rem 1.75rem;
+}
+
+.kolmo-form-submit[aria-busy="true"],
+.kolmo-form-submit:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  .kolmo-form-submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* Status paragraph — the engine sets data-state="info|ok|error". */
+.kolmo-form-status {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  border-radius: 10px;
+  padding: 0.7rem 0.9rem;
+}
+
+.kolmo-form-status[hidden] {
+  display: none;
+}
+
+.kolmo-form-status[data-state="info"] {
+  background: rgba(242, 236, 227, 0.06);
+  color: var(--kolmo-muted);
+}
+
+.kolmo-form-status[data-state="ok"] {
+  background: rgba(200, 162, 122, 0.14);
+  color: var(--kolmo-crema);
+}
+
+.kolmo-form-status[data-state="error"] {
+  background: rgba(232, 147, 138, 0.12);
+  color: #e8938a;
+}
+
+.kolmo-form-note {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--kolmo-muted);
+}
+
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kolmo-cream);
+  white-space: nowrap;
+}
+
+.open-status-kolmo {
+  color: inherit;
+}
+
+.open-status.is-open {
+  color: #4ade80;
+}
+
+.open-status.is-closed {
+  color: #f87171;
+}
+
+.open-status-detail {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+  color: var(--kolmo-muted);
+}
+
+.open-status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  flex: none;
+}
+
+.open-status-dot.is-open {
+  background: #4ade80;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.45);
+}
+
+.open-status-dot.is-closed {
+  background: #f87171;
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.45);
+}
+
+.kolmo-bar-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 236, 227, 0.14);
+  color: var(--kolmo-muted);
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.kolmo-bar-social:hover,
+.kolmo-bar-social:focus-visible {
+  color: var(--kolmo-cream);
+  border-color: rgba(200, 162, 122, 0.45);
+  background: rgba(242, 236, 227, 0.05);
+  outline: none;
+}
+
+.kolmo-bar-social-svg {
+  width: 1rem;
+  height: 1rem;
+  display: block;
+}
+
+.kolmo-hours-bar-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.75rem;
+}
+
+@keyframes kolmo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kolmo-rise {
+  animation: kolmo-rise 0.8s ease-out both;
+}
+
+.kolmo-rise-delay {
+  animation: kolmo-rise 0.8s ease-out 0.15s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kolmo-logo-letter {
+    animation: none;
+    opacity: 1;
+  }
+
+  .kolmo-rise,
+  .kolmo-rise-delay {
+    animation: none;
+  }
+
+  .kolmo-card:hover {
+    transform: none;
+  }
+}
+
+
+/* Logo letter stagger — no style="" in HTML */
+.kolmo-logo-d0 { animation-delay: 0ms; }
+.kolmo-logo-d1 { animation-delay: 125ms; }
+.kolmo-logo-d2 { animation-delay: 250ms; }
+.kolmo-logo-d3 { animation-delay: 375ms; }
+.kolmo-logo-d3b { animation-delay: 440ms; }
+.kolmo-logo-d4 { animation-delay: 500ms; }
+.kolmo-logo-d5 { animation-delay: 625ms; }

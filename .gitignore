@@ -4,43 +4,19 @@ api/data/*
 !api/data/.gitkeep
 !api/data/.htaccess
 build/config.php
-.env
-.env*
-.dev.vars
 
-# local-only (not on GitHub) — same pattern as otevru-cz
+# local-only (not on GitHub)
 build/
 ftp/
 export/
-node_modules/
-package.json
 DEPLOY.md
 RULEBOOK.md
 RULEBOOK-STATIC.md
 HANDOVER.md
-
-# build artifacts (CSS is inlined into HTML)
-css/
-js/
-styles.css
-fonts.css
-
-# Next.js / Workers leftovers (not part of static site)
-.github/
-.nvmrc
-.deploy-trigger
-audit-pages.txt
-docs/
+package.json
+package-lock.json
+node_modules/
 
 .DS_Store
 Thumbs.db
 *.pem
-.next/
-out/
-dist/
-.ftp-staging/
-.open-next/
-.wrangler/
-.form-data/
-terminals/
-*.tsbuildinfo
