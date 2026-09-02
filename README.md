@@ -1,34 +1,28 @@
-# Kolmo kafe
+# KOLMO kafe
 
-Website for **KOLMO kafe** — bistro a kavárna u přehrady Olešná (Resort Olešná, Frýdek-Místek).
+Plain static HTML — same layout as the original Next.js site.
 
-**Local path:** `/workspace/kolmokafe/` · **GitHub (private):** [radimski/kolmo-kafe](https://github.com/radimski/kolmo-kafe) · **Preview:** [kolmo-kafe.radim-pajurek.workers.dev](https://kolmo-kafe.radim-pajurek.workers.dev/) · **Ship:** `git push origin main` → Cloudflare auto-deploy
+**On GitHub (private):** [radimski/kolmo-kafe](https://github.com/radimski/kolmo-kafe) — `site/` with `index.html`, `main.js`, `form.js`, `api/`, `fonts/`, …
 
-See [../SITES.md](../SITES.md) for all paths and URLs across sites.
+**Local only (gitignored):** `build/`, `ftp/`, `DEPLOY.md`, `RULEBOOK.md`
 
-## Run locally
+## Preview
 
 ```bash
-npm install
-npm run dev      # http://localhost:43126
 npm run build
-npm run start
+npm run serve
+# → http://localhost:4321
 ```
 
-## Structure
+## FTP
 
-```
-src/              Next.js app (App Router)
-public/           Logo and static assets
-packages/
-  legal-cz/       Czech GDPR, cookies, operator content
-  form-engine/    Contact form handler + browser client
-docs/             Client brief and legal checklist
+```bash
+npm run build
+npm run export
 ```
 
-## Before launch
+Upload **contents** of `ftp/` to web root. On server: copy `api/config.example.php` → `api/config.php` and fill secrets.
 
-- Operator data is in `src/config/operator.ts` (KOLMO motion s.r.o., IČO 08011150)
-- Set `FORM_SECRET`, Turnstile keys (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`), and SMTP vars for production forms
-- Add hero photography (terrace, lake, food)
-- Point `kolmokafe.cz` at this deployment
+## Cloudflare Pages
+
+Framework: None · Build: empty · Output directory: `site`
