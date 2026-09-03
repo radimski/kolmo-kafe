@@ -428,7 +428,7 @@ ul,ol{list-style:none;margin:0;padding:0}
   }
 
   .kolmo-offerings-item:not(:first-child) {
-    border-left: 1px solid rgba(242, 236, 227, 0.08);
+    border-left: 1px solid rgba(200, 162, 122, 0.35);
     padding-left: 2rem;
   }
 
@@ -439,7 +439,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 
 @media (max-width: 767px) {
   .kolmo-offerings-item:not(:last-child) {
-    border-bottom: 1px solid rgba(242, 236, 227, 0.08);
+    border-bottom: 1px solid rgba(200, 162, 122, 0.35);
     padding-bottom: 1.75rem;
     margin-bottom: 1.75rem;
   }
