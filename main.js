@@ -233,7 +233,7 @@
   })();
 
   /* Slow ambient grid drift — random cardinal directions, paused off-screen / reduced-motion.
-   * Easter egg: every 100th direction change, the grid flees off-screen and vanishes, then returns. */
+   * Easter egg: every 100th direction change, the grid slides behind a corner, then re-enters. */
   (function gridDrift() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var grids = $$('.kolmo-grid-lines');
@@ -248,9 +248,9 @@
     var dir = dirs[(Math.random() * dirs.length) | 0];
     var x = 0;
     var y = 0;
-    var opacity = 1;
     var speed = 6;
-    var fleeSpeed = 110;
+    var fleeSpeed = 160;
+    var enterSpeed = 120;
     var eggEvery = /(?:\?|&)egg(?:&|=|$)/.test(location.search) ? 2 : 100;
     var moves = eggEvery === 2 ? eggEvery - 1 : 0;
     var eggPreview = eggEvery === 2;
@@ -258,8 +258,18 @@
     var last = 0;
     var nextChange = 0;
     var goneUntil = 0;
+    var fleeAxis = 'x';
     var running = true;
     var raf = 0;
+
+    function exitDistance() {
+      return Math.max(window.innerWidth, window.innerHeight, 900) * 1.35;
+    }
+
+    function wrapDrift() {
+      if (x > 288 || x < -288) x = ((x % 288) + 288) % 288;
+      if (y > 288 || y < -288) y = ((y % 288) + 288) % 288;
+    }
 
     function pickDir(countMove) {
       var next;
@@ -269,17 +279,18 @@
       dir = next;
       if (countMove === false) return;
       moves += 1;
-      if (moves % eggEvery === 0) mode = 'flee';
+      if (moves % eggEvery === 0) {
+        fleeAxis = dir.x !== 0 ? 'x' : 'y';
+        mode = 'flee';
+      }
     }
 
     function paint() {
       var sx = x.toFixed(2) + 'px';
       var sy = y.toFixed(2) + 'px';
-      var op = String(Math.max(0, Math.min(1, opacity)));
       for (var i = 0; i < grids.length; i++) {
         grids[i].style.setProperty('--grid-x', sx);
         grids[i].style.setProperty('--grid-y', sy);
-        grids[i].style.setProperty('--grid-opacity', op);
       }
     }
 
@@ -293,31 +304,39 @@
       }
       var dt = Math.min(0.05, (now - last) / 1000);
       last = now;
+      var exitAt = exitDistance();
 
       if (mode === 'flee') {
         x += dir.x * fleeSpeed * dt;
         y += dir.y * fleeSpeed * dt;
-        opacity = Math.max(0, opacity - dt * 0.55);
-        if (opacity <= 0 && Math.abs(x) + Math.abs(y) > 520) {
+        if (Math.abs(fleeAxis === 'x' ? x : y) >= exitAt) {
           mode = 'gone';
-          goneUntil = now + 1800 + Math.random() * 2200;
+          goneUntil = now + 1400 + Math.random() * 1800;
         }
       } else if (mode === 'gone') {
         if (now >= goneUntil) {
-          x = 0;
-          y = 0;
-          opacity = 0;
-          mode = 'return';
-          pickDir(false);
+          /* Re-enter from the opposite edge — still fully opaque, just peeking back. */
+          if (fleeAxis === 'x') {
+            x = dir.x > 0 ? -exitAt : exitAt;
+            y = ((y % 288) + 288) % 288;
+          } else {
+            y = dir.y > 0 ? -exitAt : exitAt;
+            x = ((x % 288) + 288) % 288;
+          }
+          mode = 'enter';
           nextChange = now + 7000 + Math.random() * 9000;
         }
-      } else if (mode === 'return') {
-        opacity = Math.min(1, opacity + dt * 0.45);
-        x += dir.x * speed * dt;
-        y += dir.y * speed * dt;
-        if (x > 288 || x < -288) x = ((x % 288) + 288) % 288;
-        if (y > 288 || y < -288) y = ((y % 288) + 288) % 288;
-        if (opacity >= 1) mode = 'drift';
+      } else if (mode === 'enter') {
+        x += dir.x * enterSpeed * dt;
+        y += dir.y * enterSpeed * dt;
+        var onStage =
+          fleeAxis === 'x'
+            ? (dir.x > 0 ? x >= 0 : x <= 0)
+            : (dir.y > 0 ? y >= 0 : y <= 0);
+        if (onStage) {
+          wrapDrift();
+          mode = 'drift';
+        }
       } else {
         if (now >= nextChange) {
           pickDir();
@@ -326,8 +345,7 @@
         if (mode === 'drift') {
           x += dir.x * speed * dt;
           y += dir.y * speed * dt;
-          if (x > 288 || x < -288) x = ((x % 288) + 288) % 288;
-          if (y > 288 || y < -288) y = ((y % 288) + 288) % 288;
+          wrapDrift();
         }
       }
 
