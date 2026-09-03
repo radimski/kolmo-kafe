@@ -146,7 +146,7 @@ ul,ol{list-style:none;margin:0;padding:0}
   gap: 2.5rem;
   align-items: start;
   /* Include horizontal padding here — a later shorthand must not zero out px-6. */
-  padding: 2.75rem 1.85rem 3.5rem;
+  padding: 2.75rem 2rem 3.5rem;
 }
 
 @media (min-width: 640px) {
@@ -174,6 +174,64 @@ ul,ol{list-style:none;margin:0;padding:0}
 
 .kolmo-hours-bar {
   border-left: 3px solid var(--kolmo-lake);
+}
+
+.kolmo-hours-bar-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem 0.65rem;
+  overflow: hidden;
+}
+
+.kolmo-hours-bar-times {
+  text-align: center;
+}
+
+.kolmo-hours-bar-end {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .kolmo-hours-bar-times {
+    text-align: left;
+  }
+
+  .kolmo-hours-bar-times::before {
+    content: "·";
+    margin-right: 0.55rem;
+    color: rgba(242, 236, 227, 0.2);
+  }
+}
+
+@media (max-width: 639px) {
+  .kolmo-hours-bar {
+    border-left-width: 0;
+  }
+
+  .kolmo-hours-bar-inner {
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .open-status-kolmo {
+    justify-self: start;
+  }
+
+  .kolmo-hours-bar-times {
+    justify-self: center;
+    text-align: center;
+  }
+
+  .kolmo-hours-bar-end {
+    justify-self: end;
+  }
+
+  .kolmo-hours-bar-socials {
+    margin-left: 0;
+  }
 }
 
 .kolmo-hero-panel {
