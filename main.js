@@ -232,6 +232,79 @@
     });
   })();
 
+  /* Slow ambient grid drift — random cardinal directions, paused off-screen / reduced-motion. */
+  (function gridDrift() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var grids = $$('.kolmo-grid-lines');
+    if (!grids.length) return;
+
+    var dirs = [
+      { x: 1, y: 0 },
+      { x: -1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 0, y: -1 },
+    ];
+    var dir = dirs[(Math.random() * dirs.length) | 0];
+    var x = 0;
+    var y = 0;
+    var speed = 6;
+    var last = 0;
+    var nextChange = 0;
+    var running = true;
+    var raf = 0;
+
+    function pickDir() {
+      var next;
+      do {
+        next = dirs[(Math.random() * dirs.length) | 0];
+      } while (next.x === dir.x && next.y === dir.y);
+      dir = next;
+    }
+
+    function paint() {
+      var sx = x.toFixed(2) + 'px';
+      var sy = y.toFixed(2) + 'px';
+      for (var i = 0; i < grids.length; i++) {
+        grids[i].style.setProperty('--grid-x', sx);
+        grids[i].style.setProperty('--grid-y', sy);
+      }
+    }
+
+    function tick(now) {
+      if (!running) return;
+      if (!last) {
+        last = now;
+        nextChange = now + 7000 + Math.random() * 9000;
+      }
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      if (now >= nextChange) {
+        pickDir();
+        nextChange = now + 6000 + Math.random() * 10000;
+      }
+      x += dir.x * speed * dt;
+      y += dir.y * speed * dt;
+      if (x > 288 || x < -288) x = ((x % 288) + 288) % 288;
+      if (y > 288 || y < -288) y = ((y % 288) + 288) % 288;
+      paint();
+      raf = requestAnimationFrame(tick);
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        running = false;
+        if (raf) cancelAnimationFrame(raf);
+        raf = 0;
+        last = 0;
+      } else if (!running) {
+        running = true;
+        raf = requestAnimationFrame(tick);
+      }
+    });
+
+    raf = requestAnimationFrame(tick);
+  })();
+
   paintOpen();
   setInterval(paintOpen, 60000);
 })();
