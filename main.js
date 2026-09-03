@@ -368,6 +368,52 @@
     raf = requestAnimationFrame(tick);
   })();
 
+  /* Map app picker — Google / Apple / Waze / Mapy.com */
+  (function mapPicker() {
+    var root = $('[data-map-picker]');
+    if (!root) return;
+    var panel = $('.kolmo-map-picker-panel', root);
+    var openers = $$('[data-map-open]');
+    if (!openers.length) return;
+    var lastFocus = null;
+
+    function openPicker(e) {
+      if (e) e.preventDefault();
+      lastFocus = document.activeElement;
+      root.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      if (panel) panel.focus();
+    }
+
+    function closePicker() {
+      if (root.hidden) return;
+      root.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    openers.forEach(function (el) {
+      el.addEventListener('click', openPicker);
+    });
+
+    $$('[data-map-picker-close]', root).forEach(function (el) {
+      el.addEventListener('click', closePicker);
+    });
+
+    $$('[data-map-app]', root).forEach(function (el) {
+      el.addEventListener('click', function () {
+        closePicker();
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !root.hidden) {
+        e.preventDefault();
+        closePicker();
+      }
+    });
+  })();
+
   paintOpen();
   setInterval(paintOpen, 60000);
 })();

@@ -31,8 +31,8 @@
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/spacegrotesk-400-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/lora-500-700-latin.woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=11">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="fonts.css?v=12">
+<link rel="stylesheet" href="styles.css?v=12">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","@id":"https://www.kolmokafe.cz/#business","name":"KOLMO kafe","url":"https://www.kolmokafe.cz/","telephone":"+420 725 311 139","email":"info@kolmokafe.cz","description":"Bistro na cyklostezce u přehrady Olešná","address":{"@type":"PostalAddress","streetAddress":"Nad Přehradou 2483","postalCode":"738 01","addressLocality":"Frýdek-Místek","addressCountry":"CZ"},"sameAs":["https://www.facebook.com/kolmokafe","https://www.instagram.com/kolmokafe"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"14:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Tuesday","opens":"14:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"14:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"14:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"14:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"20:00"}],"geo":{"@type":"GeoCoordinates","latitude":49.66201,"longitude":18.3064}}</script>
 </head>
 <body class="kolmo-root flex min-h-full flex-col antialiased" data-ga="" data-form-endpoint="/api/form.php" data-lang="cs">
@@ -157,7 +157,7 @@
       <p class="mt-3 text-sm text-[#9a948c]">Pondělí–pátek 14:00–20:00, sobota–neděle 10:00–20:00.</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <a href="tel:+420725311139" class="kolmo-pill kolmo-btn-ghost inline-flex items-center justify-center px-6 py-3 text-sm font-medium">+420 725 311 139</a>
-        <a href="https://maps.google.com/?q=49.66201,18.30640" target="_blank" rel="noopener noreferrer" class="kolmo-pill kolmo-btn-cream inline-flex items-center justify-center px-6 py-3 text-sm font-semibold">Navigovat</a>
+        <a href="https://maps.google.com/?q=49.66201,18.30640" data-map-open class="kolmo-pill kolmo-btn-cream inline-flex items-center justify-center px-6 py-3 text-sm font-semibold">Navigovat</a>
       </div>
     </div>
     <figure class="kolmo-map" aria-label="Mapa — KOLMO kafe">
@@ -167,7 +167,7 @@
   <figcaption class="kolmo-map-caption">
     <span class="kolmo-map-caption-term">Nad Přehradou 2483</span>
     <span class="kolmo-map-caption-note">Resort Olešná · Frýdek-Místek, na cyklostezce u přehrady.</span>
-    <a class="kolmo-map-open" href="https://maps.google.com/?q=49.66201,18.30640" target="_blank" rel="noopener noreferrer">Otevřít v mapách →</a>
+    <a class="kolmo-map-open" href="https://maps.google.com/?q=49.66201,18.30640" data-map-open>Otevřít v mapách →</a>
   </figcaption>
 </figure>
   </div>
@@ -221,7 +221,18 @@
     </div>
   </section>
 </div>
+<div class="kolmo-map-picker" data-map-picker hidden>
+  <button type="button" class="kolmo-map-picker-backdrop" data-map-picker-close tabindex="-1" aria-label="Zavřít"></button>
+  <div class="kolmo-map-picker-panel" role="dialog" aria-modal="true" aria-labelledby="map-picker-title" tabindex="-1">
+    <h2 id="map-picker-title" class="kolmo-map-picker-title">Otevřít v mapách</h2>
+    <p class="kolmo-map-picker-lead">Vyberte aplikaci navigace.</p>
+    <ul class="kolmo-map-picker-list">
+      <li><a class="kolmo-map-picker-option" href="https://www.google.com/maps/dir/?api=1&amp;destination=49.66201,18.30640" target="_blank" rel="noopener noreferrer" data-map-app="google">Google Maps</a></li><li><a class="kolmo-map-picker-option" href="https://maps.apple.com/?daddr=49.66201,18.30640&amp;q=KOLMO%20kafe" target="_blank" rel="noopener noreferrer" data-map-app="apple">Apple Maps</a></li><li><a class="kolmo-map-picker-option" href="https://waze.com/ul?ll=49.66201%2C18.30640&amp;navigate=yes" target="_blank" rel="noopener noreferrer" data-map-app="waze">Waze</a></li><li><a class="kolmo-map-picker-option" href="https://mapy.cz/zakladni?x=18.30640&amp;y=49.66201&amp;z=17" target="_blank" rel="noopener noreferrer" data-map-app="mapy">Mapy.com</a></li>
+    </ul>
+    <button type="button" class="kolmo-map-picker-cancel" data-map-picker-close>Zavřít</button>
+  </div>
+</div>
 <a href="tel:+420725311139" class="kolmo-pill kolmo-btn-cream fixed bottom-5 right-5 z-40 px-5 py-3 text-sm font-semibold shadow-lg sm:hidden">Zavolat</a>
-<script src="main.js?v=11" defer></script>
+<script src="main.js?v=12" defer></script>
 </body>
 </html>

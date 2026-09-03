@@ -31,8 +31,8 @@
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/spacegrotesk-400-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/lora-500-700-latin.woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=11">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="fonts.css?v=12">
+<link rel="stylesheet" href="styles.css?v=12">
 
 </head>
 <body class="kolmo-root flex min-h-full flex-col antialiased" data-ga="" data-form-endpoint="/api/form.php" data-lang="cs">
@@ -114,7 +114,18 @@
     </div>
   </section>
 </div>
+<div class="kolmo-map-picker" data-map-picker hidden>
+  <button type="button" class="kolmo-map-picker-backdrop" data-map-picker-close tabindex="-1" aria-label="Zavřít"></button>
+  <div class="kolmo-map-picker-panel" role="dialog" aria-modal="true" aria-labelledby="map-picker-title" tabindex="-1">
+    <h2 id="map-picker-title" class="kolmo-map-picker-title">Otevřít v mapách</h2>
+    <p class="kolmo-map-picker-lead">Vyberte aplikaci navigace.</p>
+    <ul class="kolmo-map-picker-list">
+      <li><a class="kolmo-map-picker-option" href="https://www.google.com/maps/dir/?api=1&amp;destination=49.66201,18.30640" target="_blank" rel="noopener noreferrer" data-map-app="google">Google Maps</a></li><li><a class="kolmo-map-picker-option" href="https://maps.apple.com/?daddr=49.66201,18.30640&amp;q=KOLMO%20kafe" target="_blank" rel="noopener noreferrer" data-map-app="apple">Apple Maps</a></li><li><a class="kolmo-map-picker-option" href="https://waze.com/ul?ll=49.66201%2C18.30640&amp;navigate=yes" target="_blank" rel="noopener noreferrer" data-map-app="waze">Waze</a></li><li><a class="kolmo-map-picker-option" href="https://mapy.cz/zakladni?x=18.30640&amp;y=49.66201&amp;z=17" target="_blank" rel="noopener noreferrer" data-map-app="mapy">Mapy.com</a></li>
+    </ul>
+    <button type="button" class="kolmo-map-picker-cancel" data-map-picker-close>Zavřít</button>
+  </div>
+</div>
 <a href="tel:+420725311139" class="kolmo-pill kolmo-btn-cream fixed bottom-5 right-5 z-40 px-5 py-3 text-sm font-semibold shadow-lg sm:hidden">Zavolat</a>
-<script src="main.js?v=11" defer></script>
+<script src="main.js?v=12" defer></script>
 </body>
 </html>

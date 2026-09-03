@@ -444,6 +444,123 @@ ul,ol{list-style:none;margin:0;padding:0}
   color: var(--kolmo-cream);
 }
 
+.kolmo-map-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .kolmo-map-picker {
+    align-items: center;
+  }
+}
+
+.kolmo-map-picker[hidden] {
+  display: none;
+}
+
+.kolmo-map-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: rgba(19, 22, 25, 0.72);
+}
+
+.kolmo-map-picker-panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 22rem;
+  padding: 1.35rem 1.35rem 1.15rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(200, 162, 122, 0.3);
+  background: #131619;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+}
+
+.kolmo-map-picker-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--kolmo-cream);
+}
+
+.kolmo-map-picker-lead {
+  margin: 0.35rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--kolmo-muted);
+}
+
+.kolmo-map-picker-list {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.kolmo-map-picker-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(242, 236, 227, 0.1);
+  background: rgba(242, 236, 227, 0.04);
+  color: var(--kolmo-cream);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.kolmo-map-picker-option::after {
+  content: "→";
+  color: var(--kolmo-crema);
+  font-weight: 500;
+}
+
+.kolmo-map-picker-option:hover,
+.kolmo-map-picker-option:focus-visible {
+  border-color: rgba(200, 162, 122, 0.45);
+  background: rgba(200, 162, 122, 0.1);
+  color: var(--kolmo-cream);
+  outline: none;
+}
+
+.kolmo-map-picker-cancel {
+  display: block;
+  width: 100%;
+  margin-top: 0.85rem;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--kolmo-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.kolmo-map-picker-cancel:hover,
+.kolmo-map-picker-cancel:focus-visible {
+  color: var(--kolmo-cream);
+  outline: none;
+}
+
 .kolmo-map-compact .kolmo-map-frame {
   border-radius: 1rem;
 }
