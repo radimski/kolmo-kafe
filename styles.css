@@ -192,10 +192,28 @@ ul,ol{list-style:none;margin:0;padding:0}
 }
 
 .kolmo-grid-lines {
+  position: relative;
   background-image:
-    linear-gradient(rgba(242, 236, 227, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(242, 236, 227, 0.035) 1px, transparent 1px);
-  background-size: 88px 88px;
+    linear-gradient(rgba(242, 236, 227, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 236, 227, 0.045) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: center top;
+}
+
+.kolmo-grid-lines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 70% at 50% 20%, transparent 35%, rgba(19, 22, 25, 0.55) 100%),
+    linear-gradient(180deg, rgba(19, 22, 25, 0.15), transparent 18%, transparent 78%, rgba(19, 22, 25, 0.35));
+  z-index: 0;
+}
+
+.kolmo-grid-lines > * {
+  position: relative;
+  z-index: 1;
 }
 
 .kolmo-surface {
