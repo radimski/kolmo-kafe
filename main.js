@@ -251,7 +251,9 @@
     var opacity = 1;
     var speed = 6;
     var fleeSpeed = 110;
-    var moves = 0;
+    var eggEvery = /(?:\?|&)egg(?:&|=|$)/.test(location.search) ? 2 : 100;
+    var moves = eggEvery === 2 ? eggEvery - 1 : 0;
+    var eggPreview = eggEvery === 2;
     var mode = 'drift';
     var last = 0;
     var nextChange = 0;
@@ -267,7 +269,7 @@
       dir = next;
       if (countMove === false) return;
       moves += 1;
-      if (moves % 100 === 0) mode = 'flee';
+      if (moves % eggEvery === 0) mode = 'flee';
     }
 
     function paint() {
@@ -285,7 +287,9 @@
       if (!running) return;
       if (!last) {
         last = now;
-        nextChange = now + 7000 + Math.random() * 9000;
+        nextChange = eggPreview
+          ? now + 2500
+          : now + 7000 + Math.random() * 9000;
       }
       var dt = Math.min(0.05, (now - last) / 1000);
       last = now;
