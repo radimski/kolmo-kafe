@@ -15,7 +15,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 .pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}
 .absolute{position:absolute}.relative{position:relative}.fixed{position:fixed}.sticky{position:sticky}
 .inset-0{inset:0}.inset-x-0{inset-inline:0}.top-0{top:0}.bottom-0{bottom:0}
-.right-5{right:1.25rem}.bottom-5{bottom:1.25rem}.right-8{right:2rem}.top-12{top:3rem}.top-20{top:5rem}
+.right-5{right:1.25rem}.bottom-5{bottom:1.25rem}.right-8{right:2rem}.top-20{top:5rem}
 .z-40{z-index:40}.z-50{z-index:50}
 .mx-auto{margin-inline:auto}.ml-auto{margin-left:auto}
 .mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-3{margin-top:.75rem}.mt-4{margin-top:1rem}
@@ -58,7 +58,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 .text-xs{font-size:.75rem;line-height:1rem}.text-sm{font-size:.875rem;line-height:1.25rem}
 .text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}
 .text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}
-.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-6xl{font-size:3.75rem;line-height:1}.text-7xl{font-size:4.5rem;line-height:1}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-7xl{font-size:4.5rem;line-height:1}
 .font-medium{font-weight:500}.font-semibold{font-weight:600}.font-bold{font-weight:700}
 .uppercase{text-transform:uppercase}.tracking-tight{letter-spacing:-.025em}.tracking-wide{letter-spacing:.025em}
 .tracking-\[0\.15em\]{letter-spacing:.15em}.tracking-\[0\.2em\]{letter-spacing:.2em}
@@ -99,7 +99,6 @@ ul,ol{list-style:none;margin:0;padding:0}
   .lg\:block{display:block}.lg\:flex-row{flex-direction:row}.lg\:items-center{align-items:center}
   .lg\:justify-between{justify-content:space-between}.lg\:text-left{text-align:left}
   .lg\:gap-16{gap:4rem}.lg\:py-16{padding-block:4rem}.lg\:pt-24{padding-top:6rem}
-  .lg\:text-6xl{font-size:3.75rem;line-height:1}
   .lg\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lg\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
   .lg\:grid-cols-\[1\.05fr_0\.95fr\]{grid-template-columns:1.05fr .95fr}
@@ -137,21 +136,6 @@ ul,ol{list-style:none;margin:0;padding:0}
     var(--kolmo-bg);
 }
 
-.kolmo-hero-inner {
-  display: grid;
-  gap: 1.25rem;
-  align-items: start;
-  padding: 1.25rem 0 2rem;
-}
-
-@media (min-width: 1024px) {
-  .kolmo-hero-inner {
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 1.75rem;
-    padding: 1.5rem 0 2.25rem;
-  }
-}
-
 .kolmo-display {
   font-family: var(--font-kolmo-display), Georgia, "Times New Roman", serif;
   font-weight: 600;
@@ -165,13 +149,6 @@ ul,ol{list-style:none;margin:0;padding:0}
 .kolmo-hero-panel {
   position: relative;
   overflow: hidden;
-  padding: 1.1rem 1.25rem 1.25rem;
-}
-
-@media (min-width: 640px) {
-  .kolmo-hero-panel {
-    padding: 1.25rem 1.5rem 1.5rem;
-  }
 }
 
 .kolmo-hero-panel::before {
@@ -268,13 +245,8 @@ ul,ol{list-style:none;margin:0;padding:0}
   overflow: visible;
 }
 
-.kolmo-logo-wrap {
-  width: 100%;
-  max-width: 11.5rem;
-}
-
 .kolmo-logo-svg-hero {
-  width: min(100%, 11.5rem);
+  width: min(100%, 15rem);
 }
 
 @keyframes kolmo-letter-fall {
@@ -348,7 +320,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 }
 
 .kolmo-dict {
-  margin: 0 0 0.65rem;
+  margin: 0 0 1.25rem;
   width: 100%;
   max-width: 22rem;
   padding: 0;
