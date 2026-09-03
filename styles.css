@@ -192,28 +192,13 @@ ul,ol{list-style:none;margin:0;padding:0}
 }
 
 .kolmo-grid-lines {
-  position: relative;
+  /* Base cream grid + a larger tile with sparse gold accents (looks irregular when tiled). */
   background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='288' height='288' viewBox='0 0 288 288'%3E%3Cg fill='none' stroke='%23c8a27a' stroke-width='1' stroke-opacity='0.38'%3E%3Cpath d='M72 24v96'/%3E%3Cpath d='M168 144h72'/%3E%3Cpath d='M0 216h56'/%3E%3Cpath d='M216 0v40'/%3E%3Cpath d='M144 72h48'/%3E%3Cpath d='M240 192v64'/%3E%3C/g%3E%3Cg fill='%23c8a27a' fill-opacity='0.42'%3E%3Ccircle cx='72' cy='144' r='1.6'/%3E%3Ccircle cx='216' cy='72' r='1.4'/%3E%3Ccircle cx='144' cy='216' r='1.5'/%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(rgba(242, 236, 227, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(242, 236, 227, 0.045) 1px, transparent 1px);
-  background-size: 72px 72px;
-  background-position: center top;
-}
-
-.kolmo-grid-lines::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 85% 70% at 50% 20%, transparent 35%, rgba(19, 22, 25, 0.55) 100%),
-    linear-gradient(180deg, rgba(19, 22, 25, 0.15), transparent 18%, transparent 78%, rgba(19, 22, 25, 0.35));
-  z-index: 0;
-}
-
-.kolmo-grid-lines > * {
-  position: relative;
-  z-index: 1;
+  background-size: 288px 288px, 72px 72px, 72px 72px;
+  background-position: 0 0, 0 0, 0 0;
 }
 
 .kolmo-surface {
