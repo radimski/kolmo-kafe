@@ -408,23 +408,6 @@ ul,ol{list-style:none;margin:0;padding:0}
   background: #0f1214;
 }
 
-.kolmo-map-wink {
-  position: absolute;
-  right: 0.85rem;
-  bottom: 0.75rem;
-  margin: 0;
-  padding: 0.35rem 0.55rem;
-  border-radius: 0.45rem;
-  background: rgba(19, 22, 25, 0.82);
-  border: 1px dashed rgba(200, 162, 122, 0.45);
-  font-size: 0.72rem;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  color: rgba(242, 236, 227, 0.72);
-  pointer-events: none;
-  transform: rotate(-4deg);
-}
-
 .kolmo-map-caption {
   display: flex;
   flex-direction: column;
@@ -461,10 +444,6 @@ ul,ol{list-style:none;margin:0;padding:0}
 
 .kolmo-map-compact .kolmo-map-frame {
   border-radius: 1rem;
-}
-
-.kolmo-map-compact .kolmo-map-wink {
-  display: none;
 }
 
 .kolmo-map-compact .kolmo-map-caption-note {
