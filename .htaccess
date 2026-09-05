@@ -81,5 +81,8 @@
     RewriteRule "^functions/" - [F,L]
 </IfModule>
 
+# Custom 404 — visitors get a real page with a path home, not the host default.
+ErrorDocument 404 /404.html
+
 # Directory listings, in case the host ships with them on.
 Options -Indexes

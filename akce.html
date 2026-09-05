@@ -31,8 +31,8 @@
 
 <link rel="preload" as="font" type="font/woff2" href="fonts/spacegrotesk-400-700-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/lora-500-700-latin.woff2" crossorigin>
-<link rel="stylesheet" href="fonts.css?v=15">
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="fonts.css?v=17">
+<link rel="stylesheet" href="styles.css?v=17">
 
 </head>
 <body class="kolmo-root flex min-h-full flex-col antialiased" data-ga="" data-form-endpoint="/api/form.php" data-lang="cs">
@@ -45,14 +45,14 @@
       <a href="akce.html" class="kolmo-nav-link" aria-current="page">Akce</a>
       <a href="kontakt.html" class="kolmo-nav-link">Kontakt</a>
     </nav>
-    <button type="button" class="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium md:hidden" data-nav-toggle aria-expanded="false" aria-controls="kolmo-mobile-nav">Menu</button>
+    <button type="button" class="kolmo-pill kolmo-btn-ghost min-h-[44px] min-w-[44px] px-4 py-2 text-sm font-medium md:hidden" data-nav-toggle aria-expanded="false" aria-controls="kolmo-mobile-nav">Menu</button>
   </div>
   <div id="kolmo-mobile-nav" class="border-t border-[#f2ece3]/8 bg-[#131619] md:hidden" data-nav-panel hidden>
     <nav class="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4" aria-label="Mobilní">
-      <a href="index.html" class="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Domů</a>
-      <a href="menu.html" class="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Menu</a>
-      <a href="akce.html" class="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5" aria-current="page">Akce</a>
-      <a href="kontakt.html" class="rounded-lg px-3 py-2.5 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Kontakt</a>
+      <a href="index.html" class="kolmo-mobile-nav-link rounded-lg px-3 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Domů</a>
+      <a href="menu.html" class="kolmo-mobile-nav-link rounded-lg px-3 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Menu</a>
+      <a href="akce.html" class="kolmo-mobile-nav-link rounded-lg px-3 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5" aria-current="page">Akce</a>
+      <a href="kontakt.html" class="kolmo-mobile-nav-link rounded-lg px-3 text-sm text-[#f2ece3]/90 transition hover:bg-[#f2ece3]/5">Kontakt</a>
     </nav>
   </div>
 </header>
@@ -67,7 +67,7 @@
       <span class="hidden sm:inline">Po–Pá 14:00–20:00 · So–Ne 10:00–20:00</span>
     </span>
     <span class="kolmo-hours-bar-end shrink-0">
-      <a href="menu.html" class="kolmo-hours-bar-menu hidden shrink-0 font-medium text-[#c8a27a] transition hover:text-[#f2ece3] sm:inline">Menu →</a>
+      <a href="menu.html" class="kolmo-hours-bar-menu kolmo-tap-link hidden shrink-0 font-medium text-[#c8a27a] transition hover:text-[#f2ece3] sm:inline">Menu →</a>
       <span class="kolmo-hours-bar-socials shrink-0">
         <a href="https://www.facebook.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="kolmo-bar-social" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" class="kolmo-bar-social-svg"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
         <a href="https://www.instagram.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="kolmo-bar-social" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" class="kolmo-bar-social-svg"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -95,23 +95,25 @@
   <div class="mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:grid-cols-3">
     <div>
       <p class="text-lg font-semibold tracking-wide text-[#f2ece3]">KOLMO kafe</p>
+      <p class="mt-1 text-sm text-[#9a948c]">KOLMO motion s.r.o.</p>
       <p class="mt-2 text-sm text-[#9a948c]">Resort Olešná · u přehrady</p>
-      <p class="mt-1 text-sm text-[#9a948c]">Nad Přehradou 2483, 738 01 Frýdek-Místek</p>
+      <p class="mt-1"><a class="kolmo-tap-link text-sm text-[#9a948c] transition hover:text-[#c8a27a]" href="https://maps.google.com/?q=49.66201,18.30640" data-map-open>Nad Přehradou 2483, 738 01 Frýdek-Místek</a></p>
       <p class="mt-2 text-sm text-[#c8a27a]/90">Po–Pá 14:00–20:00 · So–Ne 10:00–20:00</p>
       <p class="mt-1 text-xs text-[#9a948c]">IČO 08011150</p>
+      <p class="mt-1 text-xs text-[#9a948c]">Zápis: Krajský soud v Ostravě, oddíl C, vložka 78034</p>
     </div>
     <div class="text-sm text-[#9a948c]">
-      <a href="tel:+420725311139" class="block transition hover:text-[#c8a27a]">+420 725 311 139</a>
-      <a href="mailto:info@kolmokafe.cz" class="mt-1 block transition hover:text-[#c8a27a]">info@kolmokafe.cz</a>
-      <a href="https://www.facebook.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="mt-1 block transition hover:text-[#c8a27a]">Facebook</a>
-      <a href="https://www.instagram.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="mt-1 block transition hover:text-[#c8a27a]">Instagram</a>
+      <a href="tel:+420725311139" class="kolmo-tap-link block transition hover:text-[#c8a27a]">+420 725 311 139</a>
+      <a href="mailto:info@kolmokafe.cz" class="kolmo-tap-link mt-1 block transition hover:text-[#c8a27a]">info@kolmokafe.cz</a>
+      <a href="https://www.facebook.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="kolmo-tap-link mt-1 block transition hover:text-[#c8a27a]">Facebook</a>
+      <a href="https://www.instagram.com/kolmokafe" target="_blank" rel="noopener noreferrer" class="kolmo-tap-link mt-1 block transition hover:text-[#c8a27a]">Instagram</a>
     </div>
     <nav aria-label="Právní informace" class="text-sm text-[#9a948c]">
       <ul class="space-y-1.5">
-        <li><a href="provozovatel.html" class="transition hover:text-[#c8a27a]">Provozovatel</a></li>
-        <li><a href="ochrana-osobnich-udaju.html" class="transition hover:text-[#c8a27a]">Ochrana osobních údajů</a></li>
-        <li><a href="cookies.html" class="transition hover:text-[#c8a27a]">Cookies</a></li>
-        <li><button type="button" class="text-left transition hover:text-[#c8a27a]" data-cookie-reset>Nastavení cookies</button></li>
+        <li><a href="provozovatel.html" class="kolmo-tap-link transition hover:text-[#c8a27a]">Provozovatel</a></li>
+        <li><a href="ochrana-osobnich-udaju.html" class="kolmo-tap-link transition hover:text-[#c8a27a]">Ochrana osobních údajů</a></li>
+        <li><a href="cookies.html" class="kolmo-tap-link transition hover:text-[#c8a27a]">Cookies</a></li>
+        <li><button type="button" class="kolmo-tap-link text-left transition hover:text-[#c8a27a]" data-cookie-reset>Nastavení cookies</button></li>
       </ul>
     </nav>
   </div>
@@ -122,9 +124,9 @@
       <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
         <p class="text-sm leading-6 text-[#9a948c]">Nezbytné cookies pro provoz webu. Analytické a marketingové jen se souhlasem. <a href="cookies.html" class="text-[#c8a27a] underline">Zásady cookies</a>.</p>
         <div class="flex shrink-0 flex-wrap gap-2">
-          <button type="button" class="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium" data-cookie-reject>Odmítnout</button>
-          <button type="button" class="kolmo-pill kolmo-btn-ghost px-4 py-2 text-sm font-medium" data-cookie-settings>Nastavení</button>
-          <button type="button" class="kolmo-pill kolmo-btn-cream px-4 py-2 text-sm font-semibold" data-cookie-accept>Přijmout</button>
+          <button type="button" class="kolmo-pill kolmo-btn-ghost min-h-[44px] px-4 py-2 text-sm font-medium" data-cookie-reject>Odmítnout</button>
+          <button type="button" class="kolmo-pill kolmo-btn-ghost min-h-[44px] px-4 py-2 text-sm font-medium" data-cookie-settings>Nastavení</button>
+          <button type="button" class="kolmo-pill kolmo-btn-cream min-h-[44px] px-4 py-2 text-sm font-semibold" data-cookie-accept>Přijmout</button>
         </div>
       </div>
     </div>
@@ -151,7 +153,7 @@
     <button type="button" class="kolmo-map-picker-cancel" data-map-picker-close>Zavřít</button>
   </div>
 </div>
-<a href="tel:+420725311139" class="kolmo-pill kolmo-btn-cream fixed bottom-5 right-5 z-40 px-5 py-3 text-sm font-semibold shadow-lg sm:hidden">Zavolat</a>
-<script src="main.js?v=15" defer></script>
+<a href="tel:+420725311139" class="kolmo-call-fab kolmo-pill kolmo-btn-cream fixed bottom-5 right-5 z-40 px-5 py-3 text-sm font-semibold shadow-lg sm:hidden">Zavolat</a>
+<script src="main.js?v=17" defer></script>
 </body>
 </html>

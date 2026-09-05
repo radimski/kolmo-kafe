@@ -37,7 +37,7 @@ ul,ol{list-style:none;margin:0;padding:0}
 .min-w-0{min-width:0}.w-full{width:100%}.max-w-md{max-width:28rem}.max-w-lg{max-width:32rem}
 .max-w-xl{max-width:36rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-6xl{max-width:72rem}
 .max-h-\[min\(70vh\,28rem\)\]{max-height:min(70vh,28rem)}
-.min-h-full{min-height:100%}
+.min-h-\[44px\]{min-height:44px}
 .rounded-lg{border-radius:.5rem}.rounded-xl{border-radius:.75rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}
 .border{border-width:1px;border-style:solid}.border-b{border-bottom-width:1px;border-bottom-style:solid}
 .border-t{border-top-width:1px;border-top-style:solid}.border-y{border-top-width:1px;border-bottom-width:1px;border-style:solid}
@@ -109,7 +109,12 @@ ul,ol{list-style:none;margin:0;padding:0}
 .kolmo-header-bar{padding-block:1rem}
 @media (max-width:767px){
   .kolmo-header-bar{padding-block:.55rem}
-  .kolmo-header .kolmo-pill{padding:.4rem .85rem;font-size:.8125rem}
+  .kolmo-header .kolmo-pill{
+    min-height:44px;
+    min-width:44px;
+    padding:.55rem .95rem;
+    font-size:.8125rem;
+  }
 }
 
 .kolmo-root {
@@ -531,6 +536,10 @@ ul,ol{list-style:none;margin:0;padding:0}
 
 .kolmo-map-open {
   margin-top: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.35rem 0;
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--kolmo-crema);
@@ -540,6 +549,97 @@ ul,ol{list-style:none;margin:0;padding:0}
 
 .kolmo-map-open:hover {
   color: var(--kolmo-cream);
+}
+
+.kolmo-tap-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.kolmo-tap-link.block {
+  display: flex;
+}
+
+.kolmo-mobile-nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.kolmo-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+}
+
+.kolmo-hero-meta-sep {
+  color: rgba(242, 236, 227, 0.25);
+}
+
+.kolmo-photo-todo {
+  background: var(--kolmo-bg);
+}
+
+.kolmo-photo-todo-frame {
+  margin: 0;
+  min-height: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1.5px dashed rgba(200, 162, 122, 0.45);
+  border-radius: 1.25rem;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(242, 236, 227, 0.03),
+      rgba(242, 236, 227, 0.03) 12px,
+      transparent 12px,
+      transparent 24px
+    );
+  padding: 2rem 1.5rem;
+}
+
+.kolmo-photo-todo-label {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kolmo-crema);
+}
+
+.kolmo-photo-todo-hint {
+  margin: 0.65rem auto 0;
+  max-width: 36rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--kolmo-muted);
+}
+
+@media (min-width: 768px) {
+  .kolmo-photo-todo-frame {
+    min-height: 18rem;
+  }
+}
+
+.kolmo-call-fab {
+  min-height: 44px;
+}
+
+.kolmo-hours-bar-menu {
+  min-height: 44px;
+  align-items: center;
+}
+
+.kolmo-cookie-panel .kolmo-pill {
+  min-height: 44px;
+}
+
+body:has([data-cookie-banner]:not([hidden])) .kolmo-call-fab {
+  bottom: 7.25rem;
 }
 
 .kolmo-map-picker {
@@ -1164,8 +1264,8 @@ ul,ol{list-style:none;margin:0;padding:0}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 999px;
   border: 1px solid rgba(242, 236, 227, 0.14);
   color: var(--kolmo-muted);
