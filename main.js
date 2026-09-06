@@ -241,11 +241,12 @@
     if (!grids.length) return;
 
     var CELL = 72;
-    var COLS = 10; /* 720px tile — covers the viewport without obvious repeats */
+    var COLS = 12; /* 864px tile — even strata across the whole grid */
     var TILE = CELL * COLS;
     var ARM = 12;
     var MIN_GAP = 2; /* no adjacent marks; one empty intersection between */
-    var TARGET = 18; /* ~1/5 of intersections, spread across the whole tile */
+    var STRATA = 4; /* 4×4 regions → at least one mark in every zone */
+    var TARGET = 20;
     var NS = 'http://www.w3.org/2000/svg';
     var marks = [];
     var placed = [];
@@ -253,6 +254,7 @@
     var i;
     var j;
     var k;
+    var band = COLS / STRATA; /* 3 */
 
     function lPath(x, y, orient) {
       if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
@@ -262,11 +264,11 @@
     }
 
     function tooClose(a, b) {
-      var di = Math.abs(a.i - b.i);
-      var dj = Math.abs(a.j - b.j);
-      di = Math.min(di, COLS - di);
-      dj = Math.min(dj, COLS - dj);
-      return Math.max(di, dj) < MIN_GAP;
+      /* No wrap: wrap-aware gaps blocked whole edge strata and left the
+         tiled pattern empty on the right/bottom of the viewport. */
+      return (
+        Math.max(Math.abs(a.i - b.i), Math.abs(a.j - b.j)) < MIN_GAP
+      );
     }
 
     function appendStroke(el, attrs) {
@@ -322,16 +324,35 @@
       candidates[r] = tmp;
     }
 
-    for (k = 0; k < candidates.length && placed.length < TARGET; k++) {
-      var cand = candidates[k];
-      var ok = true;
-      for (i = 0; i < placed.length; i++) {
-        if (tooClose(cand, placed[i])) {
-          ok = false;
-          break;
+    function tryPlace(cand) {
+      for (var t = 0; t < placed.length; t++) {
+        if (tooClose(cand, placed[t])) return false;
+      }
+      placed.push(cand);
+      return true;
+    }
+
+    /* First: one mark in every stratum so the tiled pattern never leaves a blank quadrant. */
+    for (var sy = 0; sy < STRATA; sy++) {
+      for (var sx = 0; sx < STRATA; sx++) {
+        var i0 = sx * band;
+        var j0 = sy * band;
+        var pool = [];
+        for (k = 0; k < candidates.length; k++) {
+          var c = candidates[k];
+          if (c.i >= i0 && c.i < i0 + band && c.j >= j0 && c.j < j0 + band) {
+            pool.push(c);
+          }
+        }
+        for (k = 0; k < pool.length; k++) {
+          if (tryPlace(pool[k])) break;
         }
       }
-      if (ok) placed.push(cand);
+    }
+
+    /* Then fill up to TARGET with the remaining shuffled candidates. */
+    for (k = 0; k < candidates.length && placed.length < TARGET; k++) {
+      tryPlace(candidates[k]);
     }
 
     var bikeIndex = placed.length ? (Math.random() * placed.length) | 0 : -1;
@@ -356,6 +377,14 @@
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('class', 'kolmo-grid-marks');
       svg.setAttribute('aria-hidden', 'true');
+      /* Explicit viewBox matching the overlay pixel size — without it SVG
+         defaults to 300×150 and only the left slice of the pattern shows. */
+      var vw = Math.max((el.offsetWidth * 2.5) | 0, TILE * 3);
+      var vh = Math.max((el.offsetHeight * 2.5) | 0, TILE * 3);
+      svg.setAttribute('viewBox', '0 0 ' + vw + ' ' + vh);
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
 
       var defs = document.createElementNS(NS, 'defs');
       var pattern = document.createElementNS(NS, 'pattern');
@@ -385,8 +414,8 @@
       svg.appendChild(defs);
 
       var rect = document.createElementNS(NS, 'rect');
-      rect.setAttribute('width', '100%');
-      rect.setAttribute('height', '100%');
+      rect.setAttribute('width', vw);
+      rect.setAttribute('height', vh);
       rect.setAttribute('fill', 'url(#' + pid + ')');
       svg.appendChild(rect);
 
