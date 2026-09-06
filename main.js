@@ -232,7 +232,8 @@
     });
   })();
 
-  /* Sparse gold 90° corner marks — new random subset of intersections every refresh. */
+  /* Sparse gold 90° corner marks — new random subset every refresh.
+   * Injected as real SVG (not data: URLs) so CSP img-src 'self' does not block them. */
   (function paintRandomGridMarks() {
     var grids = $$('.kolmo-grid-lines');
     if (!grids.length) return;
@@ -240,9 +241,10 @@
     var CELL = 72;
     var TILE = 288;
     var ARM = 12;
-    var CHANCE = 0.28;
+    var CHANCE = 0.3;
     var axes = [0, CELL, CELL * 2, CELL * 3];
-    var paths = [];
+    var NS = 'http://www.w3.org/2000/svg';
+    var pathDs = [];
 
     function lPath(x, y, orient) {
       if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
@@ -254,42 +256,57 @@
     for (var i = 0; i < axes.length; i++) {
       for (var j = 0; j < axes.length; j++) {
         if (Math.random() > CHANCE) continue;
-        paths.push(
-          '<path d="' + lPath(axes[i], axes[j], (Math.random() * 4) | 0) + '"/>',
-        );
+        pathDs.push(lPath(axes[i], axes[j], (Math.random() * 4) | 0));
       }
     }
-
-    /* Guarantee a few marks even on unlucky rolls. */
-    while (paths.length < 4) {
-      paths.push(
-        '<path d="' +
-          lPath(
-            axes[(Math.random() * axes.length) | 0],
-            axes[(Math.random() * axes.length) | 0],
-            (Math.random() * 4) | 0,
-          ) +
-          '"/>',
+    while (pathDs.length < 5) {
+      pathDs.push(
+        lPath(
+          axes[(Math.random() * axes.length) | 0],
+          axes[(Math.random() * axes.length) | 0],
+          (Math.random() * 4) | 0,
+        ),
       );
     }
 
-    var svg =
-      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
-      TILE +
-      "' height='" +
-      TILE +
-      "' viewBox='0 0 " +
-      TILE +
-      ' ' +
-      TILE +
-      "'>" +
-      "<g fill='none' stroke='#c8a27a' stroke-width='1.25' stroke-opacity='0.55' stroke-linecap='square' stroke-linejoin='miter'>" +
-      paths.join('') +
-      '</g></svg>';
-
-    var marks = 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
     for (var g = 0; g < grids.length; g++) {
-      grids[g].style.setProperty('--grid-marks', marks);
+      var el = grids[g];
+      var prev = el.querySelector('.kolmo-grid-marks');
+      if (prev && prev.parentNode === el) prev.parentNode.removeChild(prev);
+
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('class', 'kolmo-grid-marks');
+      svg.setAttribute('aria-hidden', 'true');
+
+      var defs = document.createElementNS(NS, 'defs');
+      var pattern = document.createElementNS(NS, 'pattern');
+      var pid = 'kolmo-gm-' + g;
+      pattern.setAttribute('id', pid);
+      pattern.setAttribute('width', String(TILE));
+      pattern.setAttribute('height', String(TILE));
+      pattern.setAttribute('patternUnits', 'userSpaceOnUse');
+
+      for (var p = 0; p < pathDs.length; p++) {
+        var path = document.createElementNS(NS, 'path');
+        path.setAttribute('d', pathDs[p]);
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', '#c8a27a');
+        path.setAttribute('stroke-width', '1.35');
+        path.setAttribute('stroke-opacity', '0.7');
+        path.setAttribute('stroke-linecap', 'square');
+        path.setAttribute('stroke-linejoin', 'miter');
+        pattern.appendChild(path);
+      }
+      defs.appendChild(pattern);
+      svg.appendChild(defs);
+
+      var rect = document.createElementNS(NS, 'rect');
+      rect.setAttribute('width', '100%');
+      rect.setAttribute('height', '100%');
+      rect.setAttribute('fill', 'url(#' + pid + ')');
+      svg.appendChild(rect);
+
+      el.insertBefore(svg, el.firstChild);
     }
   })();
 

@@ -304,11 +304,10 @@ ul,ol{list-style:none;margin:0;padding:0}
 }
 
 .kolmo-grid-lines {
-  /* Oversized ::before so transform can slide the grid behind a clipped corner. */
+  /* Oversized ::before / marks so transform can slide the grid behind a clipped corner. */
   position: relative;
   --grid-x: 0px;
   --grid-y: 0px;
-  --grid-marks: none;
 }
 
 .kolmo-grid-lines::before {
@@ -319,13 +318,25 @@ ul,ol{list-style:none;margin:0;padding:0}
   pointer-events: none;
   transform: translate3d(var(--grid-x), var(--grid-y), 0);
   will-change: transform;
-  /* Cream grid + sparse gold 90° Ls from --grid-marks (randomised per load in main.js). */
   background-image:
-    var(--grid-marks),
     linear-gradient(rgba(242, 236, 227, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(242, 236, 227, 0.045) 1px, transparent 1px);
-  background-size: 288px 288px, 72px 72px, 72px 72px;
-  background-position: -0.5px -0.5px, 0 0, 0 0;
+  background-size: 72px 72px, 72px 72px;
+  background-position: 0 0, 0 0;
+}
+
+/* Gold 90° marks — SVG injected by main.js (new random set every refresh). */
+.kolmo-grid-marks {
+  position: absolute;
+  top: -75%;
+  left: -75%;
+  z-index: 0;
+  width: 250%;
+  height: 250%;
+  pointer-events: none;
+  transform: translate3d(var(--grid-x), var(--grid-y), 0);
+  will-change: transform;
+  overflow: visible;
 }
 
 .kolmo-grid-lines > * {
@@ -333,11 +344,16 @@ ul,ol{list-style:none;margin:0;padding:0}
   z-index: 1;
 }
 
-/* Keep intentionally absolute children out of flow (accent / corners).
+/* Keep intentionally absolute children out of flow (accent / corners / marks).
    `.kolmo-grid-lines > *` would otherwise override utility `.absolute`. */
 .kolmo-grid-lines > .absolute,
-.kolmo-grid-lines > .kolmo-corner {
+.kolmo-grid-lines > .kolmo-corner,
+.kolmo-grid-lines > .kolmo-grid-marks {
   position: absolute;
+}
+
+.kolmo-grid-lines > .kolmo-grid-marks {
+  z-index: 0;
 }
 
 .kolmo-surface {
