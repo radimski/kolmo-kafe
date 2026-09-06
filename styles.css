@@ -218,40 +218,43 @@ ul,ol{list-style:none;margin:0;padding:0}
   }
 
   .kolmo-hours-bar-inner {
-    position: relative;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-  }
-
-  .open-status-kolmo {
-    position: relative;
-    z-index: 1;
+    gap: 0.4rem 0.5rem;
   }
 
   .kolmo-hours-bar-times {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: max-content;
-    max-width: calc(100% - 9.5rem);
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: auto;
+    max-width: none;
+    min-width: 0;
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: 0;
+    line-height: 1.2;
+  }
+
+  .kolmo-hours-bar-times-mobile {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    hyphens: manual;
   }
 
   .kolmo-hours-bar-end {
-    position: relative;
-    z-index: 1;
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .kolmo-hours-bar-socials {
     margin-left: 0;
+  }
+
+  .kolmo-bar-social {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 
@@ -819,6 +822,10 @@ body:has([data-cookie-banner]:not([hidden])) .kolmo-call-fab {
 
 .kolmo-social-lead {
   background: #1a1d21;
+}
+
+.kolmo-social-copy dd {
+  margin-inline-start: 0;
 }
 
 .kolmo-social-icon {
