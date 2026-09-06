@@ -245,8 +245,8 @@
     var TILE = CELL * COLS;
     var ARM = 12;
     var MIN_GAP = 2; /* no adjacent marks; one empty intersection between */
-    var STRATA = 4; /* 4×4 regions → at least one mark in every zone */
-    var TARGET = 20;
+    var STRATA = 3; /* 3×3 regions — lighter coverage, still whole-grid */
+    var TARGET = 10;
     var NS = 'http://www.w3.org/2000/svg';
     var marks = [];
     var placed = [];
@@ -254,7 +254,7 @@
     var i;
     var j;
     var k;
-    var band = COLS / STRATA; /* 3 */
+    var band = COLS / STRATA; /* 4 */
 
     function lPath(x, y, orient) {
       if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
