@@ -232,10 +232,9 @@
     });
   })();
 
-  /* Sparse gold 90° corner marks — new random subset every refresh.
+  /* Sparse gold 90° corner marks — sit on CSS grid intersections (72px).
    * Injected as real SVG (not data: URLs) so CSP img-src 'self' does not block them.
-   * Spread across a large tile with a minimum gap (incl. wrap) so marks never clump.
-   * One slot is a tiny precision bike (“kolmo” = na kole) instead of an L. */
+   * One slot is a tiny bike (“kolmo” = na kole) instead of an L. */
   (function paintRandomGridMarks() {
     var grids = $$('.kolmo-grid-lines');
     if (!grids.length) return;
@@ -243,7 +242,7 @@
     var CELL = 72;
     var COLS = 12; /* 864px tile — even strata across the whole grid */
     var TILE = CELL * COLS;
-    var ARM = 12;
+    var ARM = 18; /* ~1/4 cell — crisp drafting corner on the crossing */
     var MIN_GAP = 2; /* no adjacent marks; one empty intersection between */
     var STRATA = 3; /* 3×3 regions — lighter coverage, still whole-grid */
     var TARGET = 10;
@@ -256,11 +255,12 @@
     var k;
     var band = COLS / STRATA; /* 4 */
 
+    /* Vertex at (x,y) — the grid intersection. Arms run along the axes. */
     function lPath(x, y, orient) {
-      if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
-      if (orient === 1) return 'M' + (x + ARM) + ' ' + y + 'H' + x + 'v' + ARM;
-      if (orient === 2) return 'M' + x + ' ' + (y - ARM) + 'V' + y + 'h' + ARM;
-      return 'M' + (x - ARM) + ' ' + y + 'H' + x + 'v' + ARM;
+      if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'H' + (x + ARM);
+      if (orient === 1) return 'M' + (x + ARM) + ' ' + y + 'H' + x + 'V' + (y + ARM);
+      if (orient === 2) return 'M' + x + ' ' + (y - ARM) + 'V' + y + 'H' + (x + ARM);
+      return 'M' + (x - ARM) + ' ' + y + 'H' + x + 'V' + (y + ARM);
     }
 
     function tooClose(a, b) {
@@ -277,33 +277,33 @@
       });
       el.setAttribute('fill', 'none');
       el.setAttribute('stroke', '#c8a27a');
-      el.setAttribute('stroke-width', '1.15');
-      el.setAttribute('stroke-opacity', '0.78');
-      el.setAttribute('stroke-linecap', 'round');
-      el.setAttribute('stroke-linejoin', 'round');
+      el.setAttribute('stroke-width', '1.35');
+      el.setAttribute('stroke-opacity', '0.82');
+      el.setAttribute('stroke-linecap', 'square');
+      el.setAttribute('stroke-linejoin', 'miter');
     }
 
-    /* Tiny side-view bike, ~12×8, centered on the grid crossing. */
+    /* Side-view bike, centered on the grid crossing. */
     function appendBike(parent, cx, cy) {
       var g = document.createElementNS(NS, 'g');
       g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ')');
       g.setAttribute('aria-hidden', 'true');
 
       var rear = document.createElementNS(NS, 'circle');
-      appendStroke(rear, { cx: '-5.2', cy: '2.4', r: '2.9' });
+      appendStroke(rear, { cx: '-7', cy: '3', r: '3.6' });
       var front = document.createElementNS(NS, 'circle');
-      appendStroke(front, { cx: '5.4', cy: '2.4', r: '2.9' });
+      appendStroke(front, { cx: '7', cy: '3', r: '3.6' });
       var frame = document.createElementNS(NS, 'path');
       appendStroke(frame, {
         d:
-          'M-5.2 2.4H-0.6' +
-          'M-0.6 2.4L-1.4-3.1' +
-          'M-1.4-3.1L3.1-0.9' +
-          'M-0.6 2.4L3.1-0.9' +
-          'M3.1-0.9L5.4 2.4' +
-          'M-1.4-3.1V-4.2' +
-          'M-2.3-4.2H-0.5' +
-          'M3.1-0.9L3.4-3.2H4.9',
+          'M-7 3H-0.8' +
+          'M-0.8 3L-1.8-4' +
+          'M-1.8-4L4-1.2' +
+          'M-0.8 3L4-1.2' +
+          'M4-1.2L7 3' +
+          'M-1.8-4V-5.4' +
+          'M-3-5.4H-0.6' +
+          'M4-1.2L4.4-4.2H6.4',
       });
 
       g.appendChild(rear);
@@ -377,14 +377,14 @@
       var svg = document.createElementNS(NS, 'svg');
       svg.setAttribute('class', 'kolmo-grid-marks');
       svg.setAttribute('aria-hidden', 'true');
-      /* Explicit viewBox matching the overlay pixel size — without it SVG
-         defaults to 300×150 and only the left slice of the pattern shows. */
-      var vw = Math.max((el.offsetWidth * 2.5) | 0, TILE * 3);
-      var vh = Math.max((el.offsetHeight * 2.5) | 0, TILE * 3);
+      /* Insert first so layout (250% overlay, max-width:none) is real, then
+         lock viewBox 1:1 to CSS pixels — keeps L vertices on 72px crossings. */
+      el.insertBefore(svg, el.firstChild);
+      var box = svg.getBoundingClientRect();
+      var vw = Math.max(1, box.width | 0);
+      var vh = Math.max(1, box.height | 0);
       svg.setAttribute('viewBox', '0 0 ' + vw + ' ' + vh);
       svg.setAttribute('preserveAspectRatio', 'none');
-      svg.setAttribute('width', '100%');
-      svg.setAttribute('height', '100%');
 
       var defs = document.createElementNS(NS, 'defs');
       var pattern = document.createElementNS(NS, 'pattern');
@@ -404,8 +404,8 @@
         path.setAttribute('d', mark.d);
         path.setAttribute('fill', 'none');
         path.setAttribute('stroke', '#c8a27a');
-        path.setAttribute('stroke-width', '1.35');
-        path.setAttribute('stroke-opacity', '0.7');
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('stroke-opacity', '0.78');
         path.setAttribute('stroke-linecap', 'square');
         path.setAttribute('stroke-linejoin', 'miter');
         pattern.appendChild(path);
@@ -418,8 +418,6 @@
       rect.setAttribute('height', vh);
       rect.setAttribute('fill', 'url(#' + pid + ')');
       svg.appendChild(rect);
-
-      el.insertBefore(svg, el.firstChild);
     }
   })();
 
