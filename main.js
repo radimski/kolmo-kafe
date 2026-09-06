@@ -283,32 +283,54 @@
       el.setAttribute('stroke-linejoin', 'miter');
     }
 
-    /* Side-view bike, centered on the grid crossing. */
+    /* Drafting-style side-view bike on the grid crossing (kolmo = na kole). */
     function appendBike(parent, cx, cy) {
       var g = document.createElementNS(NS, 'g');
-      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ')');
+      /* Nudge up so the diamond sits on the crossing, wheels below. */
+      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ') translate(0 -1)');
       g.setAttribute('aria-hidden', 'true');
 
-      var rear = document.createElementNS(NS, 'circle');
-      appendStroke(rear, { cx: '-7', cy: '3', r: '3.6' });
-      var front = document.createElementNS(NS, 'circle');
-      appendStroke(front, { cx: '7', cy: '3', r: '3.6' });
-      var frame = document.createElementNS(NS, 'path');
-      appendStroke(frame, {
-        d:
-          'M-7 3H-0.8' +
-          'M-0.8 3L-1.8-4' +
-          'M-1.8-4L4-1.2' +
-          'M-0.8 3L4-1.2' +
-          'M4-1.2L7 3' +
-          'M-1.8-4V-5.4' +
-          'M-3-5.4H-0.6' +
-          'M4-1.2L4.4-4.2H6.4',
-      });
+      function ink(node) {
+        node.setAttribute('fill', 'none');
+        node.setAttribute('stroke', '#c8a27a');
+        node.setAttribute('stroke-width', '1.3');
+        node.setAttribute('stroke-opacity', '0.88');
+        node.setAttribute('stroke-linecap', 'round');
+        node.setAttribute('stroke-linejoin', 'round');
+        g.appendChild(node);
+      }
 
-      g.appendChild(rear);
-      g.appendChild(front);
-      g.appendChild(frame);
+      function circle(x, y, r) {
+        var el = document.createElementNS(NS, 'circle');
+        el.setAttribute('cx', String(x));
+        el.setAttribute('cy', String(y));
+        el.setAttribute('r', String(r));
+        ink(el);
+      }
+
+      function path(d) {
+        var el = document.createElementNS(NS, 'path');
+        el.setAttribute('d', d);
+        ink(el);
+      }
+
+      /* Wheels + BB */
+      circle(-8.5, 3, 4.2);
+      circle(8.5, 3, 4.2);
+      circle(0, 3, 1.15);
+      /* Diamond: chainstay, seatstay, seat tube, top tube, down tube, fork */
+      path('M-8.5 3H0');
+      path('M-8.5 3L-2-4.8');
+      path('M0 3L-2-4.8');
+      path('M-2-4.8L5-2.8');
+      path('M0 3L5-2.8');
+      path('M5-2.8L8.5 3');
+      /* Saddle, stem, flat bar, crank */
+      path('M-3.5-4.8H-0.6');
+      path('M5-2.8V-5.8');
+      path('M3.2-5.8H7');
+      path('M0 3L1.7 5.4');
+
       parent.appendChild(g);
     }
 
