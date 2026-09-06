@@ -233,18 +233,25 @@
   })();
 
   /* Sparse gold 90° corner marks — new random subset every refresh.
-   * Injected as real SVG (not data: URLs) so CSP img-src 'self' does not block them. */
+   * Injected as real SVG (not data: URLs) so CSP img-src 'self' does not block them.
+   * Spread across a large tile with a minimum gap (incl. wrap) so marks never clump. */
   (function paintRandomGridMarks() {
     var grids = $$('.kolmo-grid-lines');
     if (!grids.length) return;
 
     var CELL = 72;
-    var TILE = 288;
+    var COLS = 10; /* 720px tile — covers the viewport without obvious repeats */
+    var TILE = CELL * COLS;
     var ARM = 12;
-    var CHANCE = 0.3;
-    var axes = [0, CELL, CELL * 2, CELL * 3];
+    var MIN_GAP = 3; /* ≥2 empty intersections between marks (Chebyshev, wrap-aware) */
+    var TARGET = 9;
     var NS = 'http://www.w3.org/2000/svg';
     var pathDs = [];
+    var placed = [];
+    var candidates = [];
+    var i;
+    var j;
+    var k;
 
     function lPath(x, y, orient) {
       if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
@@ -253,21 +260,45 @@
       return 'M' + (x - ARM) + ' ' + y + 'H' + x + 'v' + ARM;
     }
 
-    for (var i = 0; i < axes.length; i++) {
-      for (var j = 0; j < axes.length; j++) {
-        if (Math.random() > CHANCE) continue;
-        pathDs.push(lPath(axes[i], axes[j], (Math.random() * 4) | 0));
+    function tooClose(a, b) {
+      var di = Math.abs(a.i - b.i);
+      var dj = Math.abs(a.j - b.j);
+      di = Math.min(di, COLS - di);
+      dj = Math.min(dj, COLS - dj);
+      return Math.max(di, dj) < MIN_GAP;
+    }
+
+    for (i = 0; i < COLS; i++) {
+      for (j = 0; j < COLS; j++) {
+        candidates.push({ i: i, j: j, x: i * CELL, y: j * CELL });
       }
     }
-    while (pathDs.length < 5) {
+    for (k = candidates.length - 1; k > 0; k--) {
+      var r = (Math.random() * (k + 1)) | 0;
+      var tmp = candidates[k];
+      candidates[k] = candidates[r];
+      candidates[r] = tmp;
+    }
+
+    for (k = 0; k < candidates.length && placed.length < TARGET; k++) {
+      var cand = candidates[k];
+      var ok = true;
+      for (i = 0; i < placed.length; i++) {
+        if (tooClose(cand, placed[i])) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) placed.push(cand);
+    }
+
+    for (k = 0; k < placed.length; k++) {
       pathDs.push(
-        lPath(
-          axes[(Math.random() * axes.length) | 0],
-          axes[(Math.random() * axes.length) | 0],
-          (Math.random() * 4) | 0,
-        ),
+        lPath(placed[k].x, placed[k].y, (Math.random() * 4) | 0),
       );
     }
+
+    window.__kolmoGridTile = TILE;
 
     for (var g = 0; g < grids.length; g++) {
       var el = grids[g];
@@ -316,6 +347,7 @@
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var grids = $$('.kolmo-grid-lines');
     if (!grids.length) return;
+    var TILE = window.__kolmoGridTile || 720;
 
     var dirs = [
       { x: 1, y: 0 },
@@ -345,8 +377,8 @@
     }
 
     function wrapDrift() {
-      if (x > 288 || x < -288) x = ((x % 288) + 288) % 288;
-      if (y > 288 || y < -288) y = ((y % 288) + 288) % 288;
+      if (x > TILE || x < -TILE) x = ((x % TILE) + TILE) % TILE;
+      if (y > TILE || y < -TILE) y = ((y % TILE) + TILE) % TILE;
     }
 
     function pickDir(countMove) {
@@ -396,10 +428,10 @@
           /* Re-enter from the opposite edge — still fully opaque, just peeking back. */
           if (fleeAxis === 'x') {
             x = dir.x > 0 ? -exitAt : exitAt;
-            y = ((y % 288) + 288) % 288;
+            y = ((y % TILE) + TILE) % TILE;
           } else {
             y = dir.y > 0 ? -exitAt : exitAt;
-            x = ((x % 288) + 288) % 288;
+            x = ((x % TILE) + TILE) % TILE;
           }
           mode = 'enter';
           nextChange = now + 7000 + Math.random() * 9000;
