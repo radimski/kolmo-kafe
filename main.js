@@ -234,7 +234,8 @@
 
   /* Sparse gold 90° corner marks — new random subset every refresh.
    * Injected as real SVG (not data: URLs) so CSP img-src 'self' does not block them.
-   * Spread across a large tile with a minimum gap (incl. wrap) so marks never clump. */
+   * Spread across a large tile with a minimum gap (incl. wrap) so marks never clump.
+   * One slot is a tiny precision bike (“kolmo” = na kole) instead of an L. */
   (function paintRandomGridMarks() {
     var grids = $$('.kolmo-grid-lines');
     if (!grids.length) return;
@@ -243,10 +244,10 @@
     var COLS = 10; /* 720px tile — covers the viewport without obvious repeats */
     var TILE = CELL * COLS;
     var ARM = 12;
-    var MIN_GAP = 3; /* ≥2 empty intersections between marks (Chebyshev, wrap-aware) */
-    var TARGET = 9;
+    var MIN_GAP = 2; /* no adjacent marks; one empty intersection between */
+    var TARGET = 18; /* ~1/5 of intersections, spread across the whole tile */
     var NS = 'http://www.w3.org/2000/svg';
-    var pathDs = [];
+    var marks = [];
     var placed = [];
     var candidates = [];
     var i;
@@ -266,6 +267,47 @@
       di = Math.min(di, COLS - di);
       dj = Math.min(dj, COLS - dj);
       return Math.max(di, dj) < MIN_GAP;
+    }
+
+    function appendStroke(el, attrs) {
+      Object.keys(attrs).forEach(function (key) {
+        el.setAttribute(key, attrs[key]);
+      });
+      el.setAttribute('fill', 'none');
+      el.setAttribute('stroke', '#c8a27a');
+      el.setAttribute('stroke-width', '1.15');
+      el.setAttribute('stroke-opacity', '0.78');
+      el.setAttribute('stroke-linecap', 'round');
+      el.setAttribute('stroke-linejoin', 'round');
+    }
+
+    /* Tiny side-view bike, ~12×8, centered on the grid crossing. */
+    function appendBike(parent, cx, cy) {
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('transform', 'translate(' + cx + ' ' + cy + ')');
+      g.setAttribute('aria-hidden', 'true');
+
+      var rear = document.createElementNS(NS, 'circle');
+      appendStroke(rear, { cx: '-5.2', cy: '2.4', r: '2.9' });
+      var front = document.createElementNS(NS, 'circle');
+      appendStroke(front, { cx: '5.4', cy: '2.4', r: '2.9' });
+      var frame = document.createElementNS(NS, 'path');
+      appendStroke(frame, {
+        d:
+          'M-5.2 2.4H-0.6' +
+          'M-0.6 2.4L-1.4-3.1' +
+          'M-1.4-3.1L3.1-0.9' +
+          'M-0.6 2.4L3.1-0.9' +
+          'M3.1-0.9L5.4 2.4' +
+          'M-1.4-3.1V-4.2' +
+          'M-2.3-4.2H-0.5' +
+          'M3.1-0.9L3.4-3.2H4.9',
+      });
+
+      g.appendChild(rear);
+      g.appendChild(front);
+      g.appendChild(frame);
+      parent.appendChild(g);
     }
 
     for (i = 0; i < COLS; i++) {
@@ -292,10 +334,16 @@
       if (ok) placed.push(cand);
     }
 
+    var bikeIndex = placed.length ? (Math.random() * placed.length) | 0 : -1;
     for (k = 0; k < placed.length; k++) {
-      pathDs.push(
-        lPath(placed[k].x, placed[k].y, (Math.random() * 4) | 0),
-      );
+      if (k === bikeIndex) {
+        marks.push({ kind: 'bike', x: placed[k].x, y: placed[k].y });
+      } else {
+        marks.push({
+          kind: 'l',
+          d: lPath(placed[k].x, placed[k].y, (Math.random() * 4) | 0),
+        });
+      }
     }
 
     window.__kolmoGridTile = TILE;
@@ -317,9 +365,14 @@
       pattern.setAttribute('height', String(TILE));
       pattern.setAttribute('patternUnits', 'userSpaceOnUse');
 
-      for (var p = 0; p < pathDs.length; p++) {
+      for (var p = 0; p < marks.length; p++) {
+        var mark = marks[p];
+        if (mark.kind === 'bike') {
+          appendBike(pattern, mark.x, mark.y);
+          continue;
+        }
         var path = document.createElementNS(NS, 'path');
-        path.setAttribute('d', pathDs[p]);
+        path.setAttribute('d', mark.d);
         path.setAttribute('fill', 'none');
         path.setAttribute('stroke', '#c8a27a');
         path.setAttribute('stroke-width', '1.35');
