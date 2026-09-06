@@ -232,6 +232,67 @@
     });
   })();
 
+  /* Sparse gold 90° corner marks — new random subset of intersections every refresh. */
+  (function paintRandomGridMarks() {
+    var grids = $$('.kolmo-grid-lines');
+    if (!grids.length) return;
+
+    var CELL = 72;
+    var TILE = 288;
+    var ARM = 12;
+    var CHANCE = 0.28;
+    var axes = [0, CELL, CELL * 2, CELL * 3];
+    var paths = [];
+
+    function lPath(x, y, orient) {
+      if (orient === 0) return 'M' + x + ' ' + (y + ARM) + 'V' + y + 'h' + ARM;
+      if (orient === 1) return 'M' + (x + ARM) + ' ' + y + 'H' + x + 'v' + ARM;
+      if (orient === 2) return 'M' + x + ' ' + (y - ARM) + 'V' + y + 'h' + ARM;
+      return 'M' + (x - ARM) + ' ' + y + 'H' + x + 'v' + ARM;
+    }
+
+    for (var i = 0; i < axes.length; i++) {
+      for (var j = 0; j < axes.length; j++) {
+        if (Math.random() > CHANCE) continue;
+        paths.push(
+          '<path d="' + lPath(axes[i], axes[j], (Math.random() * 4) | 0) + '"/>',
+        );
+      }
+    }
+
+    /* Guarantee a few marks even on unlucky rolls. */
+    while (paths.length < 4) {
+      paths.push(
+        '<path d="' +
+          lPath(
+            axes[(Math.random() * axes.length) | 0],
+            axes[(Math.random() * axes.length) | 0],
+            (Math.random() * 4) | 0,
+          ) +
+          '"/>',
+      );
+    }
+
+    var svg =
+      "<svg xmlns='http://www.w3.org/2000/svg' width='" +
+      TILE +
+      "' height='" +
+      TILE +
+      "' viewBox='0 0 " +
+      TILE +
+      ' ' +
+      TILE +
+      "'>" +
+      "<g fill='none' stroke='#c8a27a' stroke-width='1.25' stroke-opacity='0.55' stroke-linecap='square' stroke-linejoin='miter'>" +
+      paths.join('') +
+      '</g></svg>';
+
+    var marks = 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+    for (var g = 0; g < grids.length; g++) {
+      grids[g].style.setProperty('--grid-marks', marks);
+    }
+  })();
+
   /* Slow ambient grid drift — random cardinal directions, paused off-screen / reduced-motion.
    * Easter egg: every 100th direction change, the grid slides behind a corner, then re-enters. */
   (function gridDrift() {
